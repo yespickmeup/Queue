@@ -5,16 +5,17 @@
  */
 package qs.customers;
 
-import qs.template.*;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JTable;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
@@ -22,6 +23,7 @@ import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
+import qs.users.MyUser1;
 import qs.util.Alert;
 import qs.util.DateType;
 import qs.util.Dlg_confirm_action;
@@ -288,6 +290,7 @@ public class Dlg_customers extends javax.swing.JDialog {
         jLabel11.setText("Gender:");
 
         jTextField8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField8.setText("Female");
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Occupation:");
@@ -615,9 +618,15 @@ public class Dlg_customers extends javax.swing.JDialog {
         init_key();
         init_tbl_degrees(tbl_degrees);
         ret_customers();
+        init_customer_no();
     }
 
     int is_callback = 0;
+
+    private void init_customer_no() {
+        String customer_no = Customers.increment_id();
+        jTextField3.setText(customer_no);
+    }
 
     public void do_pass() {
         is_callback = 1;
@@ -641,7 +650,7 @@ public class Dlg_customers extends javax.swing.JDialog {
     }
     // </editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc=" degrees "> 
+    //<editor-fold defaultstate="collapsed" desc=" customers "> 
     public static ArrayListModel tbl_degrees_ALM;
     public static TbldegreesModel tbl_degrees_M;
 
@@ -664,8 +673,8 @@ public class Dlg_customers extends javax.swing.JDialog {
         tbl_degrees.getTableHeader().setFont(new java.awt.Font("Arial", 0, 12));
         tbl_degrees.setRowHeight(25);
         tbl_degrees.setFont(new java.awt.Font("Arial", 0, 12));
-        tbl_degrees.getColumnModel().getColumn(2).setCellRenderer(new ImageRenderer());
-        tbl_degrees.getColumnModel().getColumn(3).setCellRenderer(new ImageRenderer());
+        tbl_degrees.getColumnModel().getColumn(5).setCellRenderer(new ImageRenderer());
+        tbl_degrees.getColumnModel().getColumn(6).setCellRenderer(new ImageRenderer());
     }
 
     public static void loadData_degrees(List<Customers.to_customers> acc) {
@@ -715,9 +724,9 @@ public class Dlg_customers extends javax.swing.JDialog {
                     return " " + tt.address;
 
                 case 5:
-                    return "/cms/icons/new-file.png";
+                    return "/qs/icons/new-file.png";
                 case 6:
-                    return "/cms/icons/remove11.png";
+                    return "/qs/icons/remove11.png";
                 default:
                     return tt.status;
             }
@@ -745,7 +754,7 @@ public class Dlg_customers extends javax.swing.JDialog {
         jTextField12.setText("");
         jTextField13.setText("");
         jTextField14.setText("");
-
+        init_customer_no();
         tbl_degrees.clearSelection();
         jTextField4.grabFocus();
     }
@@ -754,14 +763,34 @@ public class Dlg_customers extends javax.swing.JDialog {
         int row = tbl_degrees.getSelectedRow();
         if (row < 0) {
             int id = 0;
-            String degree = jTextField3.getText();
-            String created_by = "";//MyUser.getUser_id();
-            String updated_by = "";//MyUser.getUser_id();
+            String customer_no = Customers.increment_id();
+            List<Customers.to_customers> list = Customers.ret_data(" where customer_no='" + customer_no + "' ");
+            do {
+                customer_no = Customers.increment_id();
+            } while (!list.isEmpty());
+            String fname = jTextField4.getText();
+            String mi = jTextField5.getText();
+            String lname = jTextField6.getText();
+            String sname = jTextField7.getText();
+            String bday = DateType.sf.format(jDateChooser1.getDate());
+            int gender = 0;
+            if (jTextField8.getText().equalsIgnoreCase("Male")) {
+                gender = 1;
+            }
+            String occupation = jTextField9.getText();
+            String address = jTextField10.getText();
+            String barangay = jTextField11.getText();
+            String city = jTextField12.getText();
+            String province = "";
+            String contact_no = jTextField13.getText();
+            String email_address = jTextField14.getText();
+            int status = 0;
             String created_at = DateType.now();
             String updated_at = DateType.now();
-            int status = 0;
-            int is_uploaded = 0;
-            Degrees.to_degrees degr = new Degrees.to_degrees(id, degree, created_by, updated_by, created_at, updated_at, status, is_uploaded);
+            String created_by = MyUser1.getUser_id();
+            String updated_by = MyUser1.getUser_id();
+            Customers.to_customers cus = new Customers.to_customers(id, customer_no, fname, mi, lname, sname, bday, gender, occupation, address, barangay, city, province, contact_no, email_address, status, created_at, updated_at, created_by, updated_by);
+
             Window p = (Window) this;
             Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
             nd.setTitle("");
@@ -769,7 +798,7 @@ public class Dlg_customers extends javax.swing.JDialog {
                 @Override
                 public void ok(CloseDialog closeDialog, Dlg_confirm_action.OutputData data) {
                     closeDialog.ok();
-                    Degrees.add_data(degr);
+                    Customers.add_data(cus);
                     ret_customers();
                     new_customer();
                     Alert.set(1, "");
@@ -779,16 +808,32 @@ public class Dlg_customers extends javax.swing.JDialog {
             nd.setVisible(true);
 
         } else {
-            Degrees.to_degrees to = (Degrees.to_degrees) tbl_degrees_ALM.get(row);
+            Customers.to_customers to = (Customers.to_customers) tbl_degrees_ALM.get(row);
             int id = to.id;
-            String degree = jTextField3.getText();
-            String created_by = to.created_by;
-            String updated_by = "";//MyUser.getUser_id();
-            String created_at = to.created_at;
+            String customer_no = to.customer_no;
+            String fname = jTextField4.getText();
+            String mi = jTextField5.getText();
+            String lname = jTextField6.getText();
+            String sname = jTextField7.getText();
+            String bday = DateType.sf.format(jDateChooser1.getDate());
+            int gender = 0;
+            if (jTextField8.getText().equalsIgnoreCase("Male")) {
+                gender = 1;
+            }
+            String occupation = jTextField9.getText();
+            String address = jTextField10.getText();
+            String barangay = jTextField11.getText();
+            String city = jTextField12.getText();
+            String province = "";
+            String contact_no = jTextField13.getText();
+            String email_address = jTextField14.getText();
+            int status = 0;
+            String created_at = DateType.now();
             String updated_at = DateType.now();
-            int status = to.status;
-            int is_uploaded = 0;
-            Degrees.to_degrees degr = new Degrees.to_degrees(id, degree, created_by, updated_by, created_at, updated_at, status, is_uploaded);
+            String created_by = MyUser1.getUser_id();
+            String updated_by = MyUser1.getUser_id();
+            Customers.to_customers cus = new Customers.to_customers(id, customer_no, fname, mi, lname, sname, bday, gender, occupation, address, barangay, city, province, contact_no, email_address, status, created_at, updated_at, created_by, updated_by);
+
             Window p = (Window) this;
             Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
             nd.setTitle("");
@@ -796,7 +841,7 @@ public class Dlg_customers extends javax.swing.JDialog {
                 @Override
                 public void ok(CloseDialog closeDialog, Dlg_confirm_action.OutputData data) {
                     closeDialog.ok();
-                    Degrees.update_data(degr);
+                    Customers.update_data(cus);
                     ret_customers();
                     new_customer();
                     Alert.set(2, "");
@@ -813,12 +858,40 @@ public class Dlg_customers extends javax.swing.JDialog {
         if (row < 0) {
             return;
         }
-        Degrees.to_degrees to = (Degrees.to_degrees) tbl_degrees_ALM.get(row);
+        Customers.to_customers to = (Customers.to_customers) tbl_degrees_ALM.get(row);
         int col = tbl_degrees.getSelectedColumn();
-        if (col == 2) {
-            jTextField3.setText(to.degree);
+        if (col == 5) {
+            jTextField3.setText(to.customer_no);
+
+            jTextField4.setText(to.fname);
+            jTextField5.setText(to.mi);
+            jTextField6.setText(to.lname);
+            jTextField7.setText(to.sname);
+
+            Date d = new Date();
+
+            try {
+                d = DateType.sf.parse(to.bday);
+                jDateChooser1.setDate(d);
+            } catch (ParseException ex) {
+                Logger.getLogger(Dlg_customers.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (to.gender == 0) {
+                jTextField8.setText("Female");
+            } else {
+                jTextField8.setText("Male");
+            }
+
+            jTextField9.setText(to.occupation);
+            jTextField10.setText(to.address);
+            jTextField11.setText(to.barangay);
+            jTextField12.setText(to.city);
+
+            jTextField13.setText(to.contact_no);
+            jTextField14.setText(to.email_address);
+
         }
-        if (col == 3) {
+        if (col == 6) {
             Window p = (Window) this;
             Dlg_confirm_delete nd = Dlg_confirm_delete.create(p, true);
             nd.setTitle("");
@@ -827,7 +900,7 @@ public class Dlg_customers extends javax.swing.JDialog {
                 @Override
                 public void ok(CloseDialog closeDialog, Dlg_confirm_delete.OutputData data) {
                     closeDialog.ok();
-                    Degrees.delete_data(to);
+                    Customers.delete_data(to);
                     ret_customers();
                     new_customer();
                     Alert.set(3, "");

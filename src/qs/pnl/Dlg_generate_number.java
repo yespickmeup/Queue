@@ -23,8 +23,10 @@ import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
+import qs.customers.Customers;
 import qs.departments.Departments;
 import qs.queues.Queues;
+import qs.util.Alert;
 import qs.util.DateType;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
@@ -199,6 +201,8 @@ public class Dlg_generate_number extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new Field.Search();
         jButton1 = new Button.Primary();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -234,13 +238,22 @@ public class Dlg_generate_number extends javax.swing.JDialog {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Consumer Name:");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jScrollPane1)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -252,7 +265,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
+                .addContainerGap(50, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(7, 7, 7)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -260,14 +273,18 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                     .addComponent(jTextField1))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,6 +305,8 @@ public class Dlg_generate_number extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
@@ -425,14 +444,27 @@ public class Dlg_generate_number extends javax.swing.JDialog {
 
         int row = tbl_degrees.getSelectedRow();
         if (row < 0) {
+            Alert.set(0, "Select Department!");
             return;
         }
-        Departments.to_departments dep = (Departments.to_departments) tbl_degrees_ALM.get(row);
 
+        String number = jTextField1.getText();
+        if (!number.isEmpty()) {
+            List<Customers.to_customers> list = Customers.ret_data(" where customer_no='" + number + "'");
+            if (!list.isEmpty()) {
+                Customers.to_customers to = (Customers.to_customers) list.get(0);
+                jLabel3.setText(to.lname + ", " + to.fname + " " + to.mi);
+            } else {
+                Alert.set(0, "Consumer not found!");
+                jTextField1.setText("");
+                return;
+            }
+        }
+
+        Departments.to_departments dep = (Departments.to_departments) tbl_degrees_ALM.get(row);
         Window p = (Window) this;
         Dlg_generate_number_prompt nd = Dlg_generate_number_prompt.create(p, true);
         nd.setTitle("");
-
         nd.setCallback(new Dlg_generate_number_prompt.Callback() {
 
             @Override
@@ -442,19 +474,31 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                 String date = DateType.sf.format(new Date());
                 String queue_no = Queues.increment_id(dep.department, "" + dep.id);
                 List<Queues.to_queues> exist = Queues.ret_data(" where queue_no='" + queue_no + "' and department_id='" + dep.id + "' and Date(created_at)='" + date + "' ");
-                String department=dep.department;
-                String department_id=""+dep.id;
-                String customer="";
-                String customer_id="";
-                String counter_no="";
-                String teller;
-                String teller_id;
-                String remarks;
-                int status;
-                String created_at;
-                String updated_at;
-                String created_by;
-                String updated_by;
+                do {
+                    queue_no = Queues.increment_id(dep.department, "" + dep.id);
+                } while (!exist.isEmpty());
+
+                String department = dep.department;
+                String department_id = "" + dep.id;
+                String customer = jLabel3.getText();
+                String customer_id = jTextField1.getText();
+                String counter_no = null;
+                String teller = null;
+                String teller_id = null;
+                String remarks = "";
+                int status = 0;
+                String created_at = DateType.now();
+                String updated_at = DateType.now();
+                String created_by = "";
+                String updated_by = "";
+
+                Queues.to_queues q = new Queues.to_queues(id, queue_no, department, department_id, customer, customer_id, counter_no, teller, teller_id, remarks, status, created_at, updated_at, created_by, updated_by);
+                Queues.add_data(q);
+                System.out.println("No: " + queue_no);
+                Alert.set(1, "");
+                jTextField1.setText("");
+                jLabel3.setText("");
+                jTextField1.grabFocus();
             }
         });
         nd.setLocationRelativeTo(jScrollPane1);

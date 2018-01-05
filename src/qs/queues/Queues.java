@@ -16,6 +16,7 @@ import java.util.List;
 import mijzcx.synapse.desk.utils.Lg;
 import mijzcx.synapse.desk.utils.ReceiptIncrementor;
 import mijzcx.synapse.desk.utils.SqlStringUtil;
+import qs.users.MyUser1;
 import qs.util.DateType;
 import qs.util.MyConnection;
 
@@ -160,6 +161,62 @@ public class Queues {
                     .setString("updated_at", to_queues.updated_at)
                     .setString("created_by", to_queues.created_by)
                     .setString("updated_by", to_queues.updated_by)
+                    .ok();
+
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.execute();
+            Lg.s(Queues.class, "Successfully Updated");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
+    public static void update_queue(int id, int status) {
+        try {
+            String date = DateType.now();
+            String user = MyUser1.getUser_id();
+            Connection conn = MyConnection.connect();
+            String s0 = "update queues set "
+                    + " status= :status "
+                    + ",updated_at= :updated_at "
+                    + ",updated_by= :updated_by "
+                    + " where id='" + id + "' "
+                    + " ";
+
+            s0 = SqlStringUtil.parse(s0)
+                    .setNumber("status", status)
+                    .setString("updated_at", date)
+                    .setString("updated_by", user)
+                    .ok();
+
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.execute();
+            Lg.s(Queues.class, "Successfully Updated");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
+    public static void update_teller(int id, String counter_no,String teller,String teller_id) {
+        try {
+            String date = DateType.now();
+            String user = MyUser1.getUser_id();
+            Connection conn = MyConnection.connect();
+            String s0 = "update queues set "
+                    + " counter_no= :counter_no "
+                    + ",teller= :teller "
+                    + ",teller_id= :teller_id "
+                    + " where id='" + id + "' "
+                    + " ";
+
+            s0 = SqlStringUtil.parse(s0)
+                    .setString("counter_no", counter_no)
+                    .setString("teller", teller)
+                    .setString("teller_id", teller_id)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);

@@ -22,6 +22,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -34,6 +35,7 @@ import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.FitIn;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
+import qs.queues.Queues;
 import uk.co.caprica.vlcj.binding.LibVlc;
 import uk.co.caprica.vlcj.medialist.MediaList;
 import uk.co.caprica.vlcj.player.MediaPlayerFactory;
@@ -299,7 +301,7 @@ public class Dlg_queue extends javax.swing.JDialog {
         jLabel13.setMinimumSize(new java.awt.Dimension(250, 0));
 
         jLabel21.setFont(new java.awt.Font("Arial Unicode MS", 0, 36)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel21.setText("05");
         jLabel21.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
@@ -353,7 +355,7 @@ public class Dlg_queue extends javax.swing.JDialog {
         jLabel7.setMinimumSize(new java.awt.Dimension(250, 0));
 
         jLabel19.setFont(new java.awt.Font("Arial Unicode MS", 0, 36)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setText("03");
         jLabel19.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -384,7 +386,7 @@ public class Dlg_queue extends javax.swing.JDialog {
         jLabel15.setMinimumSize(new java.awt.Dimension(250, 0));
 
         jLabel22.setFont(new java.awt.Font("Arial Unicode MS", 0, 36)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel22.setText("06");
         jLabel22.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -415,7 +417,7 @@ public class Dlg_queue extends javax.swing.JDialog {
         jLabel11.setMinimumSize(new java.awt.Dimension(250, 0));
 
         jLabel20.setFont(new java.awt.Font("Arial Unicode MS", 0, 36)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setText("04");
         jLabel20.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -446,7 +448,7 @@ public class Dlg_queue extends javax.swing.JDialog {
         jLabel3.setMinimumSize(new java.awt.Dimension(250, 0));
 
         jLabel18.setFont(new java.awt.Font("Arial Unicode MS", 0, 36)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel18.setText("02");
         jLabel18.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -477,7 +479,7 @@ public class Dlg_queue extends javax.swing.JDialog {
         jLabel5.setMinimumSize(new java.awt.Dimension(250, 0));
 
         jLabel17.setFont(new java.awt.Font("Arial Unicode MS", 0, 36)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("01");
         jLabel17.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -564,6 +566,7 @@ public class Dlg_queue extends javax.swing.JDialog {
 
         jLabel26.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 60)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(194, 18, 73));
+        jLabel26.setText("00001");
         jLabel26.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
@@ -572,7 +575,7 @@ public class Dlg_queue extends javax.swing.JDialog {
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(392, 392, 392))
         );
         jPanel16Layout.setVerticalGroup(
@@ -587,6 +590,7 @@ public class Dlg_queue extends javax.swing.JDialog {
 
         jLabel29.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 60)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(194, 18, 73));
+        jLabel29.setText("00002");
         jLabel29.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
@@ -595,7 +599,7 @@ public class Dlg_queue extends javax.swing.JDialog {
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addGap(392, 392, 392))
         );
         jPanel17Layout.setVerticalGroup(
@@ -610,6 +614,7 @@ public class Dlg_queue extends javax.swing.JDialog {
 
         jLabel32.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 60)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(194, 18, 73));
+        jLabel32.setText("00003");
         jLabel32.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
@@ -633,6 +638,7 @@ public class Dlg_queue extends javax.swing.JDialog {
 
         jLabel35.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 60)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(194, 18, 73));
+        jLabel35.setText("00004");
         jLabel35.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
@@ -656,6 +662,7 @@ public class Dlg_queue extends javax.swing.JDialog {
 
         jLabel38.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 60)); // NOI18N
         jLabel38.setForeground(new java.awt.Color(194, 18, 73));
+        jLabel38.setText("00005");
         jLabel38.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
@@ -679,6 +686,7 @@ public class Dlg_queue extends javax.swing.JDialog {
 
         jLabel41.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 60)); // NOI18N
         jLabel41.setForeground(new java.awt.Color(194, 18, 73));
+        jLabel41.setText("00006");
         jLabel41.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
@@ -923,9 +931,18 @@ public class Dlg_queue extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
+        
         init_key();
         setSize();
         start_server();
+        ret_queue();
+        
+    }
+
+    private void ret_queue() {
+        String where = " where status=0  and teller IS NOT NULL order by id asc ";
+        List<Queues.to_queues> q = Queues.ret_data(where);
+
     }
 
     private void setSize() {
@@ -1126,6 +1143,7 @@ public class Dlg_queue extends javax.swing.JDialog {
                 try {
                     socket.close();
                 } catch (IOException e) {
+                    System.out.println(e);
                 }
             }
         }

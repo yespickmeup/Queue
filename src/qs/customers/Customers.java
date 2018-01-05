@@ -287,7 +287,7 @@ public class Customers {
     }
 
     public static String increment_id() {
-        String id = "00000000";
+        String id = "00000";
         try {
             Connection conn = MyConnection.connect();
             String s0 = "select max(id) from customers";
@@ -303,7 +303,7 @@ public class Customers {
                 }
             }
             if (id == null) {
-                id = "000000000000";
+                id = "00000";
             }
             id = ReceiptIncrementor.increment(id);
             return id;
@@ -313,4 +313,6 @@ public class Customers {
             MyConnection.close();
         }
     }
+        
+  
 }
