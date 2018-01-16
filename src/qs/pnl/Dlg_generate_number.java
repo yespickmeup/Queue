@@ -12,6 +12,11 @@ import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,6 +26,7 @@ import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import mijzcx.synapse.desk.utils.CloseDialog;
+import mijzcx.synapse.desk.utils.FitIn;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
@@ -165,7 +171,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
         int ySize = ((int) tk.getScreenSize().
                 getHeight());
         dialog.setSize(xSize, ySize);
-      
+
         dialog.setVisible(true);
 
     }
@@ -325,6 +331,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
         init_tbl_degrees(tbl_degrees);
         ret_degrees();
 
+        run_server();
     }
 
     public void do_pass() {
@@ -503,6 +510,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                 Queues.to_queues q = new Queues.to_queues(id, queue_no, department, department_id, customer, customer_id, counter_no, teller, teller_id, remarks, status, created_at, updated_at, created_by, updated_by);
                 Queues.add_data(q);
                 System.out.println("No: " + queue_no);
+                out.println("Hi teller 1");
                 Alert.set(1, "");
                 jTextField1.setText("");
                 jLabel3.setText("");
@@ -516,4 +524,39 @@ public class Dlg_generate_number extends javax.swing.JDialog {
     private void generate() {
 
     }
+
+    //<editor-fold defaultstate="collapsed" desc=" Chat Server ">
+    BufferedReader in;
+    PrintWriter out;
+
+    public void run_server() {
+        String counter_no_1_ip = System.getProperty("counter_no_1_ip", "192.168.1.152");
+        int counter_no_1_port = FitIn.toInt(System.getProperty("counter_no_1_port", "1001"));
+        String screen_name = System.getProperty("teller", "Ronald Pascua");
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Socket socket;
+                try {
+                    socket = new Socket(counter_no_1_ip, counter_no_1_port);
+                    in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                    out = new PrintWriter(socket.getOutputStream(), true);
+                    while (true) {
+                        String line = in.readLine();
+                        if (line.startsWith("SUBMITNAME")) {
+                            out.println(screen_name);
+                        } else if (line.startsWith("NAMEACCEPTED")) {
+                        } else if (line.startsWith("MESSAGE")) {
+                            String message = line.substring(8);
+                        }
+                    }
+                } catch (IOException ex) {
+                    System.out.println("Cannot connect to chat server!");
+                }
+            }
+        });
+        t.start();
+
+    }
+    //</editor-fold>
 }

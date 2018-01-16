@@ -15,8 +15,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -759,7 +761,8 @@ public class Dlg_call_number extends javax.swing.JDialog {
         set_border();
         get_previous_number();
 
-        run_server();
+//        connect_to_queue_server();
+        start_teller_server();
     }
 
     private void set_border() {
@@ -898,7 +901,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
         String department = System.getProperty("department", "Evaluation");
         String department_id = System.getProperty("department_id", "1");
         String date = DateType.sf.format(new Date());
-        String where = " where status=0 and department_id='" + department_id + "' order by id asc ";
+        String where = " where status=0 and department_id='" + department_id + "' and Date(created_at)='" + date + "' order by id asc ";
         List<to_queues> q = Queues.ret_data(where);
         loadData_queues(q);
     }
@@ -914,8 +917,8 @@ public class Dlg_call_number extends javax.swing.JDialog {
         String teller_id = System.getProperty("teller_id", "1");
 
         String date = DateType.sf.format(new Date());
-        String where = " where status=0 and teller_id='" + teller_id + "' and department_id='" + department_id + "'  and teller IS NOT NULL order by id asc ";
-        System.out.println(where);
+        String where = " where status=0 and teller_id='" + teller_id + "' and department_id='" + department_id + "' and Date(created_at)='" + date + "' and teller IS NOT NULL order by id asc ";
+//        System.out.println(where);
         List<to_queues> q = Queues.ret_data(where);
 
         if (!q.isEmpty()) {
@@ -1343,61 +1346,127 @@ public class Dlg_call_number extends javax.swing.JDialog {
     BufferedReader in;
     PrintWriter out;
 
-    public void run_server() {
+    public void connect_to_queue_server() {
         String serverAddress = System.getProperty("chatServerAddress", "192.168.1.152");
         int serverPort = FitIn.toInt(System.getProperty("chatServerPort", "1000"));
         String screen_name = System.getProperty("teller", "Ronald Pascua");
         Thread t = new Thread(new Runnable() {
-
             @Override
             public void run() {
-
                 Socket socket;
                 try {
                     socket = new Socket(serverAddress, serverPort);
                     in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                     out = new PrintWriter(socket.getOutputStream(), true);
-
                     while (true) {
                         String line = in.readLine();
-
                         if (line.startsWith("SUBMITNAME")) {
-                            out.println(screen_name);
+//                            out.println(screen_name);
                         } else if (line.startsWith("NAMEACCEPTED")) {
-//                            System.out.println("Name Accepted!");
                         } else if (line.startsWith("MESSAGE")) {
-
                             String message = line.substring(8);
-//                            System.out.println("Message: " + message);
-//                            int l = message.indexOf("%");
-//                            String user = message.substring(0, l);
-//                            System.out.println("Name: " + user);
-//                            String msg = message.substring(l + 1, message.length());
-//                            System.out.println("Message: " + msg);
-//
-//                            if (user.equals(screen_name)) {
-//                                user = "Me";
-//                            }
-//
-//                            String date = DateType.slash_w_time.format(new Date());
-//                            Chat.to_chats to1 = new Chat.to_chats(0, "1", user, date, msg);
-//                            String text = jTextArea1.getText();
-//                            if (text.isEmpty()) {
-//                                jTextArea1.setText(msg);
-//                            } else {
-//                                text = text + "\n" + msg;
-//                                jTextArea1.setText(text);
-//                            }
-
                         }
                     }
                 } catch (IOException ex) {
-                    Logger.getLogger(synsoftech.chat.Dlg_test_chat.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Cannot connect to chat server!");
                 }
             }
         });
         t.start();
 
     }
+    //</editor-fold>
+
+    //<editor-fold defaultstate="collapsed" desc=" Teller Server ">
+    private static final HashSet<String> names = new HashSet();
+    private static final HashSet<PrintWriter> writers = new HashSet();
+
+    private void start_teller_server() {
+        String counter_no_1_ip = System.getProperty("counter_no_1_ip", "192.168.1.152");
+        int counter_no_1_port = FitIn.toInt(System.getProperty("counter_no_1_port", "1001"));
+
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    ServerSocket listener = new ServerSocket(counter_no_1_port);
+                    new Handler(listener.accept()).start();
+                    System.out.println("Teller Server is up and running at port: " + counter_no_1_port);
+                } catch (IOException ex) {
+                    Logger.getLogger(Dlg_queue.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        t.start();
+    }
+
+    private class Handler extends Thread {
+
+        private String name;
+        private final Socket socket;
+        private BufferedReader in;
+        private PrintWriter out;
+
+        public Handler(Socket socket) {
+            this.socket = socket;
+        }
+
+        @Override
+        public void run() {
+            try {
+
+                in = new BufferedReader(new InputStreamReader(
+                        socket.getInputStream()));
+                out = new PrintWriter(socket.getOutputStream(), true);
+
+                while (true) {
+                    out.println("SUBMITNAME");
+                    name = in.readLine();
+                    if (name == null) {
+                        return;
+                    }
+                    synchronized (names) {
+                        if (!names.contains(name)) {
+                            names.add(name);
+                            break;
+                        }
+                    }
+                }
+
+                out.println("NAMEACCEPTED");
+                writers.add(out);
+
+                while (true) {
+                    String input = in.readLine();
+                    if (input == null) {
+                        return;
+                    }
+                    System.out.println("input: " + input);
+                    String message = input.replaceAll("\n", "<n>");
+                    for (PrintWriter writer : writers) {
+                        writer.println("MESSAGE%" + name + "%" + message);
+                    }
+                    System.out.println("Teller 1 calling!");
+                    ret_waiting_list();
+                }
+            } catch (IOException e) {
+                System.out.println(e);
+            } finally {
+
+                if (name != null) {
+                    names.remove(name);
+                }
+                if (out != null) {
+                    writers.remove(out);
+                }
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                    System.out.println(e);
+                }
+            }
+        }
+    }
+
     //</editor-fold>
 }
