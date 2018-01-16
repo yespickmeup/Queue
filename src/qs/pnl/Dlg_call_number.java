@@ -21,7 +21,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.ListModel;
@@ -1396,7 +1395,9 @@ public class Dlg_call_number extends javax.swing.JDialog {
                     new Handler(listener.accept()).start();
                     System.out.println("Teller Server is up and running at port: " + counter_no_1_port);
                 } catch (IOException ex) {
-                    Logger.getLogger(Dlg_queue.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Server Ip Address already in use");
+                    System.out.println(ex);
+//                    Logger.getLogger(Dlg_queue.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
