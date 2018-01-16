@@ -217,6 +217,13 @@ public class Dlg_generate_number extends javax.swing.JDialog {
         jButton1 = new Button.Primary();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jButton2 = new Button.Default();
+        jButton3 = new Button.Default();
+        jButton4 = new Button.Default();
+        jButton5 = new Button.Default();
+        jButton6 = new Button.Default();
+        jButton7 = new Button.Default();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -257,6 +264,81 @@ public class Dlg_generate_number extends javax.swing.JDialog {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jButton2.setText("1");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("2");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("3");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("4");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("5");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("6");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4)
+                    .addComponent(jButton5)
+                    .addComponent(jButton6)
+                    .addComponent(jButton7))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -273,15 +355,18 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jTextField1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -291,7 +376,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -312,16 +397,47 @@ public class Dlg_generate_number extends javax.swing.JDialog {
         proceed();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       connect_to_teller1();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       connect_to_teller_2();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       connect_to_teller_3();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+      connect_to_teller_4();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        connect_to_teller_5();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+       connect_to_teller_6();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tbl_degrees;
@@ -527,8 +643,8 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                 }
                 if (out6 != null) {
                     out6.println("Hi teller 6");
-                } 
-               
+                }
+
                 Alert.set(1, "");
                 jTextField1.setText("");
                 jLabel3.setText("");
@@ -563,6 +679,10 @@ public class Dlg_generate_number extends javax.swing.JDialog {
     PrintWriter out6;
 
     public void connect_to_teller_server() {
+
+    }
+
+    private void connect_to_teller1() {
         String counter_no_1_ip = System.getProperty("counter_no_1_ip", "192.168.1.152");
         System.out.println("counter_no_1_ip: " + counter_no_1_ip);
         if (!counter_no_1_ip.isEmpty()) {
@@ -593,6 +713,9 @@ public class Dlg_generate_number extends javax.swing.JDialog {
             });
             t.start();
         }
+    }
+
+    private void connect_to_teller_2() {
         String counter_no_2_ip = System.getProperty("counter_no_2_ip", "192.168.1.153");
         System.out.println("counter_no_2_ip: " + counter_no_2_ip);
         if (!counter_no_2_ip.isEmpty()) {
@@ -614,8 +737,11 @@ public class Dlg_generate_number extends javax.swing.JDialog {
             });
             t.start();
         }
+    }
 
+    private void connect_to_teller_3() {
         String counter_no_3_ip = System.getProperty("counter_no_3_ip", "192.168.1.154");
+        System.out.println("counter_no_3_ip: "+counter_no_3_ip);
         if (!counter_no_3_ip.isEmpty()) {
             int counter_no_3_port = FitIn.toInt(System.getProperty("counter_no_3_port", "2003"));
             String screen_name = System.getProperty("teller", "Ronald Pascua3");
@@ -636,8 +762,11 @@ public class Dlg_generate_number extends javax.swing.JDialog {
             });
             t.start();
         }
+    }
 
+    private void connect_to_teller_4() {
         String counter_no_4_ip = System.getProperty("counter_no_4_ip", "192.168.1.155");
+        System.out.println("counter_no_4_ip: "+counter_no_4_ip);
         if (!counter_no_4_ip.isEmpty()) {
             int counter_no_4_port = FitIn.toInt(System.getProperty("counter_no_4_port", "2004"));
             String screen_name = System.getProperty("teller", "Ronald Pascua4");
@@ -658,8 +787,11 @@ public class Dlg_generate_number extends javax.swing.JDialog {
             });
             t.start();
         }
+    }
 
+    private void connect_to_teller_5() {
         String counter_no_5_ip = System.getProperty("counter_no_5_ip", "192.168.1.156");
+        System.out.println("counter_no_5_ip: "+counter_no_5_ip);
         if (!counter_no_5_ip.isEmpty()) {
             int counter_no_5_port = FitIn.toInt(System.getProperty("counter_no_5_port", "2005"));
             String screen_name = System.getProperty("teller", "Ronald Pascua5");
@@ -679,7 +811,11 @@ public class Dlg_generate_number extends javax.swing.JDialog {
             });
             t.start();
         }
+    }
+
+    private void connect_to_teller_6() {
         String counter_no_6_ip = System.getProperty("counter_no_6_ip", "192.168.1.157");
+        System.out.println("counter_no_6_ip: "+counter_no_6_ip);
         if (!counter_no_6_ip.isEmpty()) {
             int counter_no_6_port = FitIn.toInt(System.getProperty("counter_no_6_port", "2006"));
             String screen_name = System.getProperty("teller", "Ronald Pascua6");
