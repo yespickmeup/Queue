@@ -144,7 +144,29 @@ public class MyMain {
             System.setProperty("img_path", prop.getProperty("img_path", System.getProperty("user.home", "C:\\Users\\User") + "\\"));
 
          
-
+            System.setProperty("counter_no", prop.getProperty("counter_no", "01"));
+            System.setProperty("department", prop.getProperty("department", "Evaluation"));
+            System.setProperty("department_id", prop.getProperty("department_id", "1"));
+            System.setProperty("teller", prop.getProperty("teller", "Juan Dela Cruz"));
+            System.setProperty("teller_id", prop.getProperty("teller_id", "1"));
+            System.setProperty("server_type", prop.getProperty("server_type", "teller"));
+            
+            System.setProperty("queue_server_ip", prop.getProperty("queue_server_ip", "192.168.1.152"));
+            System.setProperty("counter_no_1_ip", prop.getProperty("counter_no_1_ip", "192.168.1.152"));
+            System.setProperty("counter_no_2_ip", prop.getProperty("counter_no_2_ip", "192.168.1.152"));
+            System.setProperty("counter_no_3_ip", prop.getProperty("counter_no_3_ip", "192.168.1.152"));
+            System.setProperty("counter_no_4_ip", prop.getProperty("counter_no_4_ip", "192.168.1.152"));
+            System.setProperty("counter_no_5_ip", prop.getProperty("counter_no_5_ip", "192.168.1.152"));
+            System.setProperty("counter_no_6_ip", prop.getProperty("counter_no_6_ip", "192.168.1.152"));
+            
+            System.setProperty("queue_server_ip", prop.getProperty("queue_server_port", "2000"));
+            System.setProperty("counter_no_1_port", prop.getProperty("counter_no_1_port", "2001"));
+            System.setProperty("counter_no_2_port", prop.getProperty("counter_no_2_port", "2002"));
+            System.setProperty("counter_no_3_port", prop.getProperty("counter_no_3_port", "2003"));
+            System.setProperty("counter_no_4_port", prop.getProperty("counter_no_4_port", "2004"));
+            System.setProperty("counter_no_5_port", prop.getProperty("counter_no_5_port", "2005"));
+            System.setProperty("counter_no_6_port", prop.getProperty("counter_no_6_port", "2006"));
+            
             //
         } catch (IOException e) {
             throw new RuntimeException(e);

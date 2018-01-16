@@ -510,7 +510,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                 Queues.to_queues q = new Queues.to_queues(id, queue_no, department, department_id, customer, customer_id, counter_no, teller, teller_id, remarks, status, created_at, updated_at, created_by, updated_by);
                 Queues.add_data(q);
                 System.out.println("No: " + queue_no);
-                out.println("Hi teller 1");
+                out1.println("Hi teller 1");
                 Alert.set(1, "");
                 jTextField1.setText("");
                 jLabel3.setText("");
@@ -526,37 +526,160 @@ public class Dlg_generate_number extends javax.swing.JDialog {
     }
 
     //<editor-fold defaultstate="collapsed" desc=" Chat Server ">
-    BufferedReader in;
-    PrintWriter out;
+    BufferedReader in1;
+    PrintWriter out1;
+
+    BufferedReader in2;
+    PrintWriter out2;
+
+    BufferedReader in3;
+    PrintWriter out3;
+
+    BufferedReader in4;
+    PrintWriter out4;
+
+    BufferedReader in5;
+    PrintWriter out5;
+
+    BufferedReader in6;
+    PrintWriter out6;
 
     public void connect_to_teller_server() {
         String counter_no_1_ip = System.getProperty("counter_no_1_ip", "192.168.1.152");
-        int counter_no_1_port = FitIn.toInt(System.getProperty("counter_no_1_port", "2001"));
-        String screen_name = System.getProperty("teller", "Ronald Pascua");
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Socket socket;
-                try {
-                    socket = new Socket(counter_no_1_ip, counter_no_1_port);
-                    in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                    out = new PrintWriter(socket.getOutputStream(), true);
-                    while (true) {
-                        String line = in.readLine();
-                        if (line.startsWith("SUBMITNAME")) {
-                            out.println(screen_name);
-                        } else if (line.startsWith("NAMEACCEPTED")) {
-                        } else if (line.startsWith("MESSAGE")) {
-                            String message = line.substring(8);
+        if (!counter_no_1_ip.isEmpty()) {
+            int counter_no_1_port = FitIn.toInt(System.getProperty("counter_no_1_port", "2001"));
+            String screen_name = System.getProperty("teller", "Ronald Pascua1");
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Socket socket;
+                    try {
+                        socket = new Socket(counter_no_1_ip, counter_no_1_port);
+                        in1 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                        out1 = new PrintWriter(socket.getOutputStream(), true);
+                        while (true) {
+                            String line = in1.readLine();
+                            if (line.startsWith("SUBMITNAME")) {
+                                out1.println(screen_name);
+                            } else if (line.startsWith("NAMEACCEPTED")) {
+                            } else if (line.startsWith("MESSAGE")) {
+                                String message = line.substring(8);
+                            }
                         }
+                    } catch (IOException ex) {
+                        System.out.println("Generate Number, Cannot connect to Counter No. 1 server!");
+                        System.out.println(ex);
                     }
-                } catch (IOException ex) {
-                    System.out.println("Cannot connect to chat server!");
                 }
-            }
-        });
-        t.start();
+            });
+            t.start();
+        }
+        String counter_no_2_ip = System.getProperty("counter_no_2_ip", "192.168.1.153");
+        if (!counter_no_2_ip.isEmpty()) {
+            int counter_no_2_port = FitIn.toInt(System.getProperty("counter_no_1_port", "2002"));
+            String screen_name = System.getProperty("teller", "Ronald Pascua2");
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Socket socket;
+                    try {
+                        socket = new Socket(counter_no_2_ip, counter_no_2_port);
+                        in2 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                        out2 = new PrintWriter(socket.getOutputStream(), true);
+                    } catch (IOException ex) {
+                        System.out.println("Generate Number, Cannot connect to Counter No. 2 server!");
+                        System.out.println(ex);
+                    }
+                }
+            });
+            t.start();
+        }
 
+        String counter_no_3_ip = System.getProperty("counter_no_3_ip", "192.168.1.154");
+        if (!counter_no_3_ip.isEmpty()) {
+            int counter_no_3_port = FitIn.toInt(System.getProperty("counter_no_3_port", "2003"));
+            String screen_name = System.getProperty("teller", "Ronald Pascua3");
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Socket socket;
+                    try {
+                        socket = new Socket(counter_no_3_ip, counter_no_3_port);
+                        in3 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                        out3 = new PrintWriter(socket.getOutputStream(), true);
+
+                    } catch (IOException ex) {
+                        System.out.println("Generate Number, Cannot connect to Counter No. 3 server!");
+                        System.out.println(ex);
+                    }
+                }
+            });
+            t.start();
+        }
+
+        String counter_no_4_ip = System.getProperty("counter_no_4_ip", "192.168.1.155");
+        if (!counter_no_4_ip.isEmpty()) {
+            int counter_no_4_port = FitIn.toInt(System.getProperty("counter_no_4_port", "2004"));
+            String screen_name = System.getProperty("teller", "Ronald Pascua4");
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Socket socket;
+                    try {
+                        socket = new Socket(counter_no_4_ip, counter_no_4_port);
+                        in4 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                        out4 = new PrintWriter(socket.getOutputStream(), true);
+
+                    } catch (IOException ex) {
+                        System.out.println("Generate Number, Cannot connect to Counter No. 4 server!");
+                        System.out.println(ex);
+                    }
+                }
+            });
+            t.start();
+        }
+
+        String counter_no_5_ip = System.getProperty("counter_no_5_ip", "192.168.1.156");
+        if (!counter_no_5_ip.isEmpty()) {
+            int counter_no_5_port = FitIn.toInt(System.getProperty("counter_no_5_port", "2005"));
+            String screen_name = System.getProperty("teller", "Ronald Pascua5");
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Socket socket;
+                    try {
+                        socket = new Socket(counter_no_5_ip, counter_no_5_port);
+                        in5 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                        out5 = new PrintWriter(socket.getOutputStream(), true);
+                    } catch (IOException ex) {
+                        System.out.println("Generate Number, Cannot connect to Counter No. 5 server!");
+                        System.out.println(ex);
+                    }
+                }
+            });
+            t.start();
+        }
+        String counter_no_6_ip = System.getProperty("counter_no_6_ip", "192.168.1.157");
+        if (!counter_no_6_ip.isEmpty()) {
+            int counter_no_6_port = FitIn.toInt(System.getProperty("counter_no_6_port", "2006"));
+            String screen_name = System.getProperty("teller", "Ronald Pascua6");
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Socket socket;
+                    try {
+                        socket = new Socket(counter_no_6_ip, counter_no_6_port);
+                        in6 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                        out6 = new PrintWriter(socket.getOutputStream(), true);
+
+                    } catch (IOException ex) {
+                        System.out.println("Generate Number, Cannot connect to Counter No. 6 server!");
+                        System.out.println(ex);
+                    }
+                }
+            });
+            t.start();
+        }
     }
     //</editor-fold>
 }

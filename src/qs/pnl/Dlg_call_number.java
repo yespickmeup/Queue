@@ -748,6 +748,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
         System.setProperty("department_id", "1");
         System.setProperty("chatServerAddress", "192.168.1.152");
         System.setProperty("chatServerPort", "1000");
+        
         init_key();
 
         init_tbl_queues(tbl_waiting_list);
@@ -1442,18 +1443,18 @@ public class Dlg_call_number extends javax.swing.JDialog {
                     if (input == null) {
                         return;
                     }
-                    System.out.println("input: " + input);
-                    String message = input.replaceAll("\n", "<n>");
-                    for (PrintWriter writer : writers) {
-                        writer.println("MESSAGE%" + name + "%" + message);
-                    }
-                    System.out.println("Teller 1 calling!");
+//                    System.out.println("input: " + input);
+//                    String message = input.replaceAll("\n", "<n>");
+//                    for (PrintWriter writer : writers) {
+//                        writer.println("MESSAGE%" + name + "%" + message);
+//                    }
+                    System.out.println("New Record added to queue!");
                     ret_waiting_list();
                 }
             } catch (IOException e) {
                 System.out.println(e);
             } finally {
-
+                
                 if (name != null) {
                     names.remove(name);
                 }
