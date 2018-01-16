@@ -331,7 +331,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
         init_tbl_degrees(tbl_degrees);
         ret_degrees();
 
-        run_server();
+        connect_to_teller_server();
     }
 
     public void do_pass() {
@@ -529,9 +529,9 @@ public class Dlg_generate_number extends javax.swing.JDialog {
     BufferedReader in;
     PrintWriter out;
 
-    public void run_server() {
+    public void connect_to_teller_server() {
         String counter_no_1_ip = System.getProperty("counter_no_1_ip", "192.168.1.152");
-        int counter_no_1_port = FitIn.toInt(System.getProperty("counter_no_1_port", "1001"));
+        int counter_no_1_port = FitIn.toInt(System.getProperty("counter_no_1_port", "2001"));
         String screen_name = System.getProperty("teller", "Ronald Pascua");
         Thread t = new Thread(new Runnable() {
             @Override

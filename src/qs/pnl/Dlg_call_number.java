@@ -1369,6 +1369,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
                     }
                 } catch (IOException ex) {
                     System.out.println("Cannot connect to chat server!");
+                    System.out.println(ex);
                 }
             }
         });
@@ -1383,7 +1384,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
     private void start_teller_server() {
         String counter_no_1_ip = System.getProperty("counter_no_1_ip", "192.168.1.152");
-        int counter_no_1_port = FitIn.toInt(System.getProperty("counter_no_1_port", "1001"));
+        int counter_no_1_port = FitIn.toInt(System.getProperty("counter_no_1_port", "2001"));
 
         Thread t = new Thread(new Runnable() {
             @Override
