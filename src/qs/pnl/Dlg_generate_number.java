@@ -509,8 +509,18 @@ public class Dlg_generate_number extends javax.swing.JDialog {
 
                 Queues.to_queues q = new Queues.to_queues(id, queue_no, department, department_id, customer, customer_id, counter_no, teller, teller_id, remarks, status, created_at, updated_at, created_by, updated_by);
                 Queues.add_data(q);
-                System.out.println("No: " + queue_no);
+
                 out1.println("Hi teller 1");
+                try {
+
+                    out2.println("Hi teller 1");
+                    out3.println("Hi teller 1");
+                    out4.println("Hi teller 1");
+                    out5.println("Hi teller 1");
+                    out6.println("Hi teller 1");
+                } catch (Exception e) {
+                }
+
                 Alert.set(1, "");
                 jTextField1.setText("");
                 jLabel3.setText("");
@@ -546,7 +556,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
 
     public void connect_to_teller_server() {
         String counter_no_1_ip = System.getProperty("counter_no_1_ip", "192.168.1.152");
-        System.out.println("counter_no_1_ip: "+counter_no_1_ip);
+        System.out.println("counter_no_1_ip: " + counter_no_1_ip);
         if (!counter_no_1_ip.isEmpty()) {
             int counter_no_1_port = FitIn.toInt(System.getProperty("counter_no_1_port", "2001"));
             String screen_name = System.getProperty("teller", "Ronald Pascua1");
@@ -576,7 +586,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
             t.start();
         }
         String counter_no_2_ip = System.getProperty("counter_no_2_ip", "192.168.1.153");
-        System.out.println("counter_no_2_ip: "+counter_no_2_ip);
+        System.out.println("counter_no_2_ip: " + counter_no_2_ip);
         if (!counter_no_2_ip.isEmpty()) {
             int counter_no_2_port = FitIn.toInt(System.getProperty("counter_no_1_port", "2002"));
             String screen_name = System.getProperty("teller", "Ronald Pascua2");

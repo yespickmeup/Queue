@@ -901,6 +901,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
         String counter_no = System.getProperty("counter_no", "01");
         String department = System.getProperty("department", "Evaluation");
         String department_id = System.getProperty("department_id", "1");
+        System.out.println("department_id: "+department_id);
         String date = DateType.sf.format(new Date());
         String where = " where status=0 and department_id='" + department_id + "' and Date(created_at)='" + date + "' order by id asc ";
         List<to_queues> q = Queues.ret_data(where);
