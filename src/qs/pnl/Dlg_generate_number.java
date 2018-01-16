@@ -509,18 +509,26 @@ public class Dlg_generate_number extends javax.swing.JDialog {
 
                 Queues.to_queues q = new Queues.to_queues(id, queue_no, department, department_id, customer, customer_id, counter_no, teller, teller_id, remarks, status, created_at, updated_at, created_by, updated_by);
                 Queues.add_data(q);
-                
-                
-//                try {
-//                    out1.println("Hi teller 1");
-//                    out2.println("Hi teller 1");
-//                    out3.println("Hi teller 1");
-//                    out4.println("Hi teller 1");
-//                    out5.println("Hi teller 1");
-//                    out6.println("Hi teller 1");
-//                } catch (Exception e) {
-//                }
 
+                if (out1 != null) {
+                    out1.println("Hi teller 1");
+                }
+                if (out2 != null) {
+                    out2.println("Hi teller 2");
+                }
+                if (out3 != null) {
+                    out3.println("Hi teller 3");
+                }
+                if (out4 != null) {
+                    out4.println("Hi teller 4");
+                }
+                if (out5 != null) {
+                    out5.println("Hi teller 5");
+                }
+                if (out6 != null) {
+                    out6.println("Hi teller 6");
+                } 
+               
                 Alert.set(1, "");
                 jTextField1.setText("");
                 jLabel3.setText("");
