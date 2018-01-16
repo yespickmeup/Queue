@@ -159,7 +159,7 @@ public class MyMain {
             System.setProperty("counter_no_5_ip", prop.getProperty("counter_no_5_ip", "192.168.1.152"));
             System.setProperty("counter_no_6_ip", prop.getProperty("counter_no_6_ip", "192.168.1.152"));
             
-            System.setProperty("queue_server_ip", prop.getProperty("queue_server_port", "2000"));
+            System.setProperty("queue_server_port", prop.getProperty("queue_server_port", "2000"));
             System.setProperty("counter_no_1_port", prop.getProperty("counter_no_1_port", "2001"));
             System.setProperty("counter_no_2_port", prop.getProperty("counter_no_2_port", "2002"));
             System.setProperty("counter_no_3_port", prop.getProperty("counter_no_3_port", "2003"));

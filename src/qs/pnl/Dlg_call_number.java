@@ -741,13 +741,13 @@ public class Dlg_call_number extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     private void myInit() {
 
-        System.setProperty("counter_no", "01");
-        System.setProperty("teller", "Ronald Pascua");
-        System.setProperty("teller_id", "1");
-        System.setProperty("department", "Evaluation");
-        System.setProperty("department_id", "1");
-        System.setProperty("chatServerAddress", "192.168.1.152");
-        System.setProperty("chatServerPort", "1000");
+//        System.setProperty("counter_no", "01");
+//        System.setProperty("teller", "Ronald Pascua");
+//        System.setProperty("teller_id", "1");
+//        System.setProperty("department", "Evaluation");
+//        System.setProperty("department_id", "1");
+//        System.setProperty("chatServerAddress", "192.168.1.152");
+//        System.setProperty("chatServerPort", "1000");
         
         init_key();
 
@@ -1349,15 +1349,15 @@ public class Dlg_call_number extends javax.swing.JDialog {
     PrintWriter out;
 
     public void connect_to_queue_server() {
-        String serverAddress = System.getProperty("chatServerAddress", "192.168.1.152");
-        int serverPort = FitIn.toInt(System.getProperty("chatServerPort", "1000"));
+        String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
+        int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
         String screen_name = System.getProperty("teller", "Ronald Pascua");
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 Socket socket;
                 try {
-                    socket = new Socket(serverAddress, serverPort);
+                    socket = new Socket(queue_server_ip, queue_server_port);
                     in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                     out = new PrintWriter(socket.getOutputStream(), true);
                     while (true) {
