@@ -8,6 +8,7 @@ package qs.pnl;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -158,6 +159,13 @@ public class Dlg_generate_number extends javax.swing.JDialog {
         }
 
         Dlg_generate_number dialog = Dlg_generate_number.create(new javax.swing.JFrame(), true);
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        int xSize = ((int) tk.getScreenSize().
+                getWidth());
+        int ySize = ((int) tk.getScreenSize().
+                getHeight());
+        dialog.setSize(xSize, ySize);
+      
         dialog.setVisible(true);
 
     }

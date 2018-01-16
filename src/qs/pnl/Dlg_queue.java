@@ -1032,8 +1032,8 @@ public class Dlg_queue extends javax.swing.JDialog {
 
         MediaList mediaList = mediaPlayerFactory.newMediaList();
         String[] options = {};
-        mediaList.addMedia("D:\\Music Videos\\Bacong Parish Outing 2017\\Bacong Parish Outing 2017.mp4", options);
-        mediaList.addMedia("C:\\Users\\Guinness\\rsc_queue\\movies\\15842711_248951648850904_4317279887325921280_n.mp4", options);
+//        mediaList.addMedia("D:\\Music Videos\\Bacong Parish Outing 2017\\Bacong Parish Outing 2017.mp4", options);
+//        mediaList.addMedia("C:\\Users\\Guinness\\rsc_queue\\movies\\15842711_248951648850904_4317279887325921280_n.mp4", options);
 
         mediaListPlayer.setMediaList(mediaList);
         mediaListPlayer.setMode(MediaListPlayerMode.LOOP);
@@ -1047,9 +1047,7 @@ public class Dlg_queue extends javax.swing.JDialog {
     private static final HashSet<PrintWriter> writers = new HashSet();
 
     private void start_server() {
-
         Thread t = new Thread(new Runnable() {
-
             @Override
             public void run() {
                 try {
@@ -1105,6 +1103,7 @@ public class Dlg_queue extends javax.swing.JDialog {
                     if (input == null) {
                         return;
                     }
+                    System.out.println("input: "+input);
                     String message = input.replaceAll("\n", "<n>");
                     for (PrintWriter writer : writers) {
                         writer.println("MESSAGE%" + name + "%" + message);
