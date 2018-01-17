@@ -742,11 +742,18 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                             out1 = new PrintWriter(socket1.getOutputStream(), true);
                             out1.println("Initializing teller no 1");
                         } else {
-                            System.out.println("Connected: "+socket1.isConnected());
-                            System.out.println("Closed: "+socket1.isClosed());
-                            socket1.setKeepAlive(true);
-                           
-                            socket1.setReuseAddress(true);
+                            System.out.println("Connected: " + socket1.isConnected());
+                            if (socket1.isConnected()) {
+                                socket1.close();
+                                in1.close();
+                                out1.close();
+                                socket1 = new Socket(counter_no_1_ip, counter_no_1_port);
+                                in1 = new BufferedReader(new InputStreamReader(socket1.getInputStream()));
+                                out1 = new PrintWriter(socket1.getOutputStream(), true);
+                            } else {
+
+                            }
+
                         }
 
 //                        while (true) {
@@ -760,7 +767,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
 //                        }
                     } catch (IOException ex) {
                         System.out.println("Generate Number, Cannot connect to Counter No. 1 server!");
-                        System.out.println("Teller Logs: "+ex);
+                        System.out.println("Teller Logs: " + ex);
 
                     }
                 }
