@@ -21,6 +21,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.ListModel;
@@ -794,8 +795,15 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-//                btn_0.doClick();
-                
+                try {
+                    //                btn_0.doClick();
+                    if (listenerSocket != null) {
+                        listenerSocket.close();
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(Dlg_call_number.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 disposed();
             }
         });
@@ -1411,8 +1419,8 @@ public class Dlg_call_number extends javax.swing.JDialog {
             @Override
             public void run() {
                 try {
-                    ServerSocket listener = new ServerSocket(port2);
-                    new Handler(listener.accept()).start();
+                    listenerSocket = new ServerSocket(port2);
+                    new Handler(listenerSocket.accept()).start();
                     System.out.println("Teller Server is up and running at port: " + port2);
                 } catch (IOException ex) {
                     System.out.println("Server Ip Address already in use");
@@ -1423,6 +1431,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
         });
         t.start();
     }
+    ServerSocket listenerSocket = null;
 
     public class Handler extends Thread {
 
@@ -1474,7 +1483,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
                     ret_waiting_list();
                 }
             } catch (IOException e) {
-                System.out.println("Teller Logs: "+e);
+                System.out.println("Teller Logs: " + e);
             } finally {
 
                 if (name != null) {
@@ -1485,8 +1494,9 @@ public class Dlg_call_number extends javax.swing.JDialog {
                 }
                 try {
                     socket.close();
+                    listenerSocket.close();
                 } catch (IOException e) {
-                    System.out.println(e);
+                    System.out.println("Call Number Logs: " + e);
                 }
             }
         }
