@@ -788,12 +788,14 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         if (out != null) {
+            System.out.println("Sending....1");
             out.println("1");
         }
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         if (out != null) {
+            System.out.println("Sending....2");
             out.println("2");
         }
     }//GEN-LAST:event_jButton10ActionPerformed
@@ -1497,6 +1499,8 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
         if (!queue_server_ip.isEmpty()) {
             int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
+            System.out.println("Queue Server ip: " + queue_server_ip);
+            System.out.println("Queue Server port: " + queue_server_port);
             Thread t = new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -1506,6 +1510,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
                             socket_queue = new Socket(queue_server_ip, queue_server_port);
                             in = new BufferedReader(new InputStreamReader(socket_queue.getInputStream()));
                             out = new PrintWriter(socket_queue.getOutputStream(), true);
+                            System.out.println("Queue Server initializing....");
                             out.println("Initializing Queue server");
                         } else {
                             System.out.println("Connected: " + socket_queue.isConnected());
