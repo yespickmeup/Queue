@@ -721,6 +721,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
     public void connect_to_teller_server() {
 
     }
+    Socket socket = null;
 
     private void connect_to_teller1() {
         String counter_no_1_ip = System.getProperty("counter_no_1_ip", "192.168.1.152");
@@ -732,14 +733,17 @@ public class Dlg_generate_number extends javax.swing.JDialog {
             Thread t = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    Socket socket;
+
                     try {
-                        socket = new Socket(counter_no_1_ip, counter_no_1_port);
-                        socket.setReuseAddress(true);
-                        in1 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                        out1 = new PrintWriter(socket.getOutputStream(), true);
-                        out1.println("Initializing teller no 1");
-                        
+                        if (socket != null) {
+                            socket = new Socket(counter_no_1_ip, counter_no_1_port);
+                            in1 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                            out1 = new PrintWriter(socket.getOutputStream(), true);
+                            out1.println("Initializing teller no 1");
+                        } else {
+                            socket.setReuseAddress(true);
+                        }
+
 //                        while (true) {
 //                            String line = in1.readLine();
 //                            if (line.startsWith("SUBMITNAME")) {
@@ -749,11 +753,10 @@ public class Dlg_generate_number extends javax.swing.JDialog {
 //                                String message = line.substring(8);
 //                            }
 //                        }
-
                     } catch (IOException ex) {
                         System.out.println("Generate Number, Cannot connect to Counter No. 1 server!");
                         System.out.println(ex);
-                       
+
                     }
                 }
             });
