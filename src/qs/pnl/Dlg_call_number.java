@@ -1419,8 +1419,13 @@ public class Dlg_call_number extends javax.swing.JDialog {
             @Override
             public void run() {
                 try {
-                    listenerSocket = new ServerSocket(port2);
-                    new Handler(listenerSocket.accept()).start();
+                    if (listenerSocket.isClosed()) {
+                        listenerSocket = new ServerSocket(port2);
+                        new Handler(listenerSocket.accept()).start();
+                    } else {
+                        listenerSocket.setReuseAddress(true);
+                    }
+
                     System.out.println("Teller Server is up and running at port: " + port2);
                 } catch (IOException ex) {
                     System.out.println("Server Ip Address already in use");
