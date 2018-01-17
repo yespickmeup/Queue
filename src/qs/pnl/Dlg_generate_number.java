@@ -225,6 +225,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
         jButton5 = new Button.Default();
         jButton6 = new Button.Default();
         jButton7 = new Button.Default();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -307,6 +308,13 @@ public class Dlg_generate_number extends javax.swing.JDialog {
             }
         });
 
+        jButton8.setText("Test");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -324,6 +332,8 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(jButton8)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -336,7 +346,8 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                     .addComponent(jButton4)
                     .addComponent(jButton5)
                     .addComponent(jButton6)
-                    .addComponent(jButton7))
+                    .addComponent(jButton7)
+                    .addComponent(jButton8))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -422,6 +433,16 @@ public class Dlg_generate_number extends javax.swing.JDialog {
         connect_to_teller_6();
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+
+        if (out2 != null) {
+            System.out.println("Test: ");
+            out2.println("Hi teller 2");
+        } else {
+            connect_to_teller1();
+        }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -434,6 +455,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -713,22 +735,25 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                     Socket socket;
                     try {
                         socket = new Socket(counter_no_1_ip, counter_no_1_port);
+                        socket.setReuseAddress(true);
                         in1 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                         out1 = new PrintWriter(socket.getOutputStream(), true);
                         out1.println("Initializing teller no 1");
-                        while (true) {
-                            String line = in1.readLine();
-                            if (line.startsWith("SUBMITNAME")) {
-                                out1.println(screen_name);
-                            } else if (line.startsWith("NAMEACCEPTED")) {
-                            } else if (line.startsWith("MESSAGE")) {
-                                String message = line.substring(8);
-                            }
-                        }
+                        
+//                        while (true) {
+//                            String line = in1.readLine();
+//                            if (line.startsWith("SUBMITNAME")) {
+//                                out1.println(screen_name);
+//                            } else if (line.startsWith("NAMEACCEPTED")) {
+//                            } else if (line.startsWith("MESSAGE")) {
+//                                String message = line.substring(8);
+//                            }
+//                        }
 
                     } catch (IOException ex) {
                         System.out.println("Generate Number, Cannot connect to Counter No. 1 server!");
                         System.out.println(ex);
+                       
                     }
                 }
             });
@@ -747,11 +772,9 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                 if (in2 != null) {
                     System.out.println("Ready: in2: " + in2.ready());
                 }
-
             } catch (IOException ex) {
                 Logger.getLogger(Dlg_generate_number.class.getName()).log(Level.SEVERE, null, ex);
             }
-
             String screen_name = System.getProperty("teller", "Ronald Pascua2");
             Thread t = new Thread(new Runnable() {
                 @Override

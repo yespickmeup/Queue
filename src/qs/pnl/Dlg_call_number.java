@@ -1429,7 +1429,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
                     System.out.println("Teller Server is up and running at port: " + port2);
                 } catch (IOException ex) {
                     System.out.println("Server Ip Address already in use");
-                    System.out.println(ex);
+                    System.out.println("Call Number Logs: "+ex);
 //                    Logger.getLogger(Dlg_queue.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
@@ -1488,7 +1488,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
                     ret_waiting_list();
                 }
             } catch (IOException e) {
-                System.out.println("Teller Logs: " + e);
+                System.out.println("Call Number Logs: " + e);
             } finally {
 
                 if (name != null) {
