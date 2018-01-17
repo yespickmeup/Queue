@@ -209,6 +209,14 @@ public class Dlg_call_number extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_waiting_list = new javax.swing.JTable();
+        jButton9 = new Button.Default();
+        jButton10 = new Button.Default();
+        jButton11 = new Button.Default();
+        jButton12 = new Button.Default();
+        jButton13 = new Button.Default();
+        jButton14 = new Button.Default();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -267,20 +275,103 @@ public class Dlg_call_number extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(tbl_waiting_list);
 
+        jButton9.setText("1");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
+        jButton10.setText("2");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        jButton11.setText("3");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        jButton12.setText("4");
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton12ActionPerformed(evt);
+            }
+        });
+
+        jButton13.setText("5");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+
+        jButton14.setText("6");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+
+        jButton15.setText("Refresh");
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton15ActionPerformed(evt);
+            }
+        });
+
+        jButton16.setText("Queue");
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 862, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 862, Short.MAX_VALUE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton9)
+                    .addComponent(jButton10)
+                    .addComponent(jButton11)
+                    .addComponent(jButton12)
+                    .addComponent(jButton13)
+                    .addComponent(jButton14)
+                    .addComponent(jButton15)
+                    .addComponent(jButton16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -695,12 +786,56 @@ public class Dlg_call_number extends javax.swing.JDialog {
         ret_noshow_queues();
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        if (out != null) {
+            out.println("1");
+        }
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        if (out != null) {
+            out.println("2");
+        }
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+
+    }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
+
+    }//GEN-LAST:event_jButton14ActionPerformed
+
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        ret_waiting_list();
+
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        connect_to_queue_server();
+    }//GEN-LAST:event_jButton16ActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -708,6 +843,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private com.toedter.calendar.JDateChooser jDateChooser3;
@@ -761,7 +897,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
         set_border();
         get_previous_number();
 
-//        connect_to_queue_server();
+        connect_to_queue_server();
         start_teller_server();
     }
 
@@ -1354,35 +1490,45 @@ public class Dlg_call_number extends javax.swing.JDialog {
     //<editor-fold defaultstate="collapsed" desc=" Chat Server ">
     BufferedReader in;
     PrintWriter out;
+    Socket socket_queue = null;
 
     public void connect_to_queue_server() {
         String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
-        int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
-        String screen_name = System.getProperty("teller", "Ronald Pascua");
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Socket socket;
-                try {
-                    socket = new Socket(queue_server_ip, queue_server_port);
-                    in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                    out = new PrintWriter(socket.getOutputStream(), true);
-                    while (true) {
-                        String line = in.readLine();
-                        if (line.startsWith("SUBMITNAME")) {
-//                            out.println(screen_name);
-                        } else if (line.startsWith("NAMEACCEPTED")) {
-                        } else if (line.startsWith("MESSAGE")) {
-                            String message = line.substring(8);
+
+        if (!queue_server_ip.isEmpty()) {
+            int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+
+                    try {
+                        if (socket_queue == null) {
+                            socket_queue = new Socket(queue_server_ip, queue_server_port);
+                            in = new BufferedReader(new InputStreamReader(socket_queue.getInputStream()));
+                            out = new PrintWriter(socket_queue.getOutputStream(), true);
+                            out.println("Initializing Queue server");
+                        } else {
+                            System.out.println("Connected: " + socket_queue.isConnected());
+                            if (socket_queue.isConnected()) {
+                                socket_queue.close();
+                                in.close();
+                                out.close();
+                                socket_queue = new Socket(queue_server_ip, queue_server_port);
+                                in = new BufferedReader(new InputStreamReader(socket_queue.getInputStream()));
+                                out = new PrintWriter(socket_queue.getOutputStream(), true);
+                            } else {
+
+                            }
+
                         }
+                    } catch (IOException ex) {
+                        System.out.println("Cannot connect to Queue server!");
+                        System.out.println(ex);
                     }
-                } catch (IOException ex) {
-                    System.out.println("Cannot connect to chat server!");
-                    System.out.println(ex);
                 }
-            }
-        });
-        t.start();
+            });
+            t.start();
+        }
 
     }
     //</editor-fold>
@@ -1419,7 +1565,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
             @Override
             public void run() {
                 try {
-                    if (listenerSocket==null) {
+                    if (listenerSocket == null) {
                         listenerSocket = new ServerSocket(port2);
                         new Handler(listenerSocket.accept()).start();
                     } else {
@@ -1429,7 +1575,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
                     System.out.println("Teller Server is up and running at port: " + port2);
                 } catch (IOException ex) {
                     System.out.println("Server Ip Address already in use");
-                    System.out.println("Call Number Logs: "+ex);
+                    System.out.println("Call Number Logs: " + ex);
 //                    Logger.getLogger(Dlg_queue.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

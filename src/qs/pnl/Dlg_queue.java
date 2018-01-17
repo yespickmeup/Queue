@@ -931,12 +931,12 @@ public class Dlg_queue extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
-        
+
         init_key();
         setSize();
         start_server();
         ret_queue();
-        
+
     }
 
     private void ret_queue() {
@@ -1005,6 +1005,13 @@ public class Dlg_queue extends javax.swing.JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
 //                btn_0.doClick();
+                if (listenerSocket != null) {
+                    try {
+                        listenerSocket.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(Dlg_queue.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                 disposed();
             }
         });
@@ -1042,6 +1049,7 @@ public class Dlg_queue extends javax.swing.JDialog {
 
     }
     //<editor-fold defaultstate="collapsed" desc=" Server ">
+    ServerSocket listenerSocket = null;
     private static final int PORT = 1000;
     private static final HashSet<String> names = new HashSet();
     private static final HashSet<PrintWriter> writers = new HashSet();
@@ -1051,9 +1059,16 @@ public class Dlg_queue extends javax.swing.JDialog {
             @Override
             public void run() {
                 try {
-                    ServerSocket listener = new ServerSocket(PORT);
-                    new Handler(listener.accept()).start();
-                    System.out.println("Server is up and running at port: " + PORT);
+                    String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
+                    int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
+
+                    if (listenerSocket == null) {
+                        listenerSocket = new ServerSocket(queue_server_port);
+                        new Handler(listenerSocket.accept()).start();
+                    } else {
+                        listenerSocket.setReuseAddress(true);
+                    }
+                    System.out.println("Server is up and running at port: " + queue_server_port);
                 } catch (IOException ex) {
                     Logger.getLogger(Dlg_queue.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -1103,7 +1118,7 @@ public class Dlg_queue extends javax.swing.JDialog {
                     if (input == null) {
                         return;
                     }
-                    System.out.println("input: "+input);
+                    System.out.println("input: " + input);
                     String message = input.replaceAll("\n", "<n>");
                     for (PrintWriter writer : writers) {
                         writer.println("MESSAGE%" + name + "%" + message);
