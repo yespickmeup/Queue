@@ -747,7 +747,6 @@ public class Dlg_call_number extends javax.swing.JDialog {
 //        System.setProperty("department_id", "1");
 //        System.setProperty("chatServerAddress", "192.168.1.152");
 //        System.setProperty("chatServerPort", "1000");
-        
         init_key();
 
         init_tbl_queues(tbl_waiting_list);
@@ -796,6 +795,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
 //                btn_0.doClick();
+
                 disposed();
             }
         });
@@ -900,7 +900,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
         String counter_no = System.getProperty("counter_no", "01");
         String department = System.getProperty("department", "Evaluation");
         String department_id = System.getProperty("department_id", "1");
-        System.out.println("department_id: "+department_id);
+        System.out.println("department_id: " + department_id);
         String date = DateType.sf.format(new Date());
         String where = " where status=0 and department_id='" + department_id + "' and Date(created_at)='" + date + "' order by id asc ";
         List<to_queues> q = Queues.ret_data(where);
@@ -1385,15 +1385,35 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
     private void start_teller_server() {
         String counter_no_1_ip = System.getProperty("counter_no_1_ip", "192.168.1.152");
-        int counter_no_1_port = FitIn.toInt(System.getProperty("counter_no_1_port", "2001"));
+        String counter_no = System.getProperty("counter_no", "01");
+        int port = FitIn.toInt(System.getProperty("counter_no_1_port", "2001"));
 
+        if (counter_no.equalsIgnoreCase("01")) {
+            port = FitIn.toInt(System.getProperty("counter_no_1_port", "2001"));
+        }
+        if (counter_no.equalsIgnoreCase("02")) {
+            port = FitIn.toInt(System.getProperty("counter_no_2_port", "2002"));
+        }
+        if (counter_no.equalsIgnoreCase("03")) {
+            port = FitIn.toInt(System.getProperty("counter_no_3_port", "2003"));
+        }
+        if (counter_no.equalsIgnoreCase("04")) {
+            port = FitIn.toInt(System.getProperty("counter_no_4_port", "2004"));
+        }
+        if (counter_no.equalsIgnoreCase("05")) {
+            port = FitIn.toInt(System.getProperty("counter_no_5_port", "2005"));
+        }
+        if (counter_no.equalsIgnoreCase("06")) {
+            port = FitIn.toInt(System.getProperty("counter_no_6_port", "2006"));
+        }
+        final int port2 = port;
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    ServerSocket listener = new ServerSocket(counter_no_1_port);
+                    ServerSocket listener = new ServerSocket(port2);
                     new Handler(listener.accept()).start();
-                    System.out.println("Teller Server is up and running at port: " + counter_no_1_port);
+                    System.out.println("Teller Server is up and running at port: " + port2);
                 } catch (IOException ex) {
                     System.out.println("Server Ip Address already in use");
                     System.out.println(ex);
@@ -1456,7 +1476,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
             } catch (IOException e) {
                 System.out.println(e);
             } finally {
-                
+
                 if (name != null) {
                     names.remove(name);
                 }

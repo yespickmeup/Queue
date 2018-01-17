@@ -20,6 +20,7 @@ import java.net.Socket;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.ListModel;
@@ -312,17 +313,17 @@ public class Dlg_generate_number extends javax.swing.JDialog {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton2)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton7)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -465,7 +466,24 @@ public class Dlg_generate_number extends javax.swing.JDialog {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-//                btn_0.doClick();
+                try {
+                    //                btn_0.doClick();
+                    in1.close();
+                    in2.close();
+                    in3.close();
+                    in4.close();
+                    in5.close();
+                    in6.close();
+
+                    out1.close();
+                    out2.close();
+                    out3.close();
+                    out4.close();
+                    out5.close();
+                    out6.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(Dlg_generate_number.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 disposed();
             }
         });
@@ -721,7 +739,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
         String counter_no_2_ip = System.getProperty("counter_no_2_ip", "192.168.1.153");
         System.out.println("counter_no_2_ip: " + counter_no_2_ip);
         if (!counter_no_2_ip.isEmpty()) {
-            int counter_no_2_port = FitIn.toInt(System.getProperty("counter_no_1_port", "2002"));
+            int counter_no_2_port = FitIn.toInt(System.getProperty("counter_no_2_port", "2002"));
             String screen_name = System.getProperty("teller", "Ronald Pascua2");
             Thread t = new Thread(new Runnable() {
                 @Override
@@ -731,7 +749,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                         socket = new Socket(counter_no_2_ip, counter_no_2_port);
                         in2 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                         out2 = new PrintWriter(socket.getOutputStream(), true);
-                        out2.println("Initializing teller no 1");
+                        out2.println("Initializing teller no 2");
                     } catch (IOException ex) {
                         System.out.println("Generate Number, Cannot connect to Counter No. 2 server!");
                         System.out.println(ex);
