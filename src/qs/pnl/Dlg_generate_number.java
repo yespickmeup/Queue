@@ -735,7 +735,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                 public void run() {
 
                     try {
-                        if (socket != null) {
+                        if (socket == null) {
                             socket = new Socket(counter_no_1_ip, counter_no_1_port);
                             in1 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                             out1 = new PrintWriter(socket.getOutputStream(), true);
