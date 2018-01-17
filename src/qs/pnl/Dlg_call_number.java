@@ -1419,7 +1419,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
             @Override
             public void run() {
                 try {
-                    if (listenerSocket.isClosed()) {
+                    if (listenerSocket==null) {
                         listenerSocket = new ServerSocket(port2);
                         new Handler(listenerSocket.accept()).start();
                     } else {
