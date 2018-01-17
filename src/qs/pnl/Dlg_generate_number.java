@@ -504,6 +504,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
 //                    out5.close();
 //                    out6.close();
                     socket1.close();
+                    socket2.close();
                 } catch (IOException ex) {
                     Logger.getLogger(Dlg_generate_number.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -723,6 +724,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
 
     }
     Socket socket1 = null;
+    Socket socket2 = null;
 
     private void connect_to_teller1() {
         String counter_no_1_ip = System.getProperty("counter_no_1_ip", "192.168.1.152");
@@ -796,10 +798,25 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                 public void run() {
                     Socket socket;
                     try {
-                        socket = new Socket(counter_no_2_ip, counter_no_2_port);
-                        in2 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                        out2 = new PrintWriter(socket.getOutputStream(), true);
-                        out2.println("Initializing teller no 2");
+                        if (socket2 == null) {
+                            socket2 = new Socket(counter_no_2_ip, counter_no_2_port);
+                            in2 = new BufferedReader(new InputStreamReader(socket2.getInputStream()));
+                            out2 = new PrintWriter(socket2.getOutputStream(), true);
+                            out2.println("Initializing teller no 1");
+                        } else {
+                            System.out.println("Connected: " + socket2.isConnected());
+                            if (socket2.isConnected()) {
+                                socket2.close();
+                                in2.close();
+                                out2.close();
+                                socket2 = new Socket(counter_no_2_ip, counter_no_2_port);
+                                in2 = new BufferedReader(new InputStreamReader(socket2.getInputStream()));
+                                out2 = new PrintWriter(socket2.getOutputStream(), true);
+                            } else {
+
+                            }
+
+                        }
                     } catch (IOException ex) {
                         System.out.println("Generate Number, Cannot connect to Counter No. 2 server!");
                         System.out.println(ex);
