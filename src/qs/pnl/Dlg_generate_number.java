@@ -703,6 +703,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
     private void connect_to_teller1() {
         String counter_no_1_ip = System.getProperty("counter_no_1_ip", "192.168.1.152");
         System.out.println("counter_no_1_ip: " + counter_no_1_ip);
+
         if (!counter_no_1_ip.isEmpty()) {
             int counter_no_1_port = FitIn.toInt(System.getProperty("counter_no_1_port", "2001"));
             String screen_name = System.getProperty("teller", "Ronald Pascua1");
@@ -737,9 +738,20 @@ public class Dlg_generate_number extends javax.swing.JDialog {
 
     private void connect_to_teller_2() {
         String counter_no_2_ip = System.getProperty("counter_no_2_ip", "192.168.1.153");
-        System.out.println("counter_no_2_ip: " + counter_no_2_ip);
+
         if (!counter_no_2_ip.isEmpty()) {
             int counter_no_2_port = FitIn.toInt(System.getProperty("counter_no_2_port", "2002"));
+            System.out.println("counter_no_2_ip: " + counter_no_2_ip);
+            System.out.println("counter_no_2_port: " + counter_no_2_port);
+            try {
+                if (in2 != null) {
+                    System.out.println("Ready: in2: " + in2.ready());
+                }
+
+            } catch (IOException ex) {
+                Logger.getLogger(Dlg_generate_number.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             String screen_name = System.getProperty("teller", "Ronald Pascua2");
             Thread t = new Thread(new Runnable() {
                 @Override
