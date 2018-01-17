@@ -21,7 +21,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.ListModel;
@@ -795,17 +794,9 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    //                btn_0.doClick();
-                    if (hand.socket != null) {
-                        System.out.println("Closing socket!");
-                        hand.socket.close();
-                    }
-
-                    disposed();
-                } catch (IOException ex) {
-                    Logger.getLogger(Dlg_call_number.class.getName()).log(Level.SEVERE, null, ex);
-                }
+//                btn_0.doClick();
+                
+                disposed();
             }
         });
     }
@@ -1421,8 +1412,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
             public void run() {
                 try {
                     ServerSocket listener = new ServerSocket(port2);
-                    hand = new Handler(listener.accept());
-                    hand.start();
+                    new Handler(listener.accept()).start();
                     System.out.println("Teller Server is up and running at port: " + port2);
                 } catch (IOException ex) {
                     System.out.println("Server Ip Address already in use");
@@ -1433,9 +1423,8 @@ public class Dlg_call_number extends javax.swing.JDialog {
         });
         t.start();
     }
-    Handler hand = null;
 
-    private class Handler extends Thread {
+    public class Handler extends Thread {
 
         private String name;
         private final Socket socket;
@@ -1485,7 +1474,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
                     ret_waiting_list();
                 }
             } catch (IOException e) {
-                System.out.println("Teller Logs: " + e);
+                System.out.println("Teller Logs: "+e);
             } finally {
 
                 if (name != null) {
