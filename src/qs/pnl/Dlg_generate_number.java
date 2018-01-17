@@ -398,19 +398,19 @@ public class Dlg_generate_number extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       connect_to_teller1();
+        connect_to_teller1();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       connect_to_teller_2();
+        connect_to_teller_2();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       connect_to_teller_3();
+        connect_to_teller_3();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-      connect_to_teller_4();
+        connect_to_teller_4();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -418,7 +418,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       connect_to_teller_6();
+        connect_to_teller_6();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
@@ -696,6 +696,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                         socket = new Socket(counter_no_1_ip, counter_no_1_port);
                         in1 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                         out1 = new PrintWriter(socket.getOutputStream(), true);
+                        out1.println("Initializing teller no 1");
                         while (true) {
                             String line = in1.readLine();
                             if (line.startsWith("SUBMITNAME")) {
@@ -705,6 +706,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                                 String message = line.substring(8);
                             }
                         }
+
                     } catch (IOException ex) {
                         System.out.println("Generate Number, Cannot connect to Counter No. 1 server!");
                         System.out.println(ex);
@@ -741,7 +743,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
 
     private void connect_to_teller_3() {
         String counter_no_3_ip = System.getProperty("counter_no_3_ip", "192.168.1.154");
-        System.out.println("counter_no_3_ip: "+counter_no_3_ip);
+        System.out.println("counter_no_3_ip: " + counter_no_3_ip);
         if (!counter_no_3_ip.isEmpty()) {
             int counter_no_3_port = FitIn.toInt(System.getProperty("counter_no_3_port", "2003"));
             String screen_name = System.getProperty("teller", "Ronald Pascua3");
@@ -766,7 +768,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
 
     private void connect_to_teller_4() {
         String counter_no_4_ip = System.getProperty("counter_no_4_ip", "192.168.1.155");
-        System.out.println("counter_no_4_ip: "+counter_no_4_ip);
+        System.out.println("counter_no_4_ip: " + counter_no_4_ip);
         if (!counter_no_4_ip.isEmpty()) {
             int counter_no_4_port = FitIn.toInt(System.getProperty("counter_no_4_port", "2004"));
             String screen_name = System.getProperty("teller", "Ronald Pascua4");
@@ -791,7 +793,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
 
     private void connect_to_teller_5() {
         String counter_no_5_ip = System.getProperty("counter_no_5_ip", "192.168.1.156");
-        System.out.println("counter_no_5_ip: "+counter_no_5_ip);
+        System.out.println("counter_no_5_ip: " + counter_no_5_ip);
         if (!counter_no_5_ip.isEmpty()) {
             int counter_no_5_port = FitIn.toInt(System.getProperty("counter_no_5_port", "2005"));
             String screen_name = System.getProperty("teller", "Ronald Pascua5");
@@ -815,7 +817,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
 
     private void connect_to_teller_6() {
         String counter_no_6_ip = System.getProperty("counter_no_6_ip", "192.168.1.157");
-        System.out.println("counter_no_6_ip: "+counter_no_6_ip);
+        System.out.println("counter_no_6_ip: " + counter_no_6_ip);
         if (!counter_no_6_ip.isEmpty()) {
             int counter_no_6_port = FitIn.toInt(System.getProperty("counter_no_6_port", "2006"));
             String screen_name = System.getProperty("teller", "Ronald Pascua6");
