@@ -1495,7 +1495,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
     Socket socket_queue = null;
 
     public void connect_to_queue_server() {
-        String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
+        String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.154");
 
         if (!queue_server_ip.isEmpty()) {
             int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
