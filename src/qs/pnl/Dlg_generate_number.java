@@ -731,6 +731,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                         socket = new Socket(counter_no_2_ip, counter_no_2_port);
                         in2 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                         out2 = new PrintWriter(socket.getOutputStream(), true);
+                        out2.println("Initializing teller no 1");
                     } catch (IOException ex) {
                         System.out.println("Generate Number, Cannot connect to Counter No. 2 server!");
                         System.out.println(ex);
@@ -755,7 +756,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                         socket = new Socket(counter_no_3_ip, counter_no_3_port);
                         in3 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                         out3 = new PrintWriter(socket.getOutputStream(), true);
-
+                        out3.println("Initializing teller no 1");
                     } catch (IOException ex) {
                         System.out.println("Generate Number, Cannot connect to Counter No. 3 server!");
                         System.out.println(ex);
@@ -780,7 +781,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                         socket = new Socket(counter_no_4_ip, counter_no_4_port);
                         in4 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                         out4 = new PrintWriter(socket.getOutputStream(), true);
-
+                        out3.println("Initializing teller no 1");
                     } catch (IOException ex) {
                         System.out.println("Generate Number, Cannot connect to Counter No. 4 server!");
                         System.out.println(ex);
@@ -805,6 +806,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                         socket = new Socket(counter_no_5_ip, counter_no_5_port);
                         in5 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                         out5 = new PrintWriter(socket.getOutputStream(), true);
+                        out5.println("Initializing teller no 1");
                     } catch (IOException ex) {
                         System.out.println("Generate Number, Cannot connect to Counter No. 5 server!");
                         System.out.println(ex);
@@ -829,7 +831,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                         socket = new Socket(counter_no_6_ip, counter_no_6_port);
                         in6 = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                         out6 = new PrintWriter(socket.getOutputStream(), true);
-
+                        out6.println("Initializing teller no 1");
                     } catch (IOException ex) {
                         System.out.println("Generate Number, Cannot connect to Counter No. 6 server!");
                         System.out.println(ex);
