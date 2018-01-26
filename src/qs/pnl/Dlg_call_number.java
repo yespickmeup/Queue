@@ -1085,6 +1085,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
 //        System.out.println("department_id: " + department_id);
         String date = DateType.sf.format(new Date());
         String where = " where status=0 and department_id='" + department_id + "' and Date(created_at)='" + date + "' order by id asc ";
+//        System.out.println(where);
         List<to_queues> q = Queues.ret_data(where);
         loadData_queues(q);
     }

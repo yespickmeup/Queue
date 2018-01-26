@@ -622,6 +622,7 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
             if (!settings.isEmpty()) {
                 User_settings.to_user_settings setting=(User_settings.to_user_settings) settings.get(0);
                 List<Counters.to_counters> counters=Counters.ret_data(" where id='"+setting.counter_id+"'");
+//                System.out.println("setting.counter_id: "+setting.counter_id);
                 Counters.to_counters counter=(Counters.to_counters)counters.get(0);
                 
                 System.setProperty("counter_no", setting.counter_no);
