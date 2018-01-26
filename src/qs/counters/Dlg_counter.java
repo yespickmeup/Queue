@@ -714,6 +714,10 @@ public class Dlg_counter extends javax.swing.JDialog {
             String created_at = DateType.now();
             String updated_at = DateType.now();
             int status = 0;
+            if(tbl_degrees_ALM.size()>=6){
+                Alert.set(0, "Counter limit exceeded!");
+                return;
+            }
             Counters.to_counters count = new Counters.to_counters(id, counter, department, department_id, ip_address, created_at, updated_at, created_by, updated_by, status);
             Window p = (Window) this;
             Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);

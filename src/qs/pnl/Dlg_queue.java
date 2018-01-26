@@ -35,6 +35,7 @@ import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.FitIn;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
+import qs.counters.Counters;
 import qs.queues.Queues;
 import uk.co.caprica.vlcj.binding.LibVlc;
 import uk.co.caprica.vlcj.medialist.MediaList;
@@ -300,8 +301,7 @@ public class Dlg_queue extends javax.swing.JDialog {
         jLabel13.setForeground(new java.awt.Color(10, 64, 118));
         jLabel13.setMinimumSize(new java.awt.Dimension(250, 0));
 
-        jLabel21.setFont(new java.awt.Font("Arial Unicode MS", 0, 36)); // NOI18N
-        jLabel21.setText("05");
+        jLabel21.setFont(new java.awt.Font("AXIS Extra Bold", 1, 80)); // NOI18N
         jLabel21.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
@@ -310,24 +310,24 @@ public class Dlg_queue extends javax.swing.JDialog {
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(2, 2, 2)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
+                .addGap(2, 2, 2))
         );
 
         jPanel6.setBackground(new java.awt.Color(69, 157, 18));
 
-        jLabel1.setFont(new java.awt.Font("Arial Unicode MS", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial Unicode MS", 0, 60)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Counter");
 
@@ -337,8 +337,8 @@ public class Dlg_queue extends javax.swing.JDialog {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                .addGap(261, 261, 261))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(122, 122, 122))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,8 +354,7 @@ public class Dlg_queue extends javax.swing.JDialog {
         jLabel7.setForeground(new java.awt.Color(10, 64, 118));
         jLabel7.setMinimumSize(new java.awt.Dimension(250, 0));
 
-        jLabel19.setFont(new java.awt.Font("Arial Unicode MS", 0, 36)); // NOI18N
-        jLabel19.setText("03");
+        jLabel19.setFont(new java.awt.Font("AXIS Extra Bold", 1, 80)); // NOI18N
         jLabel19.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -364,19 +363,19 @@ public class Dlg_queue extends javax.swing.JDialog {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(2, 2, 2)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
+                .addGap(2, 2, 2))
         );
 
         jPanel13.setBackground(new java.awt.Color(255, 255, 255));
@@ -385,8 +384,7 @@ public class Dlg_queue extends javax.swing.JDialog {
         jLabel15.setForeground(new java.awt.Color(10, 64, 118));
         jLabel15.setMinimumSize(new java.awt.Dimension(250, 0));
 
-        jLabel22.setFont(new java.awt.Font("Arial Unicode MS", 0, 36)); // NOI18N
-        jLabel22.setText("06");
+        jLabel22.setFont(new java.awt.Font("AXIS Extra Bold", 1, 80)); // NOI18N
         jLabel22.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
@@ -395,19 +393,19 @@ public class Dlg_queue extends javax.swing.JDialog {
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel13Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(2, 2, 2)
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE))
+                .addGap(2, 2, 2))
         );
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
@@ -416,8 +414,7 @@ public class Dlg_queue extends javax.swing.JDialog {
         jLabel11.setForeground(new java.awt.Color(10, 64, 118));
         jLabel11.setMinimumSize(new java.awt.Dimension(250, 0));
 
-        jLabel20.setFont(new java.awt.Font("Arial Unicode MS", 0, 36)); // NOI18N
-        jLabel20.setText("04");
+        jLabel20.setFont(new java.awt.Font("AXIS Extra Bold", 1, 80)); // NOI18N
         jLabel20.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
@@ -426,19 +423,19 @@ public class Dlg_queue extends javax.swing.JDialog {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(2, 2, 2)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
+                .addGap(2, 2, 2))
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
@@ -447,8 +444,7 @@ public class Dlg_queue extends javax.swing.JDialog {
         jLabel3.setForeground(new java.awt.Color(10, 64, 118));
         jLabel3.setMinimumSize(new java.awt.Dimension(250, 0));
 
-        jLabel18.setFont(new java.awt.Font("Arial Unicode MS", 0, 36)); // NOI18N
-        jLabel18.setText("02");
+        jLabel18.setFont(new java.awt.Font("AXIS Extra Bold", 1, 80)); // NOI18N
         jLabel18.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -457,19 +453,19 @@ public class Dlg_queue extends javax.swing.JDialog {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(2, 2, 2)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
+                .addGap(2, 2, 2))
         );
 
         jPanel8.setBackground(new java.awt.Color(231, 231, 231));
@@ -478,8 +474,7 @@ public class Dlg_queue extends javax.swing.JDialog {
         jLabel5.setForeground(new java.awt.Color(10, 64, 118));
         jLabel5.setMinimumSize(new java.awt.Dimension(250, 0));
 
-        jLabel17.setFont(new java.awt.Font("Arial Unicode MS", 0, 36)); // NOI18N
-        jLabel17.setText("01");
+        jLabel17.setFont(new java.awt.Font("AXIS Extra Bold", 1, 80)); // NOI18N
         jLabel17.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -488,19 +483,19 @@ public class Dlg_queue extends javax.swing.JDialog {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(2, 2, 2)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+                .addGap(2, 2, 2))
         );
 
         javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
@@ -509,14 +504,14 @@ public class Dlg_queue extends javax.swing.JDialog {
             jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel22Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0))
         );
         jPanel22Layout.setVerticalGroup(
@@ -541,7 +536,7 @@ public class Dlg_queue extends javax.swing.JDialog {
 
         jPanel15.setBackground(new java.awt.Color(69, 157, 18));
 
-        jLabel24.setFont(new java.awt.Font("Arial Unicode MS", 0, 36)); // NOI18N
+        jLabel24.setFont(new java.awt.Font("Arial Unicode MS", 0, 60)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setText("Customer");
 
@@ -551,22 +546,20 @@ public class Dlg_queue extends javax.swing.JDialog {
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel15Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
+                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jPanel16.setBackground(new java.awt.Color(231, 231, 231));
 
-        jLabel26.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 60)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(194, 18, 73));
-        jLabel26.setText("00001");
+        jLabel26.setFont(new java.awt.Font("AXIS Extra Bold", 1, 80)); // NOI18N
         jLabel26.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel16Layout = new javax.swing.GroupLayout(jPanel16);
@@ -575,22 +568,20 @@ public class Dlg_queue extends javax.swing.JDialog {
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(392, 392, 392))
+                .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(2, 2, 2)
+                .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                .addGap(2, 2, 2))
         );
 
         jPanel17.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel29.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 60)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(194, 18, 73));
-        jLabel29.setText("00002");
+        jLabel29.setFont(new java.awt.Font("AXIS Extra Bold", 1, 80)); // NOI18N
         jLabel29.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
@@ -599,22 +590,20 @@ public class Dlg_queue extends javax.swing.JDialog {
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(392, 392, 392))
+                .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(2, 2, 2)
+                .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addGap(2, 2, 2))
         );
 
         jPanel18.setBackground(new java.awt.Color(231, 231, 231));
 
-        jLabel32.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 60)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(194, 18, 73));
-        jLabel32.setText("00003");
+        jLabel32.setFont(new java.awt.Font("AXIS Extra Bold", 1, 80)); // NOI18N
         jLabel32.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
@@ -624,21 +613,19 @@ public class Dlg_queue extends javax.swing.JDialog {
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(392, 392, 392))
+                .addContainerGap())
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(2, 2, 2)
+                .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addGap(2, 2, 2))
         );
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel35.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 60)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(194, 18, 73));
-        jLabel35.setText("00004");
+        jLabel35.setFont(new java.awt.Font("AXIS Extra Bold", 1, 80)); // NOI18N
         jLabel35.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
@@ -647,22 +634,20 @@ public class Dlg_queue extends javax.swing.JDialog {
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(392, 392, 392))
+                .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                .addGap(11, 11, 11))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel19Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(2, 2, 2)
+                .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addGap(2, 2, 2))
         );
 
         jPanel20.setBackground(new java.awt.Color(231, 231, 231));
 
-        jLabel38.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 60)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(194, 18, 73));
-        jLabel38.setText("00005");
+        jLabel38.setFont(new java.awt.Font("AXIS Extra Bold", 1, 80)); // NOI18N
         jLabel38.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel20Layout = new javax.swing.GroupLayout(jPanel20);
@@ -672,21 +657,19 @@ public class Dlg_queue extends javax.swing.JDialog {
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(392, 392, 392))
+                .addContainerGap())
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel20Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, 45, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(2, 2, 2)
+                .addComponent(jLabel38, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addGap(2, 2, 2))
         );
 
         jPanel21.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel41.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 60)); // NOI18N
-        jLabel41.setForeground(new java.awt.Color(194, 18, 73));
-        jLabel41.setText("00006");
+        jLabel41.setFont(new java.awt.Font("AXIS Extra Bold", 1, 80)); // NOI18N
         jLabel41.setMinimumSize(new java.awt.Dimension(250, 0));
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
@@ -696,36 +679,35 @@ public class Dlg_queue extends javax.swing.JDialog {
             .addGroup(jPanel21Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(392, 392, 392))
+                .addContainerGap())
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel21Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(2, 2, 2)
+                .addComponent(jLabel41, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                .addGap(2, 2, 2))
         );
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
                 .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(1, 1, 1)
+                .addGap(0, 0, 0)
                 .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(1, 1, 1)
+                .addGap(2, 2, 2)
                 .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(1, 1, 1)
                 .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -742,10 +724,7 @@ public class Dlg_queue extends javax.swing.JDialog {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 9, Short.MAX_VALUE))
+            .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -759,8 +738,8 @@ public class Dlg_queue extends javax.swing.JDialog {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -935,14 +914,29 @@ public class Dlg_queue extends javax.swing.JDialog {
         init_key();
         setSize();
         start_server();
-        ret_queue();
+//        ret_queue();
+        ret_counters();
+    }
+
+    private void ret_counters() {
+        List<Counters.to_counters> counters = Counters.ret_data("");
+        JLabel[] lbls = {jLabel17, jLabel18, jLabel19, jLabel20, jLabel21, jLabel22};
+        try {
+            int i = 0;
+            for (JLabel lbl : lbls) {
+                Counters.to_counters counter = counters.get(i);
+                lbl.setText(counter.counter);
+                lbl.setForeground(new java.awt.Color(153, 153, 153));
+                i++;
+            }
+        } catch (Exception e) {
+        }
 
     }
 
     private void ret_queue() {
         String where = " where status=0  and teller IS NOT NULL order by id asc ";
         List<Queues.to_queues> q = Queues.ret_data(where);
-
     }
 
     private void setSize() {
@@ -977,8 +971,14 @@ public class Dlg_queue extends javax.swing.JDialog {
         jPanel24.setPreferredSize(new Dimension(width, height));
         jPanel25.setPreferredSize(new Dimension(jPanel25.getWidth(), FitIn.toInt("" + l_height)));
 
-        System.setProperty("VLC_PLUGIN_PATH", "C:\\Program Files\\VideoLAN\\VLC\\plugins");
-        NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), "C:\\Program Files\\VideoLAN\\VLC");
+        String VLC_PLUGIN_PATH = System.getProperty("VLC_PLUGIN_PATH", "C:\\Program Files\\VideoLAN\\VLC\\plugins");
+        String VLC_PLUGIN_NATIVE_PATH = System.getProperty("VLC_PLUGIN_NATIVE_PATH", "C:\\Program Files\\VideoLAN\\VLC");
+
+        System.out.println("VLC_PLUGIN_PATH: "+VLC_PLUGIN_PATH);
+        System.out.println("VLC_PLUGIN_NATIVE_PATH: "+VLC_PLUGIN_NATIVE_PATH);
+        
+        System.setProperty("VLC_PLUGIN_PATH", VLC_PLUGIN_PATH);
+        NativeLibrary.addSearchPath(RuntimeUtil.getLibVlcLibraryName(), VLC_PLUGIN_NATIVE_PATH);
         Native.loadLibrary(RuntimeUtil.getLibVlcLibraryName(), LibVlc.class);
 
         SwingUtilities.invokeLater(new Runnable() {
@@ -1118,31 +1118,34 @@ public class Dlg_queue extends javax.swing.JDialog {
                     if (input == null) {
                         return;
                     }
-                    System.out.println("input: " + input);
+//                    System.out.println("input: " + input);
                     String message = input.replaceAll("\n", "<n>");
                     for (PrintWriter writer : writers) {
                         writer.println("MESSAGE%" + name + "%" + message);
                     }
-                    if (message.equals("1")) {
-                        System.out.println("Counter 1:");
-                        animateLabel(jLabel5, jLabel26);
+                    String[] msg = message.split(",");
+                    String counter_no = msg[0];
+                    String queue_no = msg[1];
+                    String type = msg[2];
+
+                    JLabel[] counters = {jLabel17, jLabel18, jLabel19, jLabel20, jLabel21, jLabel22};
+                    JLabel[] queues = {jLabel26, jLabel29, jLabel32, jLabel35, jLabel38, jLabel41};
+                    int iii = 0;
+                    for (int ii = 0; ii < counters.length; ii++) {
+                        if (counters[ii].getText().equalsIgnoreCase(counter_no)) {
+                            iii = ii;
+                            break;
+                        }
                     }
-                    if (message.equals("2")) {
-                        System.out.println("Counter 2:");
-                        animateLabel(jLabel3, jLabel29);
+                    if (type.equals("1") || type.equals("2")) {
+                        queues[iii].setText(queue_no);
+                        queues[iii].setForeground(new java.awt.Color(0, 0, 0));
+                        counters[iii].setForeground(new java.awt.Color(0, 0, 0));
+                        animateLabel(counters[iii], queues[iii], type);
+                    } else {
+                        animateLabel_hide(counters[iii], queues[iii], type);
                     }
-                    if (message.equals("3")) {
-                        animateLabel(jLabel7, jLabel32);
-                    }
-                    if (message.equals("4")) {
-                        animateLabel(jLabel11, jLabel35);
-                    }
-                    if (message.equals("5")) {
-                        animateLabel(jLabel13, jLabel38);
-                    }
-                    if (message.equals("6")) {
-                        animateLabel(jLabel15, jLabel41);
-                    }
+
                 }
             } catch (IOException e) {
                 System.out.println(e);
@@ -1163,7 +1166,45 @@ public class Dlg_queue extends javax.swing.JDialog {
         }
     }
 
-    private void animateLabel(JLabel lbl1, JLabel lbl2) {
+    private void animateLabel_hide(JLabel lbl1, JLabel lbl2, String type) {
+
+        Thread t = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+
+                Timer timer = new Timer();
+                TimerTask task = new TimerTask() {
+                    private int i = 0;
+
+                    public void run() {
+                        if (i == 2) {
+                            timer.cancel();
+                            timer.purge();
+
+                        }
+                        if (i == 1) {
+                            lbl1.setForeground(new java.awt.Color(153, 153, 153));
+                            lbl2.setForeground(new java.awt.Color(255, 255, 255));
+
+                            lbl1.setFont(new Font("AXIS Extra Bold", Font.BOLD, 80));
+                            lbl2.setFont(new Font("AXIS Extra Bold", Font.BOLD, 80));
+
+                            lbl2.setText("");
+                        }
+
+                        i++;
+                    }
+                };
+                timer.scheduleAtFixedRate(task, 0, 1000); //1000ms = 1sec
+
+                jPanel4.updateUI();
+            }
+        });
+        t.start();
+    }
+
+    private void animateLabel(JLabel lbl1, JLabel lbl2, String type) {
 
         Thread t = new Thread(new Runnable() {
 
@@ -1181,20 +1222,43 @@ public class Dlg_queue extends javax.swing.JDialog {
 
                         }
                         if (i == 1) {
-                            lbl1.setFont(new Font("ARIAL ROUNDED  MT BOLD", Font.BOLD, 80));
-                            lbl2.setFont(new Font("ARIAL ROUNDED  MT BOLD", Font.BOLD, 80));
+                            if (type.equals("1")) {
+                                lbl1.setForeground(new java.awt.Color(0, 51, 255));
+                                lbl2.setForeground(new java.awt.Color(0, 51, 255));
+                            }
+                            if (type.equals("2")) {
+                                lbl1.setForeground(new java.awt.Color(204, 0, 0));
+                                lbl2.setForeground(new java.awt.Color(204, 0, 0));
+                            }
+                            lbl1.setFont(new Font("AXIS Extra Bold", Font.BOLD, 90));
+                            lbl2.setFont(new Font("AXIS Extra Bold", Font.BOLD, 90));
+
                         }
                         if (i == 2) {
-                            lbl1.setFont(new Font("ARIAL ROUNDED  MT BOLD", Font.BOLD, 60));
-                            lbl2.setFont(new Font("ARIAL ROUNDED  MT BOLD", Font.BOLD, 60));
+                            lbl1.setFont(new Font("AXIS Extra Bold", Font.BOLD, 80));
+                            lbl2.setFont(new Font("AXIS Extra Bold", Font.BOLD, 80));
+
+                            lbl1.setForeground(new java.awt.Color(0, 0, 0));
+                            lbl2.setForeground(new java.awt.Color(0, 0, 0));
                         }
                         if (i == 3) {
-                            lbl1.setFont(new Font("ARIAL ROUNDED  MT BOLD", Font.BOLD, 80));
-                            lbl2.setFont(new Font("ARIAL ROUNDED  MT BOLD", Font.BOLD, 80));
+                            if (type.equals("1")) {
+                                lbl1.setForeground(new java.awt.Color(0, 51, 255));
+                                lbl2.setForeground(new java.awt.Color(0, 51, 255));
+                            }
+                            if (type.equals("2")) {
+                                lbl1.setForeground(new java.awt.Color(204, 0, 0));
+                                lbl2.setForeground(new java.awt.Color(204, 0, 0));
+                            }
+                            lbl1.setFont(new Font("AXIS Extra Bold", Font.BOLD, 90));
+                            lbl2.setFont(new Font("AXIS Extra Bold", Font.BOLD, 90));
+
                         }
                         if (i == 4) {
-                            lbl1.setFont(new Font("ARIAL ROUNDED  MT BOLD", Font.BOLD, 60));
-                            lbl2.setFont(new Font("ARIAL ROUNDED  MT BOLD", Font.BOLD, 60));
+                            lbl1.setFont(new Font("AXIS Extra Bold", Font.BOLD, 80));
+                            lbl2.setFont(new Font("AXIS Extra Bold", Font.BOLD, 80));
+                            lbl1.setForeground(new java.awt.Color(0, 0, 0));
+                            lbl2.setForeground(new java.awt.Color(0, 0, 0));
                         }
                         i++;
                     }
@@ -1205,7 +1269,6 @@ public class Dlg_queue extends javax.swing.JDialog {
             }
         });
         t.start();
-
     }
 
     //</editor-fold>

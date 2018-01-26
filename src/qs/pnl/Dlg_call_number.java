@@ -250,6 +250,8 @@ public class Dlg_call_number extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -674,25 +676,47 @@ public class Dlg_call_number extends javax.swing.JDialog {
         jLabel4.setBackground(new java.awt.Color(204, 204, 204));
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
 
+        jLabel11.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(54, 128, 11));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Counter:");
+        jLabel11.setOpaque(true);
+
+        jLabel12.setBackground(new java.awt.Color(204, 204, 204));
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 60)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -700,7 +724,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
+                .addContainerGap(51, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -719,7 +743,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -763,7 +787,13 @@ public class Dlg_call_number extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        out.println("Calling");
+        if (out != null) {
+
+            String queue_no = jLabel4.getText();
+            String counter_no = jLabel12.getText();
+            out.println("" + counter_no + "," + queue_no + ",2");
+            System.out.println("Calling...." + counter_no + " = " + queue_no);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -851,6 +881,8 @@ public class Dlg_call_number extends javax.swing.JDialog {
     private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -879,13 +911,17 @@ public class Dlg_call_number extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     private void myInit() {
 
-//        System.setProperty("counter_no", "01");
+//        System.setProperty("counter_no", "02");
 //        System.setProperty("teller", "Ronald Pascua");
 //        System.setProperty("teller_id", "1");
 //        System.setProperty("department", "Evaluation");
 //        System.setProperty("department_id", "1");
 //        System.setProperty("chatServerAddress", "192.168.1.152");
 //        System.setProperty("chatServerPort", "1000");
+
+        String counter_no = System.getProperty("counter_no", "");
+        jLabel12.setText(counter_no);
+
         init_key();
 
         init_tbl_queues(tbl_waiting_list);
@@ -1088,7 +1124,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
     }
 
     private void get_new_number() {
-        String counter_no = System.getProperty("counter_no", "01");
+        String counter_no = System.getProperty("counter_no", "");
         String department = System.getProperty("department", "Evaluation");
         String department_id = System.getProperty("department_id", "1");
         String teller = System.getProperty("teller", "Ronald Pascua");
@@ -1115,8 +1151,17 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
             //update queue
             Queues.update_teller(to.id, counter_no, teller, teller_id);
-
             jButton1.setEnabled(false);
+            jButton3.setEnabled(true);
+            jButton2.setEnabled(true);
+            jButton4.setEnabled(true);
+            jButton5.setEnabled(true);
+            
+            if (out != null) {
+                String queue_no = jLabel4.getText();
+                out.println("" + counter_no + "," + queue_no + ",1");
+                System.out.println("New...." + counter_no + " = " + queue_no);
+            }
         }
     }
 
@@ -1141,11 +1186,13 @@ public class Dlg_call_number extends javax.swing.JDialog {
                 closeDialog.ok();
                 Queues.update_queue(queue_id, status);
                 ret_waiting_list();
-
+                int type=3;
                 if (status == 1) {
+                    type=5;
                     ret_finished_queues();
                 }
                 if (status == 2) {
+                    type=4;
                     ret_cancelled_queues();
                 }
                 if (status == 3) {
@@ -1159,11 +1206,25 @@ public class Dlg_call_number extends javax.swing.JDialog {
                 jButton2.setEnabled(false);
                 jButton3.setEnabled(false);
 
+                if (out != null) {
+                    String queue_no = jLabel4.getText();
+                    String counter_no = jLabel12.getText();
+                    out.println("" + counter_no + "," + queue_no + ","+type);
+                    System.out.println("Hide...." + counter_no + " = " + queue_no);
+                }
+
                 jLabel2.setText("");
                 jLabel4.setText("");
                 jLabel6.setText("ID No.: ");
                 jLabel7.setText("Name : ");
                 jXLabel1.setText("Address: ");
+
+                if (out != null) {
+                    String queue_no = jLabel4.getText();
+                    String counter_no = jLabel12.getText();
+                    out.println("" + counter_no + "," + queue_no + ",3");
+                    System.out.println("No Show...." + counter_no + " = " + queue_no);
+                }
             }
         }
         );
@@ -1495,7 +1556,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
     Socket socket_queue = null;
 
     public void connect_to_queue_server() {
-        String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.154");
+        String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.104");
 
         if (!queue_server_ip.isEmpty()) {
             int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));

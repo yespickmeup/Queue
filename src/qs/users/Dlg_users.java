@@ -5,7 +5,6 @@
  */
 package qs.users;
 
-
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import java.awt.Dimension;
@@ -562,7 +561,7 @@ public class Dlg_users extends javax.swing.JDialog {
         tbl_users.setModel(tbl_users_M);
         tbl_users.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_users.setRowHeight(25);
-        int[] tbl_widths_users = {100, 80, 100, 50, 30, 30, 0, 0, 0, 0, 0, 0};
+        int[] tbl_widths_users = {100, 80, 100, 50, 30, 30, 30, 0, 0, 0, 0, 0};
         for (int i = 0, n = tbl_widths_users.length; i < n; i++) {
             if (i == 0) {
                 continue;
@@ -577,6 +576,7 @@ public class Dlg_users extends javax.swing.JDialog {
         tbl_users.setFont(new java.awt.Font("Arial", 0, 12));
         tbl_users.getColumnModel().getColumn(4).setCellRenderer(new ImageRenderer());
         tbl_users.getColumnModel().getColumn(5).setCellRenderer(new ImageRenderer());
+        tbl_users.getColumnModel().getColumn(6).setCellRenderer(new ImageRenderer());
     }
 
     public static void loadData_users(List<to_users> acc) {
@@ -587,7 +587,7 @@ public class Dlg_users extends javax.swing.JDialog {
     public static class TblusersModel extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "Screen Name", "User Name", "Assigned To", "Status", "", "", "doctor", "doctor_id", "created_at", "updated_at", "status", "is_uploaded"
+            "Screen Name", "User Name", "Assigned To", "Status", "", "", "", "doctor_id", "created_at", "updated_at", "status", "is_uploaded"
         };
 
         public TblusersModel(ListModel listmodel) {
@@ -631,7 +631,7 @@ public class Dlg_users extends javax.swing.JDialog {
                 case 5:
                     return "/qs/icons/remove11.png";
                 case 6:
-                    return tt.doctor;
+                    return "/qs/icons/settings (1).png";
                 case 7:
                     return tt.doctor_id;
                 case 8:
@@ -793,7 +793,7 @@ public class Dlg_users extends javax.swing.JDialog {
 
         @Override
         public Class getColumnClass(int column) {
-            if (column == 2 || column == 3 || column == 4 || column == 5 || column == 6|| column == 7) {
+            if (column == 2 || column == 3 || column == 4 || column == 5 || column == 6 || column == 7) {
                 return Boolean.class;
             }
             return Object.class;
@@ -862,6 +862,52 @@ public class Dlg_users extends javax.swing.JDialog {
                     ret_users();
                     new_user();
                     Alert.set(3, "");
+                }
+            });
+            nd.setLocationRelativeTo(this);
+            nd.setVisible(true);
+        }
+        if (col == 6) {
+            Window p = (Window) this;
+            Dlg_user_settings nd = Dlg_user_settings.create(p, true);
+            nd.setTitle("");
+            nd.do_pass(user);
+            nd.setCallback(new Dlg_user_settings.Callback() {
+
+                @Override
+                public void ok(CloseDialog closeDialog, Dlg_user_settings.OutputData data) {
+                    closeDialog.ok();
+
+                    List<User_settings.to_user_settings> settings = User_settings.ret_data(" where user_id ='" + user.id + "' ");
+                    if (!settings.isEmpty()) {
+                        User_settings.to_user_settings to=(User_settings.to_user_settings) settings.get(0);
+                        int id=to.id;
+                        String user_id = "" + user.id;
+                        String user_name = user.user_name;
+                        String counter_id = data.counter_id;
+                        String counter_no = data.counter_no;
+                        String created_at = to.created_at;
+                        String updated_at = DateType.now();
+                        String created_by = to.created_by;
+                        String updated_by = MyUser.getUser_id();
+                         User_settings.to_user_settings to2=new User_settings.to_user_settings(id, user_id, user_name, counter_id, counter_no, created_at, updated_at, created_by, updated_by);
+                         User_settings.update_data(to2);
+                        Alert.set(2, "");
+                    } else {
+                        int id = 0;
+                        String user_id = "" + user.id;
+                        String user_name = user.user_name;
+                        String counter_id = data.counter_id;
+                        String counter_no = data.counter_no;
+                        String created_at = DateType.now();
+                        String updated_at = DateType.now();
+                        String created_by = MyUser.getUser_id();
+                        String updated_by = MyUser.getUser_id();
+
+                        User_settings.to_user_settings to = new User_settings.to_user_settings(id, user_id, user_name, counter_id, counter_no, created_at, updated_at, created_by, updated_by);
+                        User_settings.add_data(to);
+                        Alert.set(1, "");
+                    }
                 }
             });
             nd.setLocationRelativeTo(this);

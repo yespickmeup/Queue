@@ -12,11 +12,14 @@ import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 import javax.swing.*;
 import mijzcx.synapse.desk.utils.Application;
 import mijzcx.synapse.desk.utils.CloseDialog;
+import qs.counters.Counters;
 import qs.users.MyUser;
+import qs.users.User_settings;
 import qs.users.Users;
 import qs.util.Alert;
 import qs.util.MyFrame;
@@ -615,6 +618,20 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
             MyUser.user_id = "" + to.id;
             MyUser.user_name = to.user_name;
             MyUser.user_screen_name = to.screen_name;
+            List<User_settings.to_user_settings> settings = User_settings.ret_data(" where user_id ='" + to.id + "' ");
+            if (!settings.isEmpty()) {
+                User_settings.to_user_settings setting=(User_settings.to_user_settings) settings.get(0);
+                List<Counters.to_counters> counters=Counters.ret_data(" where id='"+setting.counter_id+"'");
+                Counters.to_counters counter=(Counters.to_counters)counters.get(0);
+                
+                System.setProperty("counter_no", setting.counter_no);
+                System.setProperty("teller",to.screen_name);
+                System.setProperty("teller_id",""+to.id);
+                System.setProperty("department_id",counter.department_id);
+                System.setProperty("department",counter.department);
+                
+                
+            }
             jPanel1.removeAll();
             jPanel1.updateUI();
             set_previleges();

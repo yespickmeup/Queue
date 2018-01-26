@@ -5,7 +5,6 @@
  */
 package qs.main;
 
-
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.io.BufferedReader;
@@ -21,8 +20,6 @@ import mijzcx.synapse.desk.utils.Application;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import qs.pnl.Pnl_Dashboard;
 import qs.util.Center;
-
-
 
 /**
  *
@@ -94,7 +91,6 @@ public class MyMain {
 //            } else {
 //                System.setProperty("receipt_printer_show_dialog", "false");
 //            }
-
             //
 //            System.setProperty("business_name", setting.company_name);
 //            System.setProperty("address", setting.company_address);
@@ -129,7 +125,6 @@ public class MyMain {
 //            //
 //            System.setProperty("license_code", prop.getProperty("license_code", ""));
 //            System.setProperty("version", prop.getProperty("version", ""));
-
             System.setProperty("pool_port", prop.getProperty("pool_port", "3306"));
             System.setProperty("pool_user", prop.getProperty("pool_user", "root"));
             System.setProperty("pool_password", prop.getProperty("pool_password", "password"));
@@ -143,14 +138,13 @@ public class MyMain {
             System.setProperty("hdd_drive", prop.getProperty("hdd_drive", ""));
             System.setProperty("img_path", prop.getProperty("img_path", System.getProperty("user.home", "C:\\Users\\User") + "\\"));
 
-         
             System.setProperty("counter_no", prop.getProperty("counter_no", "01"));
             System.setProperty("department", prop.getProperty("department", "Evaluation"));
             System.setProperty("department_id", prop.getProperty("department_id", "1"));
             System.setProperty("teller", prop.getProperty("teller", "Juan Dela Cruz"));
             System.setProperty("teller_id", prop.getProperty("teller_id", "1"));
             System.setProperty("server_type", prop.getProperty("server_type", "teller"));
-            
+
             System.setProperty("queue_server_ip", prop.getProperty("queue_server_ip", "192.168.1.152"));
             System.setProperty("counter_no_1_ip", prop.getProperty("counter_no_1_ip", "192.168.1.152"));
             System.setProperty("counter_no_2_ip", prop.getProperty("counter_no_2_ip", "192.168.1.152"));
@@ -158,7 +152,7 @@ public class MyMain {
             System.setProperty("counter_no_4_ip", prop.getProperty("counter_no_4_ip", "192.168.1.152"));
             System.setProperty("counter_no_5_ip", prop.getProperty("counter_no_5_ip", "192.168.1.152"));
             System.setProperty("counter_no_6_ip", prop.getProperty("counter_no_6_ip", "192.168.1.152"));
-            
+
             System.setProperty("queue_server_port", prop.getProperty("queue_server_port", "2000"));
             System.setProperty("counter_no_1_port", prop.getProperty("counter_no_1_port", "2001"));
             System.setProperty("counter_no_2_port", prop.getProperty("counter_no_2_port", "2002"));
@@ -166,7 +160,10 @@ public class MyMain {
             System.setProperty("counter_no_4_port", prop.getProperty("counter_no_4_port", "2004"));
             System.setProperty("counter_no_5_port", prop.getProperty("counter_no_5_port", "2005"));
             System.setProperty("counter_no_6_port", prop.getProperty("counter_no_6_port", "2006"));
-            
+
+            System.setProperty("VLC_PLUGIN_PATH", prop.getProperty("VLC_PLUGIN_PATH", ""));
+            System.setProperty("VLC_PLUGIN_NATIVE_PATH", prop.getProperty("VLC_PLUGIN_NATIVE_PATH", ""));
+
             //
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -471,6 +471,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
         ret_degrees();
 
         connect_to_teller_server();
+        connect_to_teller1();
     }
 
     public void do_pass() {
