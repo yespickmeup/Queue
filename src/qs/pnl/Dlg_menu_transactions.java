@@ -9,11 +9,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import java.util.logging.Level;
 import javax.swing.JLabel;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
+import qs.users.MyUser;
+import qs.users.User_priveleges;
 
 /**
  *
@@ -339,7 +342,8 @@ public class Dlg_menu_transactions extends javax.swing.JDialog {
         hide2();
         set_previledge();
         hover();
-
+        jLabel8.setVisible(false);
+        jLabel7.setVisible(false);
     }
 
     private void hover() {
@@ -365,23 +369,23 @@ public class Dlg_menu_transactions extends javax.swing.JDialog {
     }
 
     private void hide2() {
-        JLabel[] lbl = {};
+        JLabel[] lbl = {jLabel7};
         for (JLabel l : lbl) {
             l.setEnabled(false);
         }
     }
 
     private void set_previledge() {
-//        String where = " where user_id='" + MyUser.getUser_id() + "' order by previledge asc";
-//        List<User_previleges.to_user_previleges> datas = User_previleges.ret_data(where);
-//
-//        for (User_previleges.to_user_previleges to : datas) {
-//            if (to.previledge.equalsIgnoreCase("Services-Transaction")) {
-//                jLabel7.setEnabled(true);
-//                jLabel7.setBackground(new java.awt.Color(157, 184, 46));
-//            }
-//
-//        }
+        String where = " where user_id='" + MyUser.getUser_id() + "' order by privelege asc";
+        List<User_priveleges.to_user_priveleges> datas = User_priveleges.ret_data(where);
+        for (User_priveleges.to_user_priveleges to : datas) {
+
+            if (to.privelege.equalsIgnoreCase("Call Number - (View)")) {
+                jLabel7.setEnabled(true);
+                jLabel7.setBackground(new java.awt.Color(157, 184, 46));
+            }
+
+        }
     }
 
     public void do_pass() {

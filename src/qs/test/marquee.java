@@ -1,26 +1,28 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package qs.main;
+package qs.test;
 
+import java.awt.BorderLayout;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
-import javax.swing.Timer;
+import javax.swing.JLabel;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 
 /**
  *
- * @author Dummy
+ * @author Guinness
  */
-public class Loading extends javax.swing.JDialog {
+public class marquee extends javax.swing.JDialog {
 
     /**
-     * Creates new form loading
+     * Creates new form marquee
      */
     //<editor-fold defaultstate="collapsed" desc=" callback ">
     private Callback callback;
@@ -43,30 +45,33 @@ public class Loading extends javax.swing.JDialog {
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc=" Constructors ">
-    private Loading(java.awt.Frame parent, boolean modal) {
+    private marquee(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    private Loading(java.awt.Dialog parent, boolean modal) {
+    private marquee(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
+        setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    public Loading() {
+    public marquee() {
         super();
+        setUndecorated(true);
         initComponents();
         myInit();
 
     }
-    private Loading myRef;
+    private marquee myRef;
 
-    private void setThisRef(Loading myRef) {
+    private void setThisRef(marquee myRef) {
         this.myRef = myRef;
     }
-    private static java.util.Map<Object, Loading> dialogContainer = new java.util.HashMap();
+    private static java.util.Map<Object, marquee> dialogContainer = new java.util.HashMap();
 
     public static void clearUpFirst(java.awt.Window parent) {
         if (dialogContainer.containsKey(parent)) {
@@ -74,7 +79,7 @@ public class Loading extends javax.swing.JDialog {
         }
     }
 
-    public static Loading create(java.awt.Window parent, boolean modal) {
+    public static marquee create(java.awt.Window parent, boolean modal) {
 
         if (modal) {
             return create(parent, ModalityType.APPLICATION_MODAL);
@@ -84,14 +89,14 @@ public class Loading extends javax.swing.JDialog {
 
     }
 
-    public static Loading create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
+    public static marquee create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
 
         if (parent instanceof java.awt.Frame) {
 
-            Loading dialog = dialogContainer.get(parent);
+            marquee dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Loading((java.awt.Frame) parent, false);
+                dialog = new marquee((java.awt.Frame) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -105,10 +110,10 @@ public class Loading extends javax.swing.JDialog {
         }
 
         if (parent instanceof java.awt.Dialog) {
-            Loading dialog = dialogContainer.get(parent);
+            marquee dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Loading((java.awt.Dialog) parent, false);
+                dialog = new marquee((java.awt.Dialog) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -135,7 +140,7 @@ public class Loading extends javax.swing.JDialog {
             throw new RuntimeException(e);
         }
 
-        Loading dialog = Loading.create(new javax.swing.JFrame(), true);
+        marquee dialog = marquee.create(new javax.swing.JFrame(), true);
         dialog.setVisible(true);
 
     }
@@ -174,66 +179,110 @@ public class Loading extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setBackground(new java.awt.Color(246, 240, 240));
 
-        jLabel2.setBackground(new java.awt.Color(16, 88, 197));
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("Queue");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 151, 33));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 111, Short.MAX_VALUE)
+        );
 
-        jLabel9.setBackground(new java.awt.Color(16, 88, 197));
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel9.setText("Version 1.20160418");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 130, -1));
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/main/loader1.gif"))); // NOI18N
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 37, 196, 167));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 36, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 40, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(62, 62, 62)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
     /**
      * @param args the command line arguments
      */
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    // End of variables declaration//GEN-END:variables
 
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
-        init_timer();
+
+        String s = "Tomorrow, and tomorrow, and tomorrow, "
+                + "creeps in this petty pace from day to day, "
+                + "to the last syllable of recorded time; ... "
+                + "It is a tale told by an idiot, full of "
+                + "sound and fury signifying nothing.";
+        MarqueeLabel myLable = new MarqueeLabel("Welcome to www.How2Java.com", MarqueeLabel.RIGHT_TO_LEFT, 20);
+        jPanel1.setLayout(new BorderLayout());
+        jPanel1.add(myLable);
+        
+    }
+
+    public static class MarqueeLabel extends JLabel {
+
+        public static int LEFT_TO_RIGHT = 1;
+        public static int RIGHT_TO_LEFT = 2;
+        String text;
+        int Option;
+        int Speed;
+
+        public MarqueeLabel(String text, int Option, int Speed) {
+            this.Option = Option;
+            this.Speed = Speed;
+            this.setText(text);
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            if (Option == LEFT_TO_RIGHT) {
+                g.translate((int) ((System.currentTimeMillis() / Speed) % (getWidth() * 2) - getWidth()), 0);
+            } else if (Option == RIGHT_TO_LEFT) {
+                g.translate((int) (getWidth() - (System.currentTimeMillis() / Speed) % (getWidth() * 2)), 0);
+            }
+            super.paintComponent(g);
+            repaint(5);
+        }
     }
 
     public void do_pass() {
-    }
-    // <editor-fold defaultstate="collapsed" desc="Key">
 
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="Key">
     private void disposed() {
         this.dispose();
     }
@@ -250,38 +299,5 @@ public class Loading extends javax.swing.JDialog {
         });
     }
     // </editor-fold>
-//     private void myInit() {
-//       
-//    }
-    int i = 0;
-    Timer t = new Timer(1000, new ActionListener() {
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-            if (i == 3) {
-                ok1();
-            }
-
-            if (i == 1) {
-//                System_start.do_announcements();
-            }
-            i++;
-        }
-    });
-
-    private void init_timer() {
-        t.start();
-    }
-    
-    private void close() {
-        this.dispose();
-    }
-
-    private void ok1() {
-        this.dispose();
-        if (callback != null) {
-            callback.ok(new CloseDialog(this), new OutputData());
-        }
-    }
 }

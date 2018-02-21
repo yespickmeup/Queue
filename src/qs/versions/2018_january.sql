@@ -21,3 +21,16 @@ id int auto_increment primary key
 ,created_by varchar(255)
 ,updated_by varchar(255)
 );
+
+drop table if exists announcements;
+create table announcements(
+id int auto_increment primary key
+,announcement text
+,date_from date
+,date_to date
+,status int
+,created_at datetime
+,updated_at datetime
+,created_by varchar(255)
+,updated_by varchar(255)
+);

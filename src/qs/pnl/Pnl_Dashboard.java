@@ -17,7 +17,13 @@ import java.util.List;
 import javax.swing.*;
 import mijzcx.synapse.desk.utils.Application;
 import mijzcx.synapse.desk.utils.CloseDialog;
+import qs.announcements.Dlg_announcement;
 import qs.counters.Counters;
+import qs.counters.Dlg_counter;
+import qs.customers.Dlg_customers;
+import qs.departments.Dlg_department;
+import qs.reports.Dlg_rpt_queues;
+import qs.users.Dlg_users;
 import qs.users.MyUser;
 import qs.users.User_settings;
 import qs.users.Users;
@@ -620,24 +626,43 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
             MyUser.user_screen_name = to.screen_name;
             List<User_settings.to_user_settings> settings = User_settings.ret_data(" where user_id ='" + to.id + "' ");
             if (!settings.isEmpty()) {
-                User_settings.to_user_settings setting=(User_settings.to_user_settings) settings.get(0);
-                List<Counters.to_counters> counters=Counters.ret_data(" where id='"+setting.counter_id+"'");
+                User_settings.to_user_settings setting = (User_settings.to_user_settings) settings.get(0);
+                List<Counters.to_counters> counters = Counters.ret_data(" where id='" + setting.counter_id + "'");
 //                System.out.println("setting.counter_id: "+setting.counter_id);
-                Counters.to_counters counter=(Counters.to_counters)counters.get(0);
-                
+                Counters.to_counters counter = (Counters.to_counters) counters.get(0);
+
                 System.setProperty("counter_no", setting.counter_no);
-                System.setProperty("teller",to.screen_name);
-                System.setProperty("teller_id",""+to.id);
-                System.setProperty("department_id",counter.department_id);
-                System.setProperty("department",counter.department);
-                
-                
+                System.setProperty("teller", to.screen_name);
+                System.setProperty("teller_id", "" + to.id);
+                System.setProperty("department_id", counter.department_id);
+                System.setProperty("department", counter.department);
+
             }
             jPanel1.removeAll();
             jPanel1.updateUI();
             set_previleges();
             cardLayout.show(pnl_main_holder, "2");
 
+//            if (to.user_name.equals("q1")) {
+//                this.dispose();
+//                Window p = (Window) this;
+//                Dlg_queue nd = Dlg_queue.create(p, true);
+//                nd.setTitle("");
+//                nd.setCallback(new Dlg_queue.Callback() {
+//                    @Override
+//                    public void ok(CloseDialog closeDialog, Dlg_queue.OutputData data) {
+//                        closeDialog.ok();
+//                    }
+//                });
+////                nd.setLocationRelativeTo(this);
+//                Toolkit tk = Toolkit.getDefaultToolkit();
+//                int xSize = ((int) tk.getScreenSize().
+//                        getWidth());
+//                int ySize = ((int) tk.getScreenSize().
+//                        getHeight());
+//                nd.setSize(xSize, ySize);
+//                nd.setVisible(true);
+//            }
         }
     }
 
@@ -690,7 +715,7 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
 
                 //<editor-fold defaultstate="collapsed" desc=" transactions ">
                 if (data.stmt.equals("Queue")) {
-                    t_queue();
+//                    t_queue();
                 }
                 if (data.stmt.equals("Number")) {
                     t_number();
@@ -702,20 +727,29 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
 
                 //</editor-fold>
                 //<editor-fold defaultstate="collapsed" desc=" maintenance ">
-//                if (data.stmt.equals("Service Departments")) {
-//                    m_departments();
-//                }
-//                if (data.stmt.equals("Service Department Members")) {
-//                    m_members();
-//                }
-//                if (data.stmt.equals("Service Transaction Type")) {
-//                    m_type();
-//                }
+                if (data.stmt.equals("Customers")) {
+                    m_customers();
+                }
+                if (data.stmt.equals("Users")) {
+                    m_users();
+                }
+                if (data.stmt.equals("Announcements")) {
+                    m_announcements();
+                }
+                if (data.stmt.equals("Counters")) {
+                    m_counters();
+                }
+                if (data.stmt.equals("Departments")) {
+                    m_departments();
+                }
                 //</editor-fold>
                 //<editor-fold defaultstate="collapsed" desc=" Reports ">
-//                if (data.stmt.equals("Services Report")) {
-//                    r_services();
-//                }
+                if (data.stmt.equals("Queues - (Report)")) {
+                    r_queues();
+                }
+                if (data.stmt.equals("Customers - (Report)")) {
+//                    r_queues();
+                }
 //                if (data.stmt.equals("Barcodes")) {
 //                    r_barcode();
 //                }
@@ -775,6 +809,48 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
         Dlg_call_number dtc = new Dlg_call_number();
         dtc.do_pass();
         MyFrame.set2(dtc.getSurface(), jPanel1, "Call", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void m_customers() {
+        Dlg_customers dtc = new Dlg_customers();
+        dtc.do_pass();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Customers", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void m_users() {
+        Dlg_users dtc = new Dlg_users();
+        dtc.do_pass();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Users", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void m_announcements() {
+        Dlg_announcement dtc = new Dlg_announcement();
+        dtc.do_pass();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Announcements", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void m_counters() {
+        Dlg_counter dtc = new Dlg_counter();
+        dtc.do_pass();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Counters", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void m_departments() {
+        Dlg_department dtc = new Dlg_department();
+        dtc.do_pass();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Departments", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void r_queues() {
+        Dlg_rpt_queues dtc = new Dlg_rpt_queues();
+        dtc.do_pass();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Queues", dtc.getWidth(), dtc.getHeight());
+    }
+
+    private void r_customers() {
+        Dlg_rpt_queues dtc = new Dlg_rpt_queues();
+        dtc.do_pass();
+        MyFrame.set2(dtc.getSurface(), jPanel1, "Queues", dtc.getWidth(), dtc.getHeight());
     }
 //    private void m_departments() {
 //        Dlg_my_services_departments dtc = new Dlg_my_services_departments();

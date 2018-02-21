@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -22,18 +23,28 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableCellRenderer;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.FitIn;
+import mijzcx.synapse.desk.utils.JasperUtil;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
+import net.sf.jasperreports.engine.JasperReport;
 import qs.customers.Customers;
 import qs.departments.Departments;
 import qs.queues.Queues;
+import qs.reports.Srpt_print_queue_no;
 import qs.util.Alert;
 import qs.util.DateType;
 import synsoftech.fields.Button;
@@ -251,6 +262,11 @@ public class Dlg_generate_number extends javax.swing.JDialog {
         jLabel1.setText("Choose Department:");
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jButton1.setText("Proceed");
@@ -443,6 +459,10 @@ public class Dlg_generate_number extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        ret_customer();
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -466,12 +486,40 @@ public class Dlg_generate_number extends javax.swing.JDialog {
     private javax.swing.JTable tbl_degrees;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
+
+        String environment = System.getProperty("environment", "production");
+        if (environment.equalsIgnoreCase("production")) {
+            jPanel2.setVisible(false);
+            
+        }
+
         init_key();
         init_tbl_degrees(tbl_degrees);
         ret_degrees();
 
         connect_to_teller_server();
         connect_to_teller1();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                jTextField1.grabFocus();
+            }
+        });
+    }
+
+    private void ret_customer() {
+        String number = jTextField1.getText();
+        if (!number.isEmpty()) {
+            List<Customers.to_customers> list = Customers.ret_data(" where customer_no='" + number + "'");
+            if (!list.isEmpty()) {
+                Customers.to_customers to = (Customers.to_customers) list.get(0);
+                jLabel3.setText(to.lname + ", " + to.fname + " " + to.mi);
+            } else {
+                Alert.set(0, "Consumer not found!");
+                jTextField1.setText("");
+                return;
+            }
+        }
     }
 
     public void do_pass() {
@@ -622,19 +670,6 @@ public class Dlg_generate_number extends javax.swing.JDialog {
             return;
         }
 
-        String number = jTextField1.getText();
-        if (!number.isEmpty()) {
-            List<Customers.to_customers> list = Customers.ret_data(" where customer_no='" + number + "'");
-            if (!list.isEmpty()) {
-                Customers.to_customers to = (Customers.to_customers) list.get(0);
-                jLabel3.setText(to.lname + ", " + to.fname + " " + to.mi);
-            } else {
-                Alert.set(0, "Consumer not found!");
-                jTextField1.setText("");
-                return;
-            }
-        }
-
         Departments.to_departments dep = (Departments.to_departments) tbl_degrees_ALM.get(row);
         Window p = (Window) this;
         Dlg_generate_number_prompt nd = Dlg_generate_number_prompt.create(p, true);
@@ -688,6 +723,38 @@ public class Dlg_generate_number extends javax.swing.JDialog {
                     out6.println("Hi teller 6");
                 }
 
+                //<editor-fold defaultstate="collapsed" desc=" Print Queue No ">
+                String business_name = System.getProperty("business_name", "");
+                String address = System.getProperty("address", "");
+                String contact_no = System.getProperty("contact_no", "");
+
+                String date2 = DateType.day_and_time.format(new Date());
+                Srpt_print_queue_no rpt = new Srpt_print_queue_no(business_name, address, contact_no, counter_no, department, queue_no, date2);
+                String jrxml = "rpt_print_queue_no.jrxml";
+                String print_queue_no = System.getProperty("print_queue_no", "true");
+                if (print_queue_no.equalsIgnoreCase("true")) {
+                    InputStream is = Srpt_print_queue_no.class.getResourceAsStream(jrxml);
+                    try {
+                        JasperReport jasperReport = JasperCompileManager.compileReport(is);
+                        jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
+                                setParameter(rpt), JasperUtil.emptyDatasource());
+
+                        try {
+                            if (jasperPrint != null) {
+                                JasperPrintManager.printReport(jasperPrint, false);
+                            }
+                        } catch (JRException e) {
+                            JOptionPane.showMessageDialog(null, "Failed To Print, Please Check the Printer");
+                            throw new RuntimeException(e);
+                        }
+
+                    } catch (JRException ex) {
+                        Logger.getLogger(Srpt_print_queue_no.class.getName()).
+                                log(Level.SEVERE, null, ex);
+                    }
+                }
+                //</editor-fold>
+
                 Alert.set(1, "");
                 jTextField1.setText("");
                 jLabel3.setText("");
@@ -697,6 +764,7 @@ public class Dlg_generate_number extends javax.swing.JDialog {
         nd.setLocationRelativeTo(jScrollPane1);
         nd.setVisible(true);
     }
+    JasperPrint jasperPrint = null;
 
     private void generate() {
 

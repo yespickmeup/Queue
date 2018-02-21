@@ -101,7 +101,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/qs/icons/repairing-service.png"/>
+              <Image iconType="3" name="/qs/icons/line.png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Services Report"/>
             <Property name="opaque" type="boolean" value="true"/>
@@ -121,7 +121,7 @@
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/qs/icons/barcode (1).png"/>
+              <Image iconType="3" name="/qs/icons/team (1).png"/>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Barcodes"/>
             <Property name="opaque" type="boolean" value="true"/>

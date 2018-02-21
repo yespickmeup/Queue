@@ -9,11 +9,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import java.util.logging.Level;
 import javax.swing.JLabel;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
+import qs.users.MyUser;
+import qs.users.User_priveleges;
 
 /**
  *
@@ -212,7 +215,7 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
         jLabel7.setBackground(new java.awt.Color(234, 234, 234));
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/repairing-service.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/line.png"))); // NOI18N
         jLabel7.setToolTipText("Services Report");
         jLabel7.setOpaque(true);
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -227,7 +230,7 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
         jLabel8.setBackground(new java.awt.Color(234, 234, 234));
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/barcode (1).png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/team (1).png"))); // NOI18N
         jLabel8.setToolTipText("Barcodes");
         jLabel8.setOpaque(true);
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -281,19 +284,19 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowLostFocus
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        ok("Services Report", jLabel7);
+        ok("Queues - (Report)", jLabel7);
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
-        label("Services Report", jLabel7);
+        label("Queues - (Report)", jLabel7);
     }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        ok("Barcodes", jLabel8);
+        ok("Customers", jLabel8);
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
-        label("Barcodes", jLabel8);
+        label("Customers", jLabel8);
     }//GEN-LAST:event_jLabel8MouseEntered
 
     /**
@@ -312,6 +315,7 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
         hide2();
         set_previledge();
         hover();
+        jLabel8.setVisible(false);
     }
 
     private void hover() {
@@ -330,7 +334,7 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (l.isEnabled()) {
-                          l.setBackground(new java.awt.Color(157, 184, 46));
+                        l.setBackground(new java.awt.Color(157, 184, 46));
                     }
 
                 }
@@ -340,24 +344,29 @@ public class Dlg_menu_reports extends javax.swing.JDialog {
     }
 
     private void hide2() {
-        JLabel[] lbl = {jLabel7};
+        JLabel[] lbl = {jLabel7, jLabel8};
         for (JLabel l : lbl) {
             l.setEnabled(false);
         }
     }
 
     private void set_previledge() {
-//        String where = " where user_id='" + MyUser.getUser_id() + "' order by previledge asc";
-//        List<User_previleges.to_user_previleges> datas = User_previleges.ret_data(where);
-//
-//        for (User_previleges.to_user_previleges to : datas) {
-//
-//            if (to.previledge.equalsIgnoreCase("Services Report")) {
-//                jLabel7.setEnabled(true);
-//                jLabel7.setBackground(new java.awt.Color(157, 184, 46));
-//            }
-//
-//        }
+        String where = " where user_id='" + MyUser.getUser_id() + "' order by privelege asc";
+        List<User_priveleges.to_user_priveleges> datas = User_priveleges.ret_data(where);
+
+        for (User_priveleges.to_user_priveleges to : datas) {
+
+            if (to.privelege.equalsIgnoreCase("Queues - (Report)")) {
+                jLabel7.setEnabled(true);
+                jLabel7.setBackground(new java.awt.Color(157, 184, 46));
+            }
+
+            if (to.privelege.equalsIgnoreCase("Customers - (Report)")) {
+                jLabel8.setEnabled(true);
+                jLabel8.setBackground(new java.awt.Color(157, 184, 46));
+            }
+
+        }
     }
 
     public void do_pass() {

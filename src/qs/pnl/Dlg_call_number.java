@@ -918,6 +918,17 @@ public class Dlg_call_number extends javax.swing.JDialog {
 //        System.setProperty("department_id", "1");
 //        System.setProperty("chatServerAddress", "192.168.1.152");
 //        System.setProperty("chatServerPort", "1000");
+        String environment = System.getProperty("environment", "production");
+        if (environment.equalsIgnoreCase("production")) {
+            jButton15.setVisible(false);
+            jButton16.setVisible(false);
+            jButton9.setVisible(false);
+            jButton10.setVisible(false);
+            jButton11.setVisible(false);
+            jButton12.setVisible(false);
+            jButton13.setVisible(false);
+            jButton14.setVisible(false);
+        }
 
         String counter_no = System.getProperty("counter_no", "");
         jLabel12.setText(counter_no);
@@ -1157,7 +1168,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
             jButton2.setEnabled(true);
             jButton4.setEnabled(true);
             jButton5.setEnabled(true);
-            
+
             if (out != null) {
                 String queue_no = jLabel4.getText();
                 out.println("" + counter_no + "," + queue_no + ",1");
@@ -1187,13 +1198,13 @@ public class Dlg_call_number extends javax.swing.JDialog {
                 closeDialog.ok();
                 Queues.update_queue(queue_id, status);
                 ret_waiting_list();
-                int type=3;
+                int type = 3;
                 if (status == 1) {
-                    type=5;
+                    type = 5;
                     ret_finished_queues();
                 }
                 if (status == 2) {
-                    type=4;
+                    type = 4;
                     ret_cancelled_queues();
                 }
                 if (status == 3) {
@@ -1210,7 +1221,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
                 if (out != null) {
                     String queue_no = jLabel4.getText();
                     String counter_no = jLabel12.getText();
-                    out.println("" + counter_no + "," + queue_no + ","+type);
+                    out.println("" + counter_no + "," + queue_no + "," + type);
                     System.out.println("Hide...." + counter_no + " = " + queue_no);
                 }
 

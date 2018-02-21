@@ -20,6 +20,8 @@ import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
+import qs.users.MyUser;
+import qs.users.User_priveleges;
 import qs.util.Alert;
 import qs.util.DateType;
 import qs.util.Dlg_confirm_action;
@@ -535,6 +537,12 @@ public class Dlg_department extends javax.swing.JDialog {
     private void save_degree() {
         int row = tbl_degrees.getSelectedRow();
         if (row < 0) {
+            String where = " where user_id='" + MyUser.getUser_id() + "' and privelege like 'Departments - (Add)' ";
+            List<User_priveleges.to_user_priveleges> datas = User_priveleges.ret_data(where);
+            if (datas.isEmpty()) {
+                Alert.set(0, "Privilege Not Added!");
+                return;
+            }
             int id = 0;
             String degree = jTextField3.getText();
             String created_by = "";//MyUser.getUser_id();
@@ -560,6 +568,12 @@ public class Dlg_department extends javax.swing.JDialog {
             nd.setVisible(true);
 
         } else {
+            String where = " where user_id='" + MyUser.getUser_id() + "' and privelege like 'Departments - (Edit)' ";
+            List<User_priveleges.to_user_priveleges> datas = User_priveleges.ret_data(where);
+            if (datas.isEmpty()) {
+                Alert.set(0, "Privilege Not Added!");
+                return;
+            }
             Departments.to_departments to = (Departments.to_departments) tbl_degrees_ALM.get(row);
             int id = to.id;
             String degree = jTextField3.getText();
@@ -600,6 +614,12 @@ public class Dlg_department extends javax.swing.JDialog {
             jTextField3.setText(to.department);
         }
         if (col == 3) {
+            String where = " where user_id='" + MyUser.getUser_id() + "' and privelege like 'Departments - (Delete)' ";
+            List<User_priveleges.to_user_priveleges> datas = User_priveleges.ret_data(where);
+            if (datas.isEmpty()) {
+                Alert.set(0, "Privilege Not Added!");
+                return;
+            }
             Window p = (Window) this;
             Dlg_confirm_delete nd = Dlg_confirm_delete.create(p, true);
             nd.setTitle("");

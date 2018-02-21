@@ -5,12 +5,26 @@
  */
 package qs.reports;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import mijzcx.synapse.desk.utils.Application;
+import mijzcx.synapse.desk.utils.JasperUtil;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.swing.JRViewer;
+import qs.util.DateType;
 import qs.util.MyConnection;
 
 /**
@@ -24,8 +38,10 @@ public class Srpt_queue {
     public final String contact_no;
     public final String date;
     public final String status;
+    public final List<field> fields;
 
     public Srpt_queue(String business_name, String address, String contact_no, String date, String status) {
+        this.fields = new ArrayList();
         this.business_name = business_name;
         this.address = address;
         this.contact_no = contact_no;
@@ -166,11 +182,41 @@ public class Srpt_queue {
     }
 
     public static void main(String[] args) {
-        List<field> datas=ret_data("");
-        for(field f:datas){
-            System.out.println("Name: "+f.queue_no +" Counter: "+f.counter_no);
+        String business_name = System.getProperty("business_name", "");
+        String address = System.getProperty("address", "");
+        String contact_no = System.getProperty("contact_no", "");
+        String date = DateType.slash.format(new Date());
+        String status = "All";
+
+        List<field> datas = Srpt_queue.ret_data("");
+        Srpt_queue rpt = new Srpt_queue(business_name, address, contact_no, date, status);
+        rpt.fields.addAll(datas);
+        String jrxml = "rpt_queue.jrxml";
+        JRViewer viewer = get_viewer(rpt, jrxml);
+        JFrame f = Application.launchMainFrame3(viewer, "Sample", true);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    public static JasperReport compileJasper(String jrxml) {
+        try {
+
+            InputStream is = Srpt_queue.class.getResourceAsStream(jrxml);
+            JasperReport jasper = JasperCompileManager.compileReport(is);
+
+            return jasper;
+        } catch (JRException e) {
+            throw new RuntimeException(e);
         }
     }
+
+    public static JRViewer get_viewer(Srpt_queue to, String jrxml) {
+
+        return JasperUtil.getJasperViewer(
+                compileJasper(jrxml),
+                JasperUtil.setParameter(to),
+                JasperUtil.makeDatasource(to.fields));
+    }
+
     public static List<field> ret_data(String where) {
         List<field> datas = new ArrayList();
 
@@ -213,9 +259,34 @@ public class Srpt_queue {
                 String updated_at = rs.getString(13);
                 String created_by = rs.getString(14);
                 String updated_by = rs.getString(15);
+                Date d1 = new Date();
+                Date d2 = new Date();
+                try {
+                    d1 = DateType.datetime.parse(created_at);
+                    d2 = DateType.datetime.parse(updated_at);
+                } catch (ParseException ex) {
+                    Logger.getLogger(Srpt_queue.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                created_at = DateType.convert_slash_datetime3(created_at);
+                updated_at = DateType.convert_slash_datetime3(updated_at);
 
+                long diff = d2.getTime() - d1.getTime();
+                long diffSeconds = TimeUnit.MILLISECONDS.toSeconds(diff) % 60;
+                long diffMinutes = TimeUnit.MILLISECONDS.toMinutes(diff) % 60;
+                long diffHours = TimeUnit.MILLISECONDS.toHours(diff);
+                remarks = "" + diffHours + ":" + diffMinutes + ":" + diffSeconds;
+                String state = "Queued";
+                if (status == 1) {
+                    state = "Finished";
+                }
+                if (status == 2) {
+                    state = "Cancelled";
+                }
+                if (status == 3) {
+                    state = "No Show";
+                }
 
-                field f=new field(queue_no, department_id, department, customer, customer_id, counter_no, teller, teller_id, remarks, remarks, created_at, updated_at);
+                field f = new field(queue_no, department_id, department, customer, customer_id, counter_no, teller, teller_id, remarks, state, created_at, updated_at);
                 datas.add(f);
             }
             return datas;

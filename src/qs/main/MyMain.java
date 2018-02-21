@@ -137,6 +137,8 @@ public class MyMain {
             System.setProperty("terminal_number", prop.getProperty("terminal_number", "0"));
             System.setProperty("hdd_drive", prop.getProperty("hdd_drive", ""));
             System.setProperty("img_path", prop.getProperty("img_path", System.getProperty("user.home", "C:\\Users\\User") + "\\"));
+            System.setProperty("print_queue_no", prop.getProperty("print_queue_no", "false"));
+            System.setProperty("environment", prop.getProperty("environment", "production"));
 
             System.setProperty("counter_no", prop.getProperty("counter_no", "01"));
             System.setProperty("department", prop.getProperty("department", "Evaluation"));

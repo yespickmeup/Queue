@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5013a11e-8e34-4de7-b2b4-a32c65227599">
+    <property name="ireport.zoom" value="1.5"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <parameter name="business_name" class="java.lang.String"/>
+    <parameter name="address" class="java.lang.String"/>
+    <parameter name="contact_no" class="java.lang.String"/>
+    <parameter name="date" class="java.lang.String"/>
+    <field name="customer_no" class="java.lang.String"/>
+    <field name="name" class="java.lang.String"/>
+    <field name="bday" class="java.lang.String"/>
+    <field name="gender" class="java.lang.String"/>
+    <field name="address" class="java.lang.String"/>
+    <field name="contact_no" class="java.lang.String"/>
+    <background>
+        <band splitType="Stretch"/>
+    </background>
+    <title>
+        <band height="104" splitType="Stretch">
+            <textField>
+                <reportElement uuid="63504f36-0317-4fc0-9c69-eb3b6d059a1c" x="0" y="0" width="555" height="20"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="12" isBold="true"/>
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{business_name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="7c4fb8e1-471e-46da-ab24-8fef6024bbb5" x="0" y="20" width="555" height="15"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="0a13b5e4-9a2a-44bc-a101-623bf4349ca0" x="0" y="35" width="266" height="15"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{contact_no}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="b5542422-235d-4074-adc7-6105646ea1d7" x="0" y="50" width="266" height="15"/>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement uuid="69b2dfb3-c0d0-4f3b-a676-291d922b2f30" x="0" y="65" width="266" height="20"/>
+                <box>
+                    <bottomPen lineWidth="0.0"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <font isBold="true"/>
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <text><![CDATA[Customers Reports]]></text>
+            </staticText>
+        </band>
+    </title>
+    <pageHeader>
+        <band splitType="Stretch"/>
+    </pageHeader>
+    <columnHeader>
+        <band height="20" splitType="Stretch">
+            <staticText>
+                <reportElement uuid="69b2dfb3-c0d0-4f3b-a676-291d922b2f30" x="0" y="0" width="68" height="20"/>
+                <box>
+                    <bottomPen lineWidth="0.2"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <text><![CDATA[Customer ID]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="7c949a3a-aa2f-4969-8bf6-20a8c8c4fc32" x="68" y="0" width="147" height="20"/>
+                <box>
+                    <bottomPen lineWidth="0.2"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <text><![CDATA[Name]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="8d344c8e-d98c-4ca1-ae81-48184c5680b0" x="215" y="0" width="67" height="20"/>
+                <box>
+                    <bottomPen lineWidth="0.2"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <text><![CDATA[BirthDate]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="62c95861-0764-4724-876c-346b57fabdfe" x="282" y="0" width="47" height="20"/>
+                <box>
+                    <bottomPen lineWidth="0.2"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <text><![CDATA[Gender]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="752a4152-b4e2-4ea1-91ad-e82ccea35307" x="329" y="0" width="148" height="20"/>
+                <box>
+                    <bottomPen lineWidth="0.2"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <text><![CDATA[Address]]></text>
+            </staticText>
+            <staticText>
+                <reportElement uuid="62c95861-0764-4724-876c-346b57fabdfe" x="477" y="0" width="78" height="20"/>
+                <box>
+                    <bottomPen lineWidth="0.2"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <text><![CDATA[Contact No]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="15" splitType="Stretch">
+            <textField>
+                <reportElement uuid="1206c5db-7c40-4530-9a0b-3031b0f03303" x="0" y="0" width="68" height="15"/>
+                <box>
+                    <bottomPen lineWidth="0.2"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{customer_no}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="248eba07-3175-46a5-ab0c-8e760e2911e7" x="68" y="0" width="147" height="15"/>
+                <box>
+                    <bottomPen lineWidth="0.2"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="154a844c-07b8-4a20-b15e-68c52d1d63c7" x="215" y="0" width="67" height="15"/>
+                <box>
+                    <bottomPen lineWidth="0.2"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{bday}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="98e45c65-b140-4e85-ade7-32fb5a082f4e" x="282" y="0" width="47" height="15"/>
+                <box>
+                    <bottomPen lineWidth="0.2"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="18058846-f48c-43ff-8dd8-2e471c39745a" x="329" y="0" width="148" height="15"/>
+                <box>
+                    <bottomPen lineWidth="0.2"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{address}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement uuid="98e45c65-b140-4e85-ade7-32fb5a082f4e" x="477" y="0" width="78" height="15"/>
+                <box>
+                    <bottomPen lineWidth="0.2"/>
+                </box>
+                <textElement verticalAlignment="Middle">
+                    <paragraph leftIndent="2"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$F{contact_no}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band splitType="Stretch"/>
+    </columnFooter>
+    <pageFooter>
+        <band splitType="Stretch"/>
+    </pageFooter>
+    <summary>
+        <band height="42" splitType="Stretch"/>
+    </summary>
+</jasperReport>

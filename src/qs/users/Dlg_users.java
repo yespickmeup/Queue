@@ -666,6 +666,12 @@ public class Dlg_users extends javax.swing.JDialog {
     private void save_user() {
         int row = tbl_users.getSelectedRow();
         if (row < 0) {
+            String where = " where user_id='" + MyUser.getUser_id() + "' and privelege like 'Users - (Add)' ";
+            List<User_priveleges.to_user_priveleges> datas = User_priveleges.ret_data(where);
+            if (datas.isEmpty()) {
+                Alert.set(0, "Privilege Not Added!");
+                return;
+            }
             int id = 0;
             String screen_name = jTextField1.getText();
             String user_name = jTextField2.getText();
@@ -702,6 +708,12 @@ public class Dlg_users extends javax.swing.JDialog {
             nd.setVisible(true);
 
         } else {
+            String where = " where user_id='" + MyUser.getUser_id() + "' and privelege like 'Users - (Edit)' ";
+            List<User_priveleges.to_user_priveleges> datas = User_priveleges.ret_data(where);
+            if (datas.isEmpty()) {
+                Alert.set(0, "Privilege Not Added!");
+                return;
+            }
             Users.to_users u = (Users.to_users) tbl_users_ALM.get(row);
             int id = u.id;
             String screen_name = jTextField1.getText();
@@ -851,6 +863,12 @@ public class Dlg_users extends javax.swing.JDialog {
             }
         }
         if (col == 5) {
+            String where = " where user_id='" + MyUser.getUser_id() + "' and privelege like 'Users - (Delete)' ";
+            List<User_priveleges.to_user_priveleges> datas = User_priveleges.ret_data(where);
+            if (datas.isEmpty()) {
+                Alert.set(0, "Privilege Not Added!");
+                return;
+            }
             Window p = (Window) this;
             Dlg_confirm_delete nd = Dlg_confirm_delete.create(p, true);
             nd.setTitle("");
@@ -880,8 +898,8 @@ public class Dlg_users extends javax.swing.JDialog {
 
                     List<User_settings.to_user_settings> settings = User_settings.ret_data(" where user_id ='" + user.id + "' ");
                     if (!settings.isEmpty()) {
-                        User_settings.to_user_settings to=(User_settings.to_user_settings) settings.get(0);
-                        int id=to.id;
+                        User_settings.to_user_settings to = (User_settings.to_user_settings) settings.get(0);
+                        int id = to.id;
                         String user_id = "" + user.id;
                         String user_name = user.user_name;
                         String counter_id = data.counter_id;
@@ -890,8 +908,8 @@ public class Dlg_users extends javax.swing.JDialog {
                         String updated_at = DateType.now();
                         String created_by = to.created_by;
                         String updated_by = MyUser.getUser_id();
-                         User_settings.to_user_settings to2=new User_settings.to_user_settings(id, user_id, user_name, counter_id, counter_no, created_at, updated_at, created_by, updated_by);
-                         User_settings.update_data(to2);
+                        User_settings.to_user_settings to2 = new User_settings.to_user_settings(id, user_id, user_name, counter_id, counter_no, created_at, updated_at, created_by, updated_by);
+                        User_settings.update_data(to2);
                         Alert.set(2, "");
                     } else {
                         int id = 0;
@@ -947,6 +965,7 @@ public class Dlg_users extends javax.swing.JDialog {
                 ret_priveleges();
             }
         }
+
         if (col == 3) {
             if (privelege.add == false) {
                 int id = 0;

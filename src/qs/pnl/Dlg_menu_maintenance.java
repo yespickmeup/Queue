@@ -9,11 +9,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
 import java.util.logging.Level;
 import javax.swing.JLabel;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
+import qs.users.MyUser;
+import qs.users.User_priveleges;
 
 /**
  *
@@ -190,6 +193,8 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
         jXLabel1 = new org.jdesktop.swingx.JXLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
@@ -205,7 +210,7 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
         jLabel7.setBackground(new java.awt.Color(234, 234, 234));
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/hierarchical-structure (1).png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/team (1).png"))); // NOI18N
         jLabel7.setToolTipText("Departments");
         jLabel7.setOpaque(true);
         jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -228,8 +233,8 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
         jLabel8.setBackground(new java.awt.Color(234, 234, 234));
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/hierarchical-structure.png"))); // NOI18N
-        jLabel8.setToolTipText("Department Members");
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/team2.png"))); // NOI18N
+        jLabel8.setToolTipText("Departments");
         jLabel8.setOpaque(true);
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -243,8 +248,8 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
         jLabel9.setBackground(new java.awt.Color(234, 234, 234));
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/hierarchical-structure (2).png"))); // NOI18N
-        jLabel9.setToolTipText("Transaction Types");
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/megaphone.png"))); // NOI18N
+        jLabel9.setToolTipText("Announcements");
         jLabel9.setOpaque(true);
         jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -255,18 +260,55 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
             }
         });
 
+        jLabel10.setBackground(new java.awt.Color(234, 234, 234));
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/bank-teller.png"))); // NOI18N
+        jLabel10.setToolTipText("Counters");
+        jLabel10.setOpaque(true);
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel10MouseEntered(evt);
+            }
+        });
+
+        jLabel11.setBackground(new java.awt.Color(234, 234, 234));
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/courthouse.png"))); // NOI18N
+        jLabel11.setToolTipText("Departments");
+        jLabel11.setOpaque(true);
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel11MouseEntered(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jXLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 58, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,8 +316,11 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(jXLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -295,11 +340,11 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        ok("Service Departments", jLabel7);
+        ok("Customers", jLabel7);
     }//GEN-LAST:event_jLabel7MouseClicked
 
     private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
-        label("Service Departments", jLabel7);
+        label("Customers", jLabel7);
     }//GEN-LAST:event_jLabel7MouseEntered
 
     private void formWindowLostFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowLostFocus
@@ -307,26 +352,44 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowLostFocus
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        ok("Service Department Members", jLabel8);
+        ok("Users", jLabel8);
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered
-        label("Service Department Members", jLabel8);
+        label("Users", jLabel8);
     }//GEN-LAST:event_jLabel8MouseEntered
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        ok("Service Transaction Type", jLabel9);
+        ok("Announcements", jLabel9);
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
-        label("Service Transaction Type", jLabel9);
+        label("Announcements", jLabel9);
     }//GEN-LAST:event_jLabel9MouseEntered
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        ok("Counters", jLabel10);
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jLabel10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseEntered
+        label("Counters", jLabel10);
+    }//GEN-LAST:event_jLabel10MouseEntered
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        ok("Departments", jLabel11);
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jLabel11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseEntered
+        label("Departments", jLabel11);
+    }//GEN-LAST:event_jLabel11MouseEntered
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -343,7 +406,7 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
     }
 
     private void hover() {
-        JLabel[] lbl = {jLabel7, jLabel8, jLabel9};
+        JLabel[] lbl = {jLabel7, jLabel8, jLabel9, jLabel10, jLabel11};
         for (final JLabel l : lbl) {
             l.addMouseListener(new MouseAdapter() {
                 @Override
@@ -367,7 +430,7 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
     }
 
     private void hide2() {
-        JLabel[] lbl = {jLabel7, jLabel8, jLabel9};
+        JLabel[] lbl = {jLabel7, jLabel8, jLabel9, jLabel10, jLabel11};
         for (JLabel l : lbl) {
             l.setEnabled(false);
         }
@@ -375,24 +438,33 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
     }
 
     private void set_previledge() {
-//        String where = " where user_id='" + MyUser.getUser_id() + "' order by previledge asc";
-//        List<User_previleges.to_user_previleges> datas = User_previleges.ret_data(where);
-//
-//        for (User_previleges.to_user_previleges to : datas) {
-//            if (to.previledge.equalsIgnoreCase("Service Departments")) {
-//                jLabel7.setEnabled(true);
-//                jLabel7.setBackground(new java.awt.Color(157, 184, 46));
-//            }
-//
-//            if (to.previledge.equalsIgnoreCase("Service Department Members")) {
-//                jLabel8.setEnabled(true);
-//                jLabel8.setBackground(new java.awt.Color(157, 184, 46));
-//            }
-//            if (to.previledge.equalsIgnoreCase("Service Transaction Type")) {
-//                jLabel9.setEnabled(true);
-//                jLabel9.setBackground(new java.awt.Color(157, 184, 46));
-//            }
-//        }
+        String where = " where user_id='" + MyUser.getUser_id() + "' order by privelege asc";
+        List<User_priveleges.to_user_priveleges> datas = User_priveleges.ret_data(where);
+
+        for (User_priveleges.to_user_priveleges to : datas) {
+           
+            if (to.privelege.equalsIgnoreCase("Customers - (View)")) {
+                jLabel7.setEnabled(true);
+                jLabel7.setBackground(new java.awt.Color(157, 184, 46));
+            }
+
+            if (to.privelege.equalsIgnoreCase("Users - (View)")) {
+                jLabel8.setEnabled(true);
+                jLabel8.setBackground(new java.awt.Color(157, 184, 46));
+            }
+            if (to.privelege.equalsIgnoreCase("Announcements - (View)")) {
+                jLabel9.setEnabled(true);
+                jLabel9.setBackground(new java.awt.Color(157, 184, 46));
+            }
+            if (to.privelege.equalsIgnoreCase("Counters - (View)")) {
+                jLabel10.setEnabled(true);
+                jLabel10.setBackground(new java.awt.Color(157, 184, 46));
+            }
+            if (to.privelege.equalsIgnoreCase("Departments - (View)")) {
+                jLabel11.setEnabled(true);
+                jLabel11.setBackground(new java.awt.Color(157, 184, 46));
+            }
+        }
     }
 
     public void do_pass() {
