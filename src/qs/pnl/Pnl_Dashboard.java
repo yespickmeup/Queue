@@ -795,15 +795,15 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
     }
 
     private void t_number() {
-        Dlg_generate_number dtc = new Dlg_generate_number();
-        dtc.do_pass();
-        MyFrame.set2(dtc.getSurface(), jPanel1, "Generate", dtc.getWidth(), dtc.getHeight());
+//        Dlg_generate_number dtc = new Dlg_generate_number();
+//        dtc.do_pass();
+//        MyFrame.set2(dtc.getSurface(), jPanel1, "Generate", dtc.getWidth(), dtc.getHeight());
     }
 
     private void t_call() {
         Dlg_call_number dtc = new Dlg_call_number();
         dtc.do_pass();
-        MyFrame.set2(dtc.getSurface(), jPanel1, "Call", dtc.getWidth(), dtc.getHeight());
+        MyFrame.set(dtc.getSurface(), jPanel1, "Call");
     }
 
     private void m_customers() {

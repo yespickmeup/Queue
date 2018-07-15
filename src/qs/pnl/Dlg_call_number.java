@@ -613,7 +613,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
         jLabel5.setBackground(new java.awt.Color(204, 204, 204));
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(54, 128, 11));
+        jLabel5.setForeground(new java.awt.Color(18, 115, 172));
         jLabel5.setText(" Account Details:");
         jLabel5.setOpaque(true);
 
@@ -660,7 +660,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(54, 128, 11));
+        jLabel1.setForeground(new java.awt.Color(18, 115, 172));
         jLabel1.setText(" Department:");
         jLabel1.setOpaque(true);
 
@@ -669,7 +669,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
         jLabel3.setBackground(new java.awt.Color(204, 204, 204));
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(54, 128, 11));
+        jLabel3.setForeground(new java.awt.Color(18, 115, 172));
         jLabel3.setText(" Transaction Number:");
         jLabel3.setOpaque(true);
 
@@ -678,7 +678,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
         jLabel11.setBackground(new java.awt.Color(204, 204, 204));
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(54, 128, 11));
+        jLabel11.setForeground(new java.awt.Color(18, 115, 172));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Counter:");
         jLabel11.setOpaque(true);
