@@ -60,7 +60,9 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel51 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         pnl_main_holder = new javax.swing.JPanel();
         pnl_login = new javax.swing.JPanel();
         login = new javax.swing.JPanel();
@@ -102,7 +104,7 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
             }
         });
 
-        jPanel5.setBackground(new java.awt.Color(54, 128, 11));
+        jPanel5.setBackground(new java.awt.Color(18, 115, 172));
 
         jLabel51.setBackground(new java.awt.Color(234, 234, 234));
         jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -118,12 +120,28 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("V1.11.1712");
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/img/linq_logo_small.png"))); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Queing System");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Sibulan Water District");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -134,24 +152,16 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
                 .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(1, 1, 1)
+                        .addComponent(jLabel4))
+                    .addComponent(jLabel1))
+                .addGap(2, 2, 2))
         );
-
-        jLabel7.setBackground(new java.awt.Color(54, 128, 11));
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel7.setOpaque(true);
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel7MouseEntered(evt);
-            }
-        });
 
         pnl_main_holder.setBackground(new java.awt.Color(204, 204, 204));
         pnl_main_holder.setLayout(new java.awt.CardLayout());
@@ -162,7 +172,7 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
 
         jLabel8.setBackground(new java.awt.Color(69, 157, 18));
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(69, 157, 18));
+        jLabel8.setForeground(new java.awt.Color(25, 130, 191));
         jLabel8.setText("Username:");
 
         tf_username.addActionListener(new java.awt.event.ActionListener() {
@@ -173,7 +183,7 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
 
         jLabel12.setBackground(new java.awt.Color(69, 157, 18));
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(69, 157, 18));
+        jLabel12.setForeground(new java.awt.Color(25, 130, 191));
         jLabel12.setText("Password:");
 
         tf_password.addActionListener(new java.awt.event.ActionListener() {
@@ -184,17 +194,17 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
 
         jLabel13.setBackground(new java.awt.Color(69, 157, 18));
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(69, 157, 18));
+        jLabel13.setForeground(new java.awt.Color(25, 130, 191));
         jLabel13.setText("Login with your ");
 
         jLabel14.setBackground(new java.awt.Color(69, 157, 18));
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(69, 157, 18));
+        jLabel14.setForeground(new java.awt.Color(25, 130, 191));
         jLabel14.setText("credentials!");
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(129, 159, 0));
+        jButton2.setForeground(new java.awt.Color(25, 130, 191));
         jButton2.setText("Login");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,22 +213,22 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
         });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/img/synapse_logo_green (Custom).png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/img/synapse (Custom).png"))); // NOI18N
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         jLabel30.setBackground(new java.awt.Color(69, 157, 18));
         jLabel30.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(69, 157, 18));
+        jLabel30.setForeground(new java.awt.Color(25, 130, 191));
         jLabel30.setText("Synapse Software ");
 
         jLabel31.setBackground(new java.awt.Color(69, 157, 18));
         jLabel31.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(69, 157, 18));
+        jLabel31.setForeground(new java.awt.Color(25, 130, 191));
         jLabel31.setText("Technologies");
 
         jLabel32.setBackground(new java.awt.Color(69, 157, 18));
         jLabel32.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(69, 157, 18));
+        jLabel32.setForeground(new java.awt.Color(25, 130, 191));
         jLabel32.setText(" Integrating business with technology");
 
         javax.swing.GroupLayout loginLayout = new javax.swing.GroupLayout(login);
@@ -309,7 +319,7 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 115, Short.MAX_VALUE)
+            .addGap(0, 117, Short.MAX_VALUE)
         );
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
@@ -322,7 +332,7 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 116, Short.MAX_VALUE)
+            .addGap(0, 118, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout pnl_loginLayout = new javax.swing.GroupLayout(pnl_login);
@@ -358,7 +368,7 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         pnl_main_holder.add(jPanel1, "card2");
 
-        jPanel6.setBackground(new java.awt.Color(69, 157, 18));
+        jPanel6.setBackground(new java.awt.Color(25, 130, 191));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -375,19 +385,14 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(pnl_main_holder, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -410,19 +415,6 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
     private void tf_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_passwordActionPerformed
         check_credentials();
     }//GEN-LAST:event_tf_passwordActionPerformed
-
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
-        if (jPanel6.isVisible()) {
-            jPanel6.setVisible(false);
-        } else {
-            jPanel6.setVisible(true);
-        }
-    }//GEN-LAST:event_jLabel7MouseClicked
-
-    private void jLabel7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseEntered
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jLabel7MouseEntered
 
     private void jLabel51MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel51MouseClicked
         menu();
@@ -464,11 +456,13 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JDesktopPane jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -487,6 +481,7 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
 
     private void myInit() {
 
+        jLabel4.setText(System.getProperty("business_name", ""));
         jPanel6.setVisible(false);
         time();
         set_card_items();

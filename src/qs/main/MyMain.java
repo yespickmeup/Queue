@@ -5,6 +5,7 @@
  */
 package qs.main;
 
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.io.BufferedReader;
@@ -19,6 +20,7 @@ import javax.swing.JFrame;
 import mijzcx.synapse.desk.utils.Application;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import qs.pnl.Pnl_Dashboard;
+
 import qs.util.Center;
 
 /**
@@ -57,46 +59,11 @@ public class MyMain {
             System.out.println("local_ip: " + System.getProperty("local_ip"));
             System.out.println("pool_host: " + System.getProperty("pool_host"));
 
-//            String where = "";
-//            List<Settings.to_settings> datas = Settings.ret_data(where);
-//            Settings.to_settings setting = datas.get(0);
-//
-//            if (setting.receipt_printing_enabled == 1) {
-//                System.setProperty("receipt_printing_enabled", "true");
-//                System.setProperty("print_to_receipts", "true");
-//            } else {
-//                System.setProperty("print_to_receipts", "false");
-//                System.setProperty("receipt_printing_enabled", "false");
-//            }
-//            if (setting.receipt_printing_enabled2 == 1) {
-//                System.setProperty("receipt_printing_enabled2", "true");
-//                System.setProperty("print_to_receipts2", "true");
-//            } else {
-//                System.setProperty("receipt_printing_enabled2", "false");
-//                System.setProperty("print_to_receipts2", prop.getProperty("print_to_receipts2", "false"));
-//            }
-//            if (setting.kitchen_printing_enable == 1) {
-//                System.setProperty("kitchen_order_printing_enabled", "true");
-//            } else {
-//                System.setProperty("kitchen_order_printing_enabled", "false");
-//            }
-//            if (setting.allow_negative_inventory == 1) {
-//                System.setProperty("allow_negative_inventory", "true");
-//            } else {
-//                System.setProperty("allow_negative_inventory", "false");
-//            }
-//
-//            if (setting.receipt_printer_show_dialog == 1) {
-//                System.setProperty("receipt_printer_show_dialog", "true");
-//            } else {
-//                System.setProperty("receipt_printer_show_dialog", "false");
-//            }
-            //
-//            System.setProperty("business_name", setting.company_name);
-//            System.setProperty("address", setting.company_address);
-//            System.setProperty("operated_by", setting.company_operated_by);
-//            System.setProperty("slogan", setting.company_slogan);
-//            System.setProperty("contact_number", setting.company_contact_no);
+            System.setProperty("business_name", prop.getProperty("business_name", ""));
+            System.setProperty("address", prop.getProperty("address", ""));
+            System.setProperty("operated_by", prop.getProperty("operated_by", ""));
+            System.setProperty("slogan", prop.getProperty("slogan", ""));
+            System.setProperty("contact_number", prop.getProperty("contact_number", ""));
 //            System.setProperty("fax_number", setting.company_fax_no);
 //            System.setProperty("email_address", setting.company_email_address);
 //            System.setProperty("receipt_footer", setting.bir_receipt_footer);
@@ -166,6 +133,10 @@ public class MyMain {
             System.setProperty("VLC_PLUGIN_PATH", prop.getProperty("VLC_PLUGIN_PATH", ""));
             System.setProperty("VLC_PLUGIN_NATIVE_PATH", prop.getProperty("VLC_PLUGIN_NATIVE_PATH", ""));
 
+            System.setProperty("location_screen_x", prop.getProperty("location_screen_x", "0"));
+            System.setProperty("location_screen_y", prop.getProperty("location_screen_y", "0"));
+            System.setProperty("font_size", prop.getProperty("font_size", "medium"));
+
             //
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -186,18 +157,20 @@ public class MyMain {
     }
 
     private void start() {
+
         Application.setSystemLookAndFeel();
         Pnl_Dashboard pnl = new Pnl_Dashboard();
-//        Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/servicing/imgs/synapse.png"));
-//        pnl.setIconImage(image);
+
+        Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/qs/img/link_logo (Custom).png"));
+        pnl.setIconImage(image);
         Toolkit tk = Toolkit.getDefaultToolkit();
         int xSize = ((int) tk.getScreenSize().
                 getWidth());
         int ySize = ((int) tk.getScreenSize().
                 getHeight());
         pnl.setSize(xSize, ySize);
-        pnl.wallpaper(pnl);
         pnl.setVisible(true);
+
     }
 
     public static String getSerialNumber() {

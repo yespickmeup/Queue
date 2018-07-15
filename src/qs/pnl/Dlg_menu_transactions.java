@@ -353,7 +353,7 @@ public class Dlg_menu_transactions extends javax.swing.JDialog {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     if (l.isEnabled()) {
-                        l.setBackground(new java.awt.Color(129, 159, 0));
+                        l.setBackground(new java.awt.Color(25,130,191));
                     }
 
                 }
@@ -361,7 +361,7 @@ public class Dlg_menu_transactions extends javax.swing.JDialog {
                 @Override
                 public void mouseExited(MouseEvent e) {
                     if (l.isEnabled()) {
-                        l.setBackground(new java.awt.Color(157, 184, 46));
+                        l.setBackground(new java.awt.Color(234, 234, 234));
                     }
                 }
             });
@@ -382,7 +382,7 @@ public class Dlg_menu_transactions extends javax.swing.JDialog {
 
             if (to.privelege.equalsIgnoreCase("Call Number - (View)")) {
                 jLabel7.setEnabled(true);
-                jLabel7.setBackground(new java.awt.Color(157, 184, 46));
+                jLabel7.setBackground(new java.awt.Color(18,115,172));
             }
 
         }
