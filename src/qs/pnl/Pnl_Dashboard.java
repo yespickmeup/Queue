@@ -626,11 +626,16 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
 //                System.out.println("setting.counter_id: "+setting.counter_id);
                 Counters.to_counters counter = (Counters.to_counters) counters.get(0);
 
-                System.setProperty("counter_no", setting.counter_no);
-                System.setProperty("teller", to.screen_name);
-                System.setProperty("teller_id", "" + to.id);
-                System.setProperty("department_id", counter.department_id);
-                System.setProperty("department", counter.department);
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        System.setProperty("counter_no", setting.counter_no);
+                        System.setProperty("teller", to.screen_name);
+                        System.setProperty("teller_id", "" + to.id);
+                        System.setProperty("department_id", counter.department_id);
+                        System.setProperty("department", counter.department);
+                    }
+                });
 
             }
             jPanel1.removeAll();

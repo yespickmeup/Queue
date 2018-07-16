@@ -21,7 +21,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.ListModel;
@@ -319,7 +318,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
             }
         });
 
-        jButton15.setText("Refresh");
+        jButton15.setText("Refresh - F5");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton15ActionPerformed(evt);
@@ -787,13 +786,13 @@ public class Dlg_call_number extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if (out != null) {
 
-            String queue_no = jLabel4.getText();
-            String counter_no = jLabel12.getText();
-            out.println("" + counter_no + "," + queue_no + ",2");
-            System.out.println("Calling...." + counter_no + " = " + queue_no);
-        }
+        String queue_no = jLabel4.getText();
+        String counter_no = jLabel12.getText();
+        String message = "" + counter_no + "," + queue_no + ",2";
+        send_message(message);
+
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -911,16 +910,17 @@ public class Dlg_call_number extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     private void myInit() {
 
-//        System.setProperty("counter_no", "02");
+//        System.setProperty("pool_host", "192.168.1.148");
+//        System.setProperty("counter_no", "01");
 //        System.setProperty("teller", "Ronald Pascua");
 //        System.setProperty("teller_id", "1");
 //        System.setProperty("department", "Evaluation");
 //        System.setProperty("department_id", "1");
-//        System.setProperty("chatServerAddress", "192.168.1.152");
+//        System.setProperty("chatServerAddress", "192.168.1.148");
 //        System.setProperty("chatServerPort", "1000");
         String environment = System.getProperty("environment", "production");
         if (environment.equalsIgnoreCase("production")) {
-            jButton15.setVisible(false);
+//            jButton15.setVisible(false);
             jButton16.setVisible(false);
             jButton9.setVisible(false);
             jButton10.setVisible(false);
@@ -946,7 +946,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
         set_border();
         get_previous_number();
 
-        connect_to_queue_server();
+//        connect_to_queue_server();
         start_teller_server();
     }
 
@@ -980,18 +980,19 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
-                    //                btn_0.doClick();
-                    if (listenerSocket != null) {
-                        listenerSocket.close();
-                    }
-
-                } catch (IOException ex) {
-                    Logger.getLogger(Dlg_call_number.class.getName()).log(Level.SEVERE, null, ex);
-                }
+              
                 disposed();
             }
         });
+        KeyMapping.mapKeyWIFW(getSurface(),
+                KeyEvent.VK_F5, new KeyAction() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ret_waiting_list();
+            }
+        });
+
     }
     // </editor-fold>
 
@@ -1096,7 +1097,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
 //        System.out.println("department_id: " + department_id);
         String date = DateType.sf.format(new Date());
         String where = " where status=0 and department_id='" + department_id + "' and Date(created_at)='" + date + "' order by id asc ";
-//        System.out.println(where);
+        System.out.println(where);
         List<to_queues> q = Queues.ret_data(where);
         loadData_queues(q);
     }
@@ -1107,9 +1108,9 @@ public class Dlg_call_number extends javax.swing.JDialog {
     private void get_previous_number() {
         String counter_no = System.getProperty("counter_no", "01");
         String department = System.getProperty("department", "Evaluation");
-        String department_id = System.getProperty("department_id", "1");
+        String department_id = System.getProperty("department_id", "");
         String teller = System.getProperty("teller", "Ronald Pascua");
-        String teller_id = System.getProperty("teller_id", "1");
+        String teller_id = System.getProperty("teller_id", "");
 
         String date = DateType.sf.format(new Date());
         String where = " where status=0 and teller_id='" + teller_id + "' and department_id='" + department_id + "' and Date(created_at)='" + date + "' and teller IS NOT NULL order by id asc ";
@@ -1137,13 +1138,14 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
     private void get_new_number() {
         String counter_no = System.getProperty("counter_no", "");
-        String department = System.getProperty("department", "Evaluation");
-        String department_id = System.getProperty("department_id", "1");
-        String teller = System.getProperty("teller", "Ronald Pascua");
-        String teller_id = System.getProperty("teller_id", "1");
+        String department = System.getProperty("department", "");
+        String department_id = System.getProperty("department_id", "");
+        String teller = System.getProperty("teller", "");
+        String teller_id = System.getProperty("teller_id", "");
 
         String date = DateType.sf.format(new Date());
         String where = " where status=0 and department_id='" + department_id + "' and teller IS NULL order by id asc ";
+        System.out.println(where);
         List<to_queues> q = Queues.ret_data(where);
 
         if (!q.isEmpty()) {
@@ -1169,11 +1171,26 @@ public class Dlg_call_number extends javax.swing.JDialog {
             jButton4.setEnabled(true);
             jButton5.setEnabled(true);
 
-            if (out != null) {
-                String queue_no = jLabel4.getText();
-                out.println("" + counter_no + "," + queue_no + ",1");
-                System.out.println("New...." + counter_no + " = " + queue_no);
-            }
+            String queue_no = jLabel4.getText();
+            String message = "" + counter_no + "," + queue_no + ",1";
+            send_message(message);
+
+        }
+    }
+    PrintWriter out2 = null;
+
+    private void send_message(String message) {
+        try {
+            System.out.println("Sending Message to Server...");
+            String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
+            int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
+            Socket s = new Socket(queue_server_ip, queue_server_port);
+            out2 = new PrintWriter(s.getOutputStream(), true);
+            out2.println(message);
+            System.out.println("Message: " + message);
+
+        } catch (IOException ex) {
+            System.out.println("Error: " + ex);
         }
     }
 
@@ -1208,6 +1225,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
                     ret_cancelled_queues();
                 }
                 if (status == 3) {
+                    type = 3;
                     ret_noshow_queues();
                 }
 
@@ -1218,12 +1236,10 @@ public class Dlg_call_number extends javax.swing.JDialog {
                 jButton2.setEnabled(false);
                 jButton3.setEnabled(false);
 
-                if (out != null) {
-                    String queue_no = jLabel4.getText();
-                    String counter_no = jLabel12.getText();
-                    out.println("" + counter_no + "," + queue_no + "," + type);
-                    System.out.println("Hide...." + counter_no + " = " + queue_no);
-                }
+                String queue_no = jLabel4.getText();
+                String counter_no = jLabel12.getText();
+                String message = "" + counter_no + "," + queue_no + "," + type;
+                send_message(message);
 
                 jLabel2.setText("");
                 jLabel4.setText("");
@@ -1231,12 +1247,6 @@ public class Dlg_call_number extends javax.swing.JDialog {
                 jLabel7.setText("Name : ");
                 jXLabel1.setText("Address: ");
 
-                if (out != null) {
-                    String queue_no = jLabel4.getText();
-                    String counter_no = jLabel12.getText();
-                    out.println("" + counter_no + "," + queue_no + ",3");
-                    System.out.println("No Show...." + counter_no + " = " + queue_no);
-                }
             }
         }
         );
@@ -1339,9 +1349,9 @@ public class Dlg_call_number extends javax.swing.JDialog {
     }
 
     private void ret_finished_queues() {
-        String counter_no = System.getProperty("counter_no", "01");
-        String department = System.getProperty("department", "Evaluation");
-        String department_id = System.getProperty("department_id", "1");
+        String counter_no = System.getProperty("counter_no", "");
+        String department = System.getProperty("department", "");
+        String department_id = System.getProperty("department_id", "");
         String date = DateType.sf.format(jDateChooser1.getDate());
 
         String where = " where status=1 and department_id='" + department_id + "' and Date(created_at)='" + date + "' order by id asc ";
@@ -1445,9 +1455,9 @@ public class Dlg_call_number extends javax.swing.JDialog {
     }
 
     private void ret_cancelled_queues() {
-        String counter_no = System.getProperty("counter_no", "01");
-        String department = System.getProperty("department", "Evaluation");
-        String department_id = System.getProperty("department_id", "1");
+        String counter_no = System.getProperty("counter_no", "");
+        String department = System.getProperty("department", "");
+        String department_id = System.getProperty("department_id", "");
         String date = DateType.sf.format(jDateChooser2.getDate());
 
         String where = " where status=2 and department_id='" + department_id + "' and Date(created_at)='" + date + "' order by id asc ";
@@ -1551,9 +1561,9 @@ public class Dlg_call_number extends javax.swing.JDialog {
     }
 
     private void ret_noshow_queues() {
-        String counter_no = System.getProperty("counter_no", "01");
-        String department = System.getProperty("department", "Evaluation");
-        String department_id = System.getProperty("department_id", "1");
+        String counter_no = System.getProperty("counter_no", "");
+        String department = System.getProperty("department", "");
+        String department_id = System.getProperty("department_id", "");
         String date = DateType.sf.format(jDateChooser3.getDate());
 
         String where = " where status=3 and department_id='" + department_id + "' and Date(created_at)='" + date + "' order by id asc ";
@@ -1568,7 +1578,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
     Socket socket_queue = null;
 
     public void connect_to_queue_server() {
-        String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.104");
+        String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.148");
 
         if (!queue_server_ip.isEmpty()) {
             int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
@@ -1577,6 +1587,11 @@ public class Dlg_call_number extends javax.swing.JDialog {
             Thread t = new Thread(new Runnable() {
                 @Override
                 public void run() {
+//                    System.out.println("socket_queue isClosed: " + socket_queue.isClosed());
+//                    System.out.println("socket_queue isBound: " + socket_queue.isBound());
+//                    System.out.println("socket_queue isConnected: " + socket_queue.isConnected());
+//                    System.out.println("socket_queue isInputShutdown: " + socket_queue.isInputShutdown());
+//                    System.out.println("socket_queue isOutputShutdown: " + socket_queue.isOutputShutdown());
 
                     try {
                         if (socket_queue == null) {
@@ -1595,7 +1610,12 @@ public class Dlg_call_number extends javax.swing.JDialog {
                                 in = new BufferedReader(new InputStreamReader(socket_queue.getInputStream()));
                                 out = new PrintWriter(socket_queue.getOutputStream(), true);
                             } else {
-
+                                socket_queue.close();
+                                in.close();
+                                out.close();
+                                socket_queue = new Socket(queue_server_ip, queue_server_port);
+                                in = new BufferedReader(new InputStreamReader(socket_queue.getInputStream()));
+                                out = new PrintWriter(socket_queue.getOutputStream(), true);
                             }
 
                         }
@@ -1638,97 +1658,37 @@ public class Dlg_call_number extends javax.swing.JDialog {
         if (counter_no.equalsIgnoreCase("06")) {
             port = FitIn.toInt(System.getProperty("counter_no_6_port", "2006"));
         }
-        final int port2 = port;
+         int port2 = port;
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    if (listenerSocket == null) {
-                        listenerSocket = new ServerSocket(port2);
-                        new Handler(listenerSocket.accept()).start();
-                    } else {
-                        listenerSocket.setReuseAddress(true);
-                    }
+//                    String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
+//                    int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
+                    System.out.println("Starting Server...");
+                    ServerSocket listener = new ServerSocket(port2);
+                    try {
+                        while (true) {
+                            java.net.Socket socket = listener.accept();
+                            try {
+                                BufferedReader in = new BufferedReader(new InputStreamReader(
+                                        socket.getInputStream()));
+                                String input = in.readLine();
+                                ret_waiting_list();
 
-                    System.out.println("Teller Server is up and running at port: " + port2);
+                            } finally {
+                                socket.close();
+                            }
+                        }
+                    } finally {
+                        listener.close();
+                    }
                 } catch (IOException ex) {
-                    System.out.println("Server Ip Address already in use");
-                    System.out.println("Call Number Logs: " + ex);
-//                    Logger.getLogger(Dlg_queue.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Error: " + ex);
                 }
             }
         });
         t.start();
-    }
-    ServerSocket listenerSocket = null;
-
-    public class Handler extends Thread {
-
-        private String name;
-        private final Socket socket;
-        private BufferedReader in;
-        private PrintWriter out;
-
-        public Handler(Socket socket) {
-            this.socket = socket;
-        }
-
-        @Override
-        public void run() {
-            try {
-
-                in = new BufferedReader(new InputStreamReader(
-                        socket.getInputStream()));
-                out = new PrintWriter(socket.getOutputStream(), true);
-
-                while (true) {
-                    out.println("SUBMITNAME");
-                    name = in.readLine();
-                    if (name == null) {
-                        return;
-                    }
-                    synchronized (names) {
-                        if (!names.contains(name)) {
-                            names.add(name);
-                            break;
-                        }
-                    }
-                }
-
-                out.println("NAMEACCEPTED");
-                writers.add(out);
-
-                while (true) {
-                    String input = in.readLine();
-                    if (input == null) {
-                        return;
-                    }
-//                    System.out.println("input: " + input);
-//                    String message = input.replaceAll("\n", "<n>");
-//                    for (PrintWriter writer : writers) {
-//                        writer.println("MESSAGE%" + name + "%" + message);
-//                    }
-                    System.out.println("New Record added to queue!");
-                    ret_waiting_list();
-                }
-            } catch (IOException e) {
-                System.out.println("Call Number Logs: " + e);
-            } finally {
-
-                if (name != null) {
-                    names.remove(name);
-                }
-                if (out != null) {
-                    writers.remove(out);
-                }
-                try {
-                    socket.close();
-                    listenerSocket.close();
-                } catch (IOException e) {
-                    System.out.println("Call Number Logs: " + e);
-                }
-            }
-        }
     }
 
     //</editor-fold>
