@@ -30,7 +30,6 @@ import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -43,7 +42,6 @@ import qs.customers.Customers;
 import qs.queues.Queues;
 import qs.queues.Queues.to_queues;
 import qs.util.DateType;
-import qs.util.Dlg_confirm_action;
 import qs.util.Dlg_confirm_action2;
 import synsoftech.fields.Button;
 
@@ -183,7 +181,6 @@ public class Dlg_call_number extends javax.swing.JDialog {
         int y = (int) rect.getMaxY() - dialog.f.getHeight() - 55;
         dialog.f.setLocation(x, y);
         dialog.f.setVisible(true);
-
     }
     //</editor-fold>
 
@@ -292,6 +289,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -987,6 +985,17 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
         jLabel28.setText("Customer Address:");
 
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/settings (2).png"))); // NOI18N
+        jLabel30.setToolTipText("Settings");
+        jLabel30.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel30MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel30MouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -1016,7 +1025,8 @@ public class Dlg_call_number extends javax.swing.JDialog {
                             .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel30))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel28)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1028,7 +1038,9 @@ public class Dlg_call_number extends javax.swing.JDialog {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel30))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel19)
                 .addGap(0, 0, 0)
@@ -1063,7 +1075,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -1213,6 +1225,16 @@ public class Dlg_call_number extends javax.swing.JDialog {
         finish_queue(1);
     }//GEN-LAST:event_jButton21ActionPerformed
 
+    private void jLabel30MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseEntered
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/settings (3).png")));
+        jLabel30.setBackground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_jLabel30MouseEntered
+
+    private void jLabel30MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseExited
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/settings (2).png")));
+        jLabel30.setBackground(new java.awt.Color(255, 255, 255));
+    }//GEN-LAST:event_jLabel30MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -1265,6 +1287,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1318,13 +1341,9 @@ public class Dlg_call_number extends javax.swing.JDialog {
             jButton14.setVisible(false);
         }
 
-        String counter_no = System.getProperty("counter_no", "");
-        jLabel12.setText(counter_no);
-
         init_key();
 
         init_tbl_queues(tbl_waiting_list);
-        ret_waiting_list();
         init_tbl_queues_finished(jTable2);
         ret_finished_queues();
         init_tbl_queues_cancelled(jTable4);
@@ -1332,11 +1351,30 @@ public class Dlg_call_number extends javax.swing.JDialog {
         init_tbl_queues_noshow(jTable3);
         ret_noshow_queues();
 //        set_border();
-        get_previous_number();
-
 //        connect_to_queue_server();
-        start_teller_server();
-        enable_buttons_gnn(true);
+    }
+
+    public void login() {
+
+        Window p = (Window) this;
+        Dlg_login nd = Dlg_login.create(p, true);
+        nd.setTitle("");
+        nd.setCallback(new Dlg_login.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_login.OutputData data) {
+                closeDialog.ok();
+                ret_waiting_list();
+                get_previous_number();
+                start_teller_server();
+
+                String counter_no = System.getProperty("counter_no", "");
+                jLabel12.setText(counter_no);
+                jLabel23.setText(counter_no);
+            }
+        });
+        nd.setLocationRelativeTo(jPanel9);
+        nd.setVisible(true);
     }
 
     private void close() {
@@ -1350,6 +1388,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
             public void ok(CloseDialog closeDialog, Dlg_confirm_action2.OutputData data) {
                 closeDialog.ok();
                 Dlg_call_number.this.f.dispose();
+               
             }
         });
         nd.setLocationRelativeTo(jPanel9);
@@ -1409,7 +1448,6 @@ public class Dlg_call_number extends javax.swing.JDialog {
                 if (jButton18.isEnabled()) {
                     call_again();
                 }
-
             }
         });
         KeyMapping.mapKeyWIFW(getSurface(),
@@ -1553,7 +1591,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
     private void ret_waiting_list() {
         String counter_no = System.getProperty("counter_no", "01");
         String department = System.getProperty("department", "Evaluation");
-        String department_id = System.getProperty("department_id", "1");
+        String department_id = System.getProperty("department_id", "");
 //        System.out.println("department_id: " + department_id);
         String date = DateType.sf.format(new Date());
         String where = " where status=0 and department_id='" + department_id + "' and Date(created_at)='" + date + "' and teller IS NULL order by id asc ";
@@ -1591,11 +1629,13 @@ public class Dlg_call_number extends javax.swing.JDialog {
             jLabel7.setText("Name : " + to.customer);
             jXLabel1.setText("Address: " + address);
 
-            jLabel23.setText(to.department);
-            jLabel21.setText(to.queue_no);
+//            jLabel23.setText(to.department);
+            jLabel19.setText(to.queue_no);
             jLabel25.setText("ID No.: " + to.customer_id);
             jLabel26.setText("Name : " + to.customer);
             jLabel29.setText("Address: " + address);
+            enable_buttons_gnn(false);
+        } else {
             enable_buttons_gnn(true);
         }
     }
@@ -1627,8 +1667,8 @@ public class Dlg_call_number extends javax.swing.JDialog {
             jLabel7.setText("Name : " + to.customer);
             jXLabel1.setText("Address: " + address);
 
-            jLabel23.setText(to.department);
-            jLabel21.setText(to.queue_no);
+//            jLabel23.setText(to.department);
+            jLabel19.setText(to.queue_no);
             jLabel25.setText("ID No.: " + to.customer_id);
             jLabel26.setText("Name : " + to.customer);
             jLabel29.setText("Address: " + address);
@@ -1648,31 +1688,19 @@ public class Dlg_call_number extends javax.swing.JDialog {
     }
 
     private void enable_buttons_gnn(boolean stmt) {
-        if (stmt) {
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
 
-                    jButton17.setEnabled(true);
-                    jButton18.setEnabled(false);
-                    jButton19.setEnabled(false);
-                    jButton20.setEnabled(false);
-                    jButton21.setEnabled(false);
-
-                }
-            });
+        if (stmt == true) {
+            jButton17.setEnabled(true);
+            jButton18.setEnabled(false);
+            jButton19.setEnabled(false);
+            jButton20.setEnabled(false);
+            jButton21.setEnabled(false);
         } else {
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    jButton17.setEnabled(false);
-                    jButton18.setEnabled(true);
-                    jButton19.setEnabled(true);
-                    jButton20.setEnabled(true);
-                    jButton21.setEnabled(true);
-
-                }
-            });
+            jButton17.setEnabled(false);
+            jButton18.setEnabled(true);
+            jButton19.setEnabled(true);
+            jButton20.setEnabled(true);
+            jButton21.setEnabled(true);
         }
 
     }
@@ -1688,6 +1716,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
     private void send_message(String message) {
         try {
             System.out.println("Sending Message to Server...");
+            print_config();
             String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
             int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
             Socket s = new Socket(queue_server_ip, queue_server_port);
@@ -1700,9 +1729,36 @@ public class Dlg_call_number extends javax.swing.JDialog {
         }
     }
 
+    private void print_config() {
+        String counter_no_1_ip = System.getProperty("counter_no_1_ip", "");
+        int counter_no_1_port = FitIn.toInt(System.getProperty("counter_no_1_port", ""));
+
+        String counter_no_2_ip = System.getProperty("counter_no_2_ip", "");
+        int counter_no_2_port = FitIn.toInt(System.getProperty("counter_no_2_port", ""));
+
+        String counter_no_3_ip = System.getProperty("counter_no_3_ip", "");
+        int counter_no_3_port = FitIn.toInt(System.getProperty("counter_no_3_port", ""));
+
+        String counter_no_4_ip = System.getProperty("counter_no_4_ip", "");
+        int counter_no_4_port = FitIn.toInt(System.getProperty("counter_no_4_port", ""));
+
+        String counter_no_5_ip = System.getProperty("counter_no_5_ip", "");
+        int counter_no_5_port = FitIn.toInt(System.getProperty("counter_no_5_port", ""));
+
+        String counter_no_6_ip = System.getProperty("counter_no_6_ip", "");
+        int counter_no_6_port = FitIn.toInt(System.getProperty("counter_no_6_port", ""));
+
+        System.out.println("counter_no_1_ip: " + counter_no_1_ip + " + counter_no_1_port: " + counter_no_1_port);
+        System.out.println("counter_no_2_ip: " + counter_no_2_ip + " + counter_no_2_port: " + counter_no_2_port);
+        System.out.println("counter_no_3_ip: " + counter_no_3_ip + " + counter_no_3_port: " + counter_no_3_port);
+        System.out.println("counter_no_4_ip: " + counter_no_4_ip + " + counter_no_4_port: " + counter_no_4_port);
+        System.out.println("counter_no_5_ip: " + counter_no_5_ip + " + counter_no_5_port: " + counter_no_5_port);
+        System.out.println("counter_no_6_ip: " + counter_no_6_ip + " + counter_no_6_port: " + counter_no_6_port);
+    }
+
     private void finish_queue(int status) {
         Window p = (Window) this;
-        Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
+        Dlg_confirm_action2 nd = Dlg_confirm_action2.create(p, true);
         nd.setTitle("");
         if (status == 1) {
             nd.do_pass(" Finish Transaction?");
@@ -1714,10 +1770,10 @@ public class Dlg_call_number extends javax.swing.JDialog {
             nd.do_pass(" No Show?");
         }
 
-        nd.setCallback(new Dlg_confirm_action.Callback() {
+        nd.setCallback(new Dlg_confirm_action2.Callback() {
 
             @Override
-            public void ok(CloseDialog closeDialog, Dlg_confirm_action.OutputData data) {
+            public void ok(CloseDialog closeDialog, Dlg_confirm_action2.OutputData data) {
                 closeDialog.ok();
                 Queues.update_queue(queue_id, status);
                 ret_waiting_list();
@@ -1754,16 +1810,17 @@ public class Dlg_call_number extends javax.swing.JDialog {
                 jLabel7.setText("Name : ");
                 jXLabel1.setText("Address: ");
 
-                jLabel23.setText("");
-                jLabel21.setText("");
+                jLabel19.setText("0");
+//                jLabel21.setText("");
                 jLabel25.setText("ID No.: ");
                 jLabel26.setText("Name : ");
                 jLabel29.setText("Address: ");
+                ret_waiting_list();
 
             }
         }
         );
-        nd.setLocationRelativeTo(this);
+        nd.setLocationRelativeTo(jPanel9);
         nd.setVisible(true);
     }
 
@@ -2149,59 +2206,221 @@ public class Dlg_call_number extends javax.swing.JDialog {
     private static final HashSet<PrintWriter> writers = new HashSet();
 
     private void start_teller_server() {
-        String counter_no_1_ip = System.getProperty("counter_no_1_ip", "192.168.1.152");
+        String counter_no_1_ip = System.getProperty("counter_no_1_ip", "");
         String counter_no = System.getProperty("counter_no", "01");
-        int port = FitIn.toInt(System.getProperty("counter_no_1_port", "2001"));
-
+        System.out.println("counter_no: " + counter_no);
+        print_config();
         if (counter_no.equalsIgnoreCase("01")) {
-            port = FitIn.toInt(System.getProperty("counter_no_1_port", "2001"));
-        }
-        if (counter_no.equalsIgnoreCase("02")) {
-            port = FitIn.toInt(System.getProperty("counter_no_2_port", "2002"));
-        }
-        if (counter_no.equalsIgnoreCase("03")) {
-            port = FitIn.toInt(System.getProperty("counter_no_3_port", "2003"));
-        }
-        if (counter_no.equalsIgnoreCase("04")) {
-            port = FitIn.toInt(System.getProperty("counter_no_4_port", "2004"));
-        }
-        if (counter_no.equalsIgnoreCase("05")) {
-            port = FitIn.toInt(System.getProperty("counter_no_5_port", "2005"));
-        }
-        if (counter_no.equalsIgnoreCase("06")) {
-            port = FitIn.toInt(System.getProperty("counter_no_6_port", "2006"));
-        }
-        int port2 = port;
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
+            int port = FitIn.toInt(System.getProperty("counter_no_1_port", "3001"));
+
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
 //                    String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
 //                    int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
-                    System.out.println("Starting Server...");
-                    ServerSocket listener = new ServerSocket(port2);
-                    try {
-                        while (true) {
-                            java.net.Socket socket = listener.accept();
-                            try {
-                                BufferedReader in = new BufferedReader(new InputStreamReader(
-                                        socket.getInputStream()));
-                                String input = in.readLine();
-                                ret_waiting_list();
+                        System.out.println("Starting Server 1...");
+                        ServerSocket listener = new ServerSocket(port);
+                        try {
+                            while (true) {
+                                java.net.Socket socket = listener.accept();
+                                try {
+                                    BufferedReader in = new BufferedReader(new InputStreamReader(
+                                            socket.getInputStream()));
+                                    String input = in.readLine();
+                                    ret_waiting_list();
 
-                            } finally {
-                                socket.close();
+                                } finally {
+                                    socket.close();
+                                }
                             }
+                        } finally {
+                            listener.close();
                         }
-                    } finally {
-                        listener.close();
+                    } catch (IOException ex) {
+                        System.out.println("Error: " + ex);
                     }
-                } catch (IOException ex) {
-                    System.out.println("Error: " + ex);
                 }
-            }
-        });
-        t.start();
+            });
+            t.start();
+        }
+        String counter_no_2_ip = System.getProperty("counter_no_2_ip", "");
+        if (counter_no.equalsIgnoreCase("02")) {
+            int port = FitIn.toInt(System.getProperty("counter_no_2_port", "3002"));
+
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+//                    String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
+//                    int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
+                        System.out.println("Starting Server 2...");
+                        ServerSocket listener = new ServerSocket(port);
+                        try {
+                            while (true) {
+                                java.net.Socket socket = listener.accept();
+                                try {
+                                    BufferedReader in = new BufferedReader(new InputStreamReader(
+                                            socket.getInputStream()));
+                                    String input = in.readLine();
+                                    ret_waiting_list();
+
+                                } finally {
+                                    socket.close();
+                                }
+                            }
+                        } finally {
+                            listener.close();
+                        }
+                    } catch (IOException ex) {
+                        System.out.println("Error: " + ex);
+                    }
+                }
+            });
+            t.start();
+        }
+        String counter_no_3_ip = System.getProperty("counter_no_3_ip", "");
+        if (counter_no.equalsIgnoreCase("03")) {
+            int port = FitIn.toInt(System.getProperty("counter_no_3_port", "3003"));
+
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+//                    String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
+//                    int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
+                        System.out.println("Starting Server 3...");
+                        ServerSocket listener = new ServerSocket(port);
+                        try {
+                            while (true) {
+                                java.net.Socket socket = listener.accept();
+                                try {
+                                    BufferedReader in = new BufferedReader(new InputStreamReader(
+                                            socket.getInputStream()));
+                                    String input = in.readLine();
+                                    ret_waiting_list();
+
+                                } finally {
+                                    socket.close();
+                                }
+                            }
+                        } finally {
+                           
+                            listener.close();
+                        }
+                    } catch (IOException ex) {
+                        System.out.println("Error: " + ex);
+                    }
+                }
+            });
+            t.start();
+        }
+        String counter_no_4_ip = System.getProperty("counter_no_4_ip", "");
+        if (counter_no.equalsIgnoreCase("04")) {
+            int port = FitIn.toInt(System.getProperty("counter_no_4_port", "3004"));
+
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+//                    String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
+//                    int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
+                        System.out.println("Starting Server 4...");
+                        ServerSocket listener = new ServerSocket(port);
+                        try {
+                            while (true) {
+                                java.net.Socket socket = listener.accept();
+                                try {
+                                    BufferedReader in = new BufferedReader(new InputStreamReader(
+                                            socket.getInputStream()));
+                                    String input = in.readLine();
+                                    ret_waiting_list();
+
+                                } finally {
+                                    socket.close();
+                                }
+                            }
+                        } finally {
+                            listener.close();
+                        }
+                    } catch (IOException ex) {
+                        System.out.println("Error: " + ex);
+                    }
+                }
+            });
+            t.start();
+        }
+        String counter_no_5_ip = System.getProperty("counter_no_5_ip", "");
+        if (counter_no.equalsIgnoreCase("05")) {
+            int port = FitIn.toInt(System.getProperty("counter_no_5_port", "3005"));
+
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+//                    String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
+//                    int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
+                        System.out.println("Starting Server 5...");
+                        ServerSocket listener = new ServerSocket(port);
+                        try {
+                            while (true) {
+                                java.net.Socket socket = listener.accept();
+                                try {
+                                    BufferedReader in = new BufferedReader(new InputStreamReader(
+                                            socket.getInputStream()));
+                                    String input = in.readLine();
+                                    ret_waiting_list();
+
+                                } finally {
+                                    socket.close();
+                                }
+                            }
+                        } finally {
+                            listener.close();
+                        }
+                    } catch (IOException ex) {
+                        System.out.println("Error: " + ex);
+                    }
+                }
+            });
+            t.start();
+        }
+        String counter_no_6_ip = System.getProperty("counter_no_6_ip", "");
+        if (counter_no.equalsIgnoreCase("06")) {
+            int port = FitIn.toInt(System.getProperty("counter_no_6_port", "3006"));
+
+            Thread t = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+//                    String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
+//                    int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
+                        System.out.println("Starting Server 6...");
+                        ServerSocket listener = new ServerSocket(port);
+                        try {
+                            while (true) {
+                                java.net.Socket socket = listener.accept();
+                                try {
+                                    BufferedReader in = new BufferedReader(new InputStreamReader(
+                                            socket.getInputStream()));
+                                    String input = in.readLine();
+                                    ret_waiting_list();
+
+                                } finally {
+                                    socket.close();
+                                }
+                            }
+                        } finally {
+                            listener.close();
+                        }
+                    } catch (IOException ex) {
+                        System.out.println("Error: " + ex);
+                    }
+                }
+            });
+            t.start();
+        }
+
     }
 
     //</editor-fold>

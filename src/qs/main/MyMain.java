@@ -5,7 +5,10 @@
  */
 package qs.main;
 
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.io.BufferedReader;
@@ -19,7 +22,7 @@ import java.util.Properties;
 import javax.swing.JFrame;
 import mijzcx.synapse.desk.utils.Application;
 import mijzcx.synapse.desk.utils.CloseDialog;
-import qs.pnl.Pnl_Dashboard;
+import qs.pnl.Dlg_call_number;
 
 import qs.util.Center;
 
@@ -107,11 +110,11 @@ public class MyMain {
             System.setProperty("print_queue_no", prop.getProperty("print_queue_no", "false"));
             System.setProperty("environment", prop.getProperty("environment", "production"));
 
-            System.setProperty("counter_no", prop.getProperty("counter_no", "01"));
-            System.setProperty("department", prop.getProperty("department", "Evaluation"));
-            System.setProperty("department_id", prop.getProperty("department_id", "1"));
-            System.setProperty("teller", prop.getProperty("teller", "Juan Dela Cruz"));
-            System.setProperty("teller_id", prop.getProperty("teller_id", "1"));
+//            System.setProperty("counter_no", prop.getProperty("counter_no", "01"));
+//            System.setProperty("department", prop.getProperty("department", "Evaluation"));
+//            System.setProperty("department_id", prop.getProperty("department_id", "1"));
+//            System.setProperty("teller", prop.getProperty("teller", "Juan Dela Cruz"));
+//            System.setProperty("teller_id", prop.getProperty("teller_id", "1"));
             System.setProperty("server_type", prop.getProperty("server_type", "teller"));
 
             System.setProperty("queue_server_ip", prop.getProperty("queue_server_ip", "192.168.1.152"));
@@ -159,18 +162,25 @@ public class MyMain {
     private void start() {
 
         Application.setSystemLookAndFeel();
-        Pnl_Dashboard pnl = new Pnl_Dashboard();
+        JFrame f = new JFrame();
 
         Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/qs/img/link_logo (Custom).png"));
-        pnl.setIconImage(image);
-        Toolkit tk = Toolkit.getDefaultToolkit();
-        int xSize = ((int) tk.getScreenSize().
-                getWidth());
-        int ySize = ((int) tk.getScreenSize().
-                getHeight());
-        pnl.setSize(xSize, ySize);
-        pnl.setVisible(true);
+        f.setIconImage(image);
+        Dlg_call_number dialog = Dlg_call_number.create(new javax.swing.JFrame(), true);
 
+        f.add(dialog.getContentPane());
+        f.setUndecorated(true);
+        f.setSize(dialog.getWidth(), dialog.getHeight() - 50);
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
+        Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
+        int x = (int) rect.getMaxX() - f.getWidth() - 5;
+        int y = (int) rect.getMaxY() - f.getHeight() - 55;
+
+        f.setLocation(x, y);
+
+        f.setVisible(true);
+        dialog.login();
     }
 
     public static String getSerialNumber() {

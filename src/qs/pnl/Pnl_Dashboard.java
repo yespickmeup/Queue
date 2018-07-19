@@ -7,7 +7,10 @@ package qs.pnl;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.MouseAdapter;
@@ -625,7 +628,6 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
                 List<Counters.to_counters> counters = Counters.ret_data(" where id='" + setting.counter_id + "'");
 //                System.out.println("setting.counter_id: "+setting.counter_id);
                 Counters.to_counters counter = (Counters.to_counters) counters.get(0);
-
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
@@ -634,6 +636,21 @@ public class Pnl_Dashboard extends javax.swing.JFrame {
                         System.setProperty("teller_id", "" + to.id);
                         System.setProperty("department_id", counter.department_id);
                         System.setProperty("department", counter.department);
+
+                        Pnl_Dashboard.this.dispose();
+
+                        Dlg_call_number dialog = Dlg_call_number.create(new javax.swing.JFrame(), true);
+                        dialog.f.add(dialog.getContentPane());
+                        dialog.f.setUndecorated(true);
+                        dialog.f.setSize(dialog.getWidth(), dialog.getHeight() - 50);
+                        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+                        GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
+                        Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
+                        int x = (int) rect.getMaxX() - dialog.f.getWidth() - 5;
+                        int y = (int) rect.getMaxY() - dialog.f.getHeight() - 55;
+                        dialog.f.setLocation(x, y);
+                        dialog.f.setVisible(true);
+
                     }
                 });
 
