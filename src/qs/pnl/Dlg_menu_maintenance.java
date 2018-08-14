@@ -412,7 +412,7 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
                 @Override
                 public void mouseEntered(MouseEvent e) {
                     if (l.isEnabled()) {
-                        l.setBackground(new java.awt.Color(25,130,191));
+                        l.setBackground(new java.awt.Color(25, 130, 191));
                     }
 
                 }
@@ -442,27 +442,27 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
         List<User_priveleges.to_user_priveleges> datas = User_priveleges.ret_data(where);
 
         for (User_priveleges.to_user_priveleges to : datas) {
-           
+
             if (to.privelege.equalsIgnoreCase("Customers - (View)")) {
                 jLabel7.setEnabled(true);
-                jLabel7.setBackground(new java.awt.Color(18,115,172));
+                jLabel7.setBackground(new java.awt.Color(18, 115, 172));
             }
 
             if (to.privelege.equalsIgnoreCase("Users - (View)")) {
                 jLabel8.setEnabled(true);
-                jLabel8.setBackground(new java.awt.Color(18,115,172));
+                jLabel8.setBackground(new java.awt.Color(18, 115, 172));
             }
             if (to.privelege.equalsIgnoreCase("Announcements - (View)")) {
                 jLabel9.setEnabled(true);
-                jLabel9.setBackground(new java.awt.Color(18,115,172));
+                jLabel9.setBackground(new java.awt.Color(18, 115, 172));
             }
             if (to.privelege.equalsIgnoreCase("Counters - (View)")) {
                 jLabel10.setEnabled(true);
-                jLabel10.setBackground(new java.awt.Color(18,115,172));
+                jLabel10.setBackground(new java.awt.Color(18, 115, 172));
             }
             if (to.privelege.equalsIgnoreCase("Departments - (View)")) {
                 jLabel11.setEnabled(true);
-                jLabel11.setBackground(new java.awt.Color(18,115,172));
+                jLabel11.setBackground(new java.awt.Color(18, 115, 172));
             }
         }
     }
@@ -506,4 +506,5 @@ public class Dlg_menu_maintenance extends javax.swing.JDialog {
         }
 
     }
+
 }

@@ -19,6 +19,12 @@ import javax.swing.border.EmptyBorder;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
+import qs.announcements.Dlg_announcement;
+import qs.counters.Dlg_counter;
+import qs.customers.Dlg_customers;
+import qs.departments.Dlg_department;
+import qs.reports.Dlg_rpt_queues;
+import qs.users.Dlg_users;
 import synsoftech.util.Center;
 
 /**
@@ -205,7 +211,6 @@ public class Dlg_menu extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -275,17 +280,6 @@ public class Dlg_menu extends javax.swing.JDialog {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/exit15.png"))); // NOI18N
-        jLabel6.setText("Minimize");
-        jLabel6.setOpaque(true);
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
-            }
-        });
-
         jLabel7.setBackground(new java.awt.Color(18, 115, 172));
         jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -302,24 +296,23 @@ public class Dlg_menu extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
-                .addGap(0, 0, 0)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, 0)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -361,16 +354,16 @@ public class Dlg_menu extends javax.swing.JDialog {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        ok1("standby");
+        if (callback != null) {
+            callback.standby(new CloseDialog(this), new OutputData(""));
+        }
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        ok1("logout");
+        if (callback != null) {
+            callback.logout(new CloseDialog(this), new OutputData(""));
+        }
     }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        ok1("minimize");
-    }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
         disposed();
@@ -386,7 +379,6 @@ public class Dlg_menu extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
@@ -394,12 +386,12 @@ public class Dlg_menu extends javax.swing.JDialog {
     private void myInit() {
         init_key();
 
-        JLabel[] lbl = {jLabel1, jLabel2, jLabel3, jLabel4, jLabel5, jLabel6};
+        JLabel[] lbl = {jLabel1, jLabel2, jLabel3, jLabel4, jLabel5};
         for (final JLabel l : lbl) {
             l.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    l.setBackground(new java.awt.Color(25,130,191));
+                    l.setBackground(new java.awt.Color(25, 130, 191));
                     l.setForeground(new java.awt.Color(255, 255, 255));
                 }
 
@@ -431,7 +423,7 @@ public class Dlg_menu extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -484,11 +476,117 @@ public class Dlg_menu extends javax.swing.JDialog {
             @Override
             public void ok(CloseDialog closeDialog, Dlg_menu_maintenance.OutputData data) {
                 closeDialog.ok();
-                ok1(data.stmt);
+                if (data.stmt.equalsIgnoreCase("Customers")) {
+                    customers();
+                }
+                if (data.stmt.equalsIgnoreCase("Users")) {
+                    users();
+                }
+                if (data.stmt.equalsIgnoreCase("Announcements")) {
+                    announcements();
+                }
+                if (data.stmt.equalsIgnoreCase("Counters")) {
+                    counters();
+                }
+                if (data.stmt.equalsIgnoreCase("Departments")) {
+                    departments();
+                }
+
             }
         });
         Point point = jLabel3.getLocationOnScreen();
         nd.setLocation(point.x - 188, point.y);
+        nd.setVisible(true);
+    }
+
+    private void customers() {
+
+        Window p = (Window) this;
+        Dlg_customers nd = Dlg_customers.create(p, true);
+        nd.setTitle("");
+
+        nd.setCallback(new Dlg_customers.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_customers.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(null);
+
+        nd.setVisible(true);
+    }
+
+    private void users() {
+
+        Window p = (Window) this;
+        Dlg_users nd = Dlg_users.create(p, true);
+        nd.setTitle("");
+
+        nd.setCallback(new Dlg_users.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_users.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(null);
+        nd.setVisible(true);
+    }
+
+    private void announcements() {
+
+        Window p = (Window) this;
+        Dlg_announcement nd = Dlg_announcement.create(p, true);
+        nd.setTitle("");
+
+        nd.setCallback(new Dlg_announcement.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_announcement.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(null);
+        nd.setVisible(true);
+    }
+
+    private void counters() {
+
+        Window p = (Window) this;
+        Dlg_counter nd = Dlg_counter.create(p, true);
+        nd.setTitle("");
+
+        nd.setCallback(new Dlg_counter.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_counter.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(null);
+        nd.setVisible(true);
+    }
+
+    private void departments() {
+
+        Window p = (Window) this;
+        Dlg_department nd = Dlg_department.create(p, true);
+        nd.setTitle("");
+
+        nd.setCallback(new Dlg_department.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_department.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(null);
         nd.setVisible(true);
     }
 
@@ -501,7 +599,9 @@ public class Dlg_menu extends javax.swing.JDialog {
             @Override
             public void ok(CloseDialog closeDialog, Dlg_menu_reports.OutputData data) {
                 closeDialog.ok();
-                ok1(data.stmt);
+                if(data.stmt.equalsIgnoreCase("Queues - (Report)")){
+                    rpt_qeues();
+                }
             }
         });
         Point point = jLabel2.getLocationOnScreen();
@@ -509,6 +609,22 @@ public class Dlg_menu extends javax.swing.JDialog {
         nd.setVisible(true);
     }
 
+    private void rpt_qeues(){
+        Window p = (Window) this;
+        Dlg_rpt_queues nd = Dlg_rpt_queues.create(p, true);
+        nd.setTitle("");
+        
+        nd.setCallback(new Dlg_rpt_queues.Callback() {
+            
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_rpt_queues.OutputData data) {
+                closeDialog.ok();
+                
+            }
+        });
+        nd.setLocationRelativeTo(null);
+        nd.setVisible(true);
+    }
     private void ok1(String stmt) {
 
         if (callback != null) {

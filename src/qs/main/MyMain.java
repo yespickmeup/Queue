@@ -23,6 +23,7 @@ import javax.swing.JFrame;
 import mijzcx.synapse.desk.utils.Application;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import qs.pnl.Dlg_call_number;
+import qs.pnl.Frm_Dashboard;
 
 import qs.util.Center;
 
@@ -56,7 +57,7 @@ public class MyMain {
                     prop.load(is);
                 }
             }
-
+            
             System.out.println(home);
             System.setProperty("pool_host", prop.getProperty("pool_host", "localhost"));
             System.out.println("local_ip: " + System.getProperty("local_ip"));
@@ -160,6 +161,27 @@ public class MyMain {
     }
 
     private void start() {
+
+        Application.setSystemLookAndFeel();
+
+        Frm_Dashboard f = new Frm_Dashboard();
+        Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/qs/img/link_logo (Custom).png"));
+        f.setIconImage(image);
+        Dlg_call_number dialog = Dlg_call_number.create(new javax.swing.JFrame(), true);
+        f.setSize(315, dialog.getHeight()+25);
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
+        Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();
+        int x = (int) rect.getMaxX() - f.getWidth() - 5;
+        int y = (int) rect.getMaxY() - f.getHeight() - 55;
+
+        f.setLocation(x, y);
+
+        f.setVisible(true);
+        f.add_call();
+    }
+
+    private void start2() {
 
         Application.setSystemLookAndFeel();
         JFrame f = new JFrame();

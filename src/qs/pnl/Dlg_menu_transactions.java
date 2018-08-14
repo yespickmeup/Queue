@@ -344,6 +344,7 @@ public class Dlg_menu_transactions extends javax.swing.JDialog {
         hover();
         jLabel8.setVisible(false);
         jLabel7.setVisible(false);
+        jLabel9.setVisible(false);
     }
 
     private void hover() {
