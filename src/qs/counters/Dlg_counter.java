@@ -726,7 +726,9 @@ public class Dlg_counter extends javax.swing.JDialog {
                 Alert.set(0, "Counter limit exceeded!");
                 return;
             }
-            Counters.to_counters count = new Counters.to_counters(id, counter, department, department_id, ip_address, created_at, updated_at, created_by, updated_by, status);
+            List<Departments.to_departments> deps = Departments.ret_data(" where id='" + dep.getId() + "' ");
+            Departments.to_departments dep1 = (Departments.to_departments) deps.get(0);
+            Counters.to_counters count = new Counters.to_counters(id, counter, department, department_id, ip_address, created_at, updated_at, created_by, updated_by, status, dep1.shortcut);
             Window p = (Window) this;
             Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
             nd.setTitle("");
@@ -763,7 +765,9 @@ public class Dlg_counter extends javax.swing.JDialog {
             String updated_at = DateType.now();
             int status = to.status;
             int is_uploaded = 0;
-            Counters.to_counters degr = new Counters.to_counters(id, counter, department, department_id, ip_address, created_at, updated_at, created_by, updated_by, status);
+            List<Departments.to_departments> deps = Departments.ret_data(" where id='" + dep.getId() + "' ");
+            Departments.to_departments dep1 = (Departments.to_departments) deps.get(0);
+            Counters.to_counters degr = new Counters.to_counters(id, counter, department, department_id, ip_address, created_at, updated_at, created_by, updated_by, status,dep1.shortcut);
             Window p = (Window) this;
             Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
             nd.setTitle("");

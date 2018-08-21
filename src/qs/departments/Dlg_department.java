@@ -199,6 +199,8 @@ public class Dlg_department extends javax.swing.JDialog {
         jTextField3 = new Field.Input();
         jButton2 = new Button.Default();
         jButton1 = new Button.Success();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField4 = new Field.Input();
         jPanel3 = new javax.swing.JPanel();
         jTextField17 = new Field.Input();
         jButton3 = new Button.Default();
@@ -233,6 +235,11 @@ public class Dlg_department extends javax.swing.JDialog {
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("Letter:");
+
+        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -241,14 +248,20 @@ public class Dlg_department extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 231, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField3)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -258,7 +271,11 @@ public class Dlg_department extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -395,12 +412,14 @@ public class Dlg_department extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JTable tbl_degrees;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
@@ -468,7 +487,7 @@ public class Dlg_department extends javax.swing.JDialog {
     public static class TbldegreesModel extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "Degree", "Status", "", "", "created_at", "updated_at", "status", "is_uploaded"
+            "Degree", "Letter", "", "", "created_at", "updated_at", "status", "is_uploaded"
         };
 
         public TbldegreesModel(ListModel listmodel) {
@@ -498,11 +517,7 @@ public class Dlg_department extends javax.swing.JDialog {
                 case 0:
                     return " " + tt.department;
                 case 1:
-                    if (tt.status == 0) {
-                        return " Active";
-                    } else {
-                        return " Inactive";
-                    }
+                    return " " + tt.shortcut;
                 case 2:
                     return "/qs/icons/new-file.png";
                 case 3:
@@ -530,6 +545,7 @@ public class Dlg_department extends javax.swing.JDialog {
 
     private void new_degree() {
         jTextField3.setText("");
+        jTextField4.setText("");
         tbl_degrees.clearSelection();
         jTextField3.grabFocus();
     }
@@ -550,7 +566,18 @@ public class Dlg_department extends javax.swing.JDialog {
             String created_at = DateType.now();
             String updated_at = DateType.now();
             int status = 0;
-            Departments.to_departments degr = new Departments.to_departments(id, degree, created_at, updated_at, created_by, updated_by, status);
+            String letter = jTextField4.getText();
+            if (letter.isEmpty()) {
+                jTextField4.grabFocus();
+                Alert.set(0, "Input Letter!");
+                return;
+            }
+            if (degree.isEmpty()) {
+                jTextField3.grabFocus();
+                Alert.set(0, "Input Department!");
+                return;
+            }
+            Departments.to_departments degr = new Departments.to_departments(id, degree, created_at, updated_at, created_by, updated_by, status, letter);
             Window p = (Window) this;
             Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
             nd.setTitle("");
@@ -583,7 +610,18 @@ public class Dlg_department extends javax.swing.JDialog {
             String updated_at = DateType.now();
             int status = to.status;
             int is_uploaded = 0;
-            Departments.to_departments degr = new Departments.to_departments(id, degree, created_at, updated_at, created_by, updated_by, status);
+            String letter = jTextField4.getText();
+            if (letter.isEmpty()) {
+                jTextField4.grabFocus();
+                Alert.set(0, "Input Letter!");
+                return;
+            }
+            if (degree.isEmpty()) {
+                jTextField3.grabFocus();
+                Alert.set(0, "Input Department!");
+                return;
+            }
+            Departments.to_departments degr = new Departments.to_departments(id, degree, created_at, updated_at, created_by, updated_by, status, letter);
             Window p = (Window) this;
             Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
             nd.setTitle("");
@@ -612,6 +650,7 @@ public class Dlg_department extends javax.swing.JDialog {
         int col = tbl_degrees.getSelectedColumn();
         if (col == 2) {
             jTextField3.setText(to.department);
+            jTextField4.setText(to.shortcut);
         }
         if (col == 3) {
             String where = " where user_id='" + MyUser.getUser_id() + "' and privelege like 'Departments - (Delete)' ";
