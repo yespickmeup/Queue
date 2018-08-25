@@ -119,7 +119,7 @@ public class MyMain {
         Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/qs/img/link_logo (Custom).png"));
         f.setIconImage(image);
         Dlg_call_number dialog = Dlg_call_number.create(new javax.swing.JFrame(), true);
-        dialog.start_teller_server();
+       
         f.setSize(315, dialog.getHeight() + 25);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();

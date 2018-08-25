@@ -2113,6 +2113,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
                                 BufferedReader in = new BufferedReader(new InputStreamReader(
                                         socket.getInputStream()));
                                 String input = in.readLine();
+                                System.out.println("input: "+input);
                                 ret_waiting_list();
 
                             } finally {

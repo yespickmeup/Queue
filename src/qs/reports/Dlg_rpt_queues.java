@@ -10,10 +10,12 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import mijzcx.synapse.desk.utils.CloseDialog;
@@ -27,6 +29,10 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.swing.JRViewer;
+import qs.counters.Counters;
+import qs.departments.Departments;
+import qs.users.Users;
+import qs.util.TableRenderer;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
 import synsoftech.fields.Label;
@@ -299,6 +305,16 @@ public class Dlg_rpt_queues extends javax.swing.JDialog {
         jLabel8.setText("Department:");
 
         jTextField6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField6MouseClicked(evt);
+            }
+        });
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
 
         jDateChooser1.setDate(new Date());
         jDateChooser1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -319,8 +335,23 @@ public class Dlg_rpt_queues extends javax.swing.JDialog {
         jLabel9.setText("Counter:");
 
         jTextField7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField7MouseClicked(evt);
+            }
+        });
+        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField7ActionPerformed(evt);
+            }
+        });
 
         jTextField8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField8MouseClicked(evt);
+            }
+        });
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField8ActionPerformed(evt);
@@ -506,8 +537,28 @@ public class Dlg_rpt_queues extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
+        init_users();
     }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        init_departments();
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTextField6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField6MouseClicked
+        init_departments();
+    }//GEN-LAST:event_jTextField6MouseClicked
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        init_counters();
+    }//GEN-LAST:event_jTextField7ActionPerformed
+
+    private void jTextField7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField7MouseClicked
+        init_counters();
+    }//GEN-LAST:event_jTextField7MouseClicked
+
+    private void jTextField8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField8MouseClicked
+        init_users();
+    }//GEN-LAST:event_jTextField8MouseClicked
 
     /**
      * @param args the command line arguments
@@ -546,7 +597,12 @@ public class Dlg_rpt_queues extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void myInit() {
+        System.setProperty("pool_password", "password");
         init_key();
+
+        ret_departments();
+        ret_counters();
+        ret_users();
     }
 
     public void do_pass() {
@@ -570,6 +626,114 @@ public class Dlg_rpt_queues extends javax.swing.JDialog {
         });
     }
     // </editor-fold>
+
+    private void ret_departments() {
+        departments = Departments.ret_data(" order by department asc ");
+        if (!departments.isEmpty()) {
+            Departments.to_departments dep = (Departments.to_departments) departments.get(0);
+            Field.Combo cl = (Field.Combo) jTextField6;
+            cl.setText(dep.department);
+            cl.setId("" + dep.id);
+        }
+    }
+
+    List<Departments.to_departments> departments = new ArrayList();
+
+    private void init_departments() {
+
+        Object[][] obj = new Object[departments.size()][1];
+        int i = 0;
+        for (Departments.to_departments to : departments) {
+            obj[i][0] = " " + to.department;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {jTextField6.getWidth()};
+        String[] col_names = {""};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(jTextField6, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Departments.to_departments dep = (Departments.to_departments) departments.get(data.selected_row);
+                Field.Combo cl = (Field.Combo) jTextField6;
+                cl.setText(dep.department);
+                cl.setId("" + dep.id);
+            }
+        });
+    }
+
+    private void ret_counters() {
+        counters = Counters.ret_data(" order by counter asc ");
+        if (!counters.isEmpty()) {
+            Counters.to_counters cou = (Counters.to_counters) counters.get(0);
+            Field.Combo cl = (Field.Combo) jTextField7;
+            cl.setText(cou.counter);
+            cl.setId("" + cou.id);
+        }
+    }
+
+    List<Counters.to_counters> counters = new ArrayList();
+
+    private void init_counters() {
+
+        Object[][] obj = new Object[counters.size()][1];
+        int i = 0;
+        for (Counters.to_counters to : counters) {
+            obj[i][0] = " " + to.counter;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {jTextField7.getWidth()};
+        String[] col_names = {""};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(jTextField7, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Counters.to_counters dep = (Counters.to_counters) counters.get(data.selected_row);
+                Field.Combo cl = (Field.Combo) jTextField7;
+                cl.setText(dep.counter);
+                cl.setId("" + dep.id);
+            }
+        });
+    }
+
+    private void ret_users() {
+        users = Users.ret_data(" order by screen_name asc ");
+        if (!users.isEmpty()) {
+            Users.to_users cou = (Users.to_users) users.get(0);
+            Field.Combo cl = (Field.Combo) jTextField8;
+            cl.setText(cou.screen_name);
+            cl.setId("" + cou.id);
+        }
+    }
+
+    List<Users.to_users> users = new ArrayList();
+
+    private void init_users() {
+
+        Object[][] obj = new Object[users.size()][1];
+        int i = 0;
+        for (Users.to_users to : users) {
+            obj[i][0] = " " + to.screen_name;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {jTextField8.getWidth()};
+        String[] col_names = {""};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(jTextField8, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Users.to_users dep = (Users.to_users) users.get(data.selected_row);
+                Field.Combo cl = (Field.Combo) jTextField8;
+                cl.setText(dep.screen_name);
+                cl.setId("" + dep.id);
+            }
+        });
+    }
 
 //    <editor-fold defaultstate="collapsed" desc=" report ">
     private void init_report() {
@@ -601,7 +765,7 @@ public class Dlg_rpt_queues extends javax.swing.JDialog {
                 }
                 if (!jCheckBox9.isSelected()) {
                     Field.Combo counter = (Field.Combo) jTextField8;
-                    where = where + " and customer_id like '" + counter.getId() + "' ";
+                    where = where + " and teller_id like '" + counter.getId() + "' ";
                 }
 
                 if (jCheckBox6.isSelected()) {

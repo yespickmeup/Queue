@@ -270,6 +270,7 @@ public class Frm_Dashboard extends javax.swing.JFrame {
 
     public void add_call() {
         Dlg_call_number dialog = Dlg_call_number.create(new javax.swing.JFrame(), true);
+        dialog.start_teller_server();
         jPanel2.setLayout(new BorderLayout());
         jPanel2.add(dialog.getContentPane());
         dialog.login();
