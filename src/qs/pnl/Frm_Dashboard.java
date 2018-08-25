@@ -70,7 +70,7 @@ public class Frm_Dashboard extends javax.swing.JFrame {
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("Queing System");
+        jLabel15.setText("Queuing System");
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
@@ -250,6 +250,7 @@ public class Frm_Dashboard extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void close() {
+        jLabel16.setText(System.getProperty("business_name", "Bayawan Water District"));
         Window p = (Window) this;
         Dlg_confirm_action2 nd = Dlg_confirm_action2.create(p, true);
         nd.setTitle("");
@@ -266,7 +267,8 @@ public class Frm_Dashboard extends javax.swing.JFrame {
         nd.setLocationRelativeTo(jPanel2);
         nd.setVisible(true);
     }
-    public void add_call(){
+
+    public void add_call() {
         Dlg_call_number dialog = Dlg_call_number.create(new javax.swing.JFrame(), true);
         jPanel2.setLayout(new BorderLayout());
         jPanel2.add(dialog.getContentPane());

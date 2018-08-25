@@ -24,6 +24,7 @@ import qs.counters.Dlg_counter;
 import qs.customers.Dlg_customers;
 import qs.departments.Dlg_department;
 import qs.reports.Dlg_rpt_queues;
+import qs.settings.Dlg_settings;
 import qs.users.Dlg_users;
 import synsoftech.util.Center;
 
@@ -491,6 +492,9 @@ public class Dlg_menu extends javax.swing.JDialog {
                 if (data.stmt.equalsIgnoreCase("Departments")) {
                     departments();
                 }
+                if (data.stmt.equalsIgnoreCase("Settings")) {
+                    settings();
+                }
 
             }
         });
@@ -590,6 +594,24 @@ public class Dlg_menu extends javax.swing.JDialog {
         nd.setVisible(true);
     }
 
+    private void settings() {
+
+        Window p = (Window) this;
+        Dlg_settings nd = Dlg_settings.create(p, true);
+        nd.setTitle("");
+
+        nd.setCallback(new Dlg_settings.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_settings.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(null);
+        nd.setVisible(true);
+    }
+
     private void reports() {
         Window p = (Window) this;
         Dlg_menu_reports nd = Dlg_menu_reports.create(p, true);
@@ -599,7 +621,7 @@ public class Dlg_menu extends javax.swing.JDialog {
             @Override
             public void ok(CloseDialog closeDialog, Dlg_menu_reports.OutputData data) {
                 closeDialog.ok();
-                if(data.stmt.equalsIgnoreCase("Queues - (Report)")){
+                if (data.stmt.equalsIgnoreCase("Queues - (Report)")) {
                     rpt_qeues();
                 }
             }
@@ -609,22 +631,23 @@ public class Dlg_menu extends javax.swing.JDialog {
         nd.setVisible(true);
     }
 
-    private void rpt_qeues(){
+    private void rpt_qeues() {
         Window p = (Window) this;
         Dlg_rpt_queues nd = Dlg_rpt_queues.create(p, true);
         nd.setTitle("");
-        
+
         nd.setCallback(new Dlg_rpt_queues.Callback() {
-            
+
             @Override
             public void ok(CloseDialog closeDialog, Dlg_rpt_queues.OutputData data) {
                 closeDialog.ok();
-                
+
             }
         });
         nd.setLocationRelativeTo(null);
         nd.setVisible(true);
     }
+
     private void ok1(String stmt) {
 
         if (callback != null) {

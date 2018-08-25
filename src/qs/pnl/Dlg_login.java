@@ -437,7 +437,7 @@ public class Dlg_login extends javax.swing.JDialog {
                 System.setProperty("teller", to.screen_name);
                 System.setProperty("teller_id", "" + to.id);
                 System.setProperty("department_id", counter.department_id);
-                System.out.println("Counter id: " + counter.department_id);
+//                System.out.println("Counter id: " + counter.department_id);
                 System.setProperty("department", counter.department);
 
                 ok1();

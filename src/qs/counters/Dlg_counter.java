@@ -31,6 +31,7 @@ import qs.util.Alert;
 import qs.util.DateType;
 import qs.util.Dlg_confirm_action;
 import qs.util.Dlg_confirm_delete;
+
 import qs.util.TableRenderer;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
@@ -518,6 +519,7 @@ public class Dlg_counter extends javax.swing.JDialog {
         init_tbl_degrees(tbl_degrees);
         ret_counters();
         ret_departments();
+
     }
 
     int is_callback = 0;
@@ -694,6 +696,7 @@ public class Dlg_counter extends javax.swing.JDialog {
     }
 
     private void new_counter() {
+
         jTextField4.setText("");
         jTextField5.setText("");
 
@@ -714,6 +717,7 @@ public class Dlg_counter extends javax.swing.JDialog {
             Field.Combo dep = (Field.Combo) jTextField3;
             int id = 0;
             String counter = jTextField4.getText();
+
             String department = dep.getText();
             String department_id = dep.getId();
             String ip_address = jTextField5.getText();
@@ -722,8 +726,13 @@ public class Dlg_counter extends javax.swing.JDialog {
             String created_at = DateType.now();
             String updated_at = DateType.now();
             int status = 0;
-            if (tbl_degrees_ALM.size() >= 6) {
-                Alert.set(0, "Counter limit exceeded!");
+//            if (tbl_degrees_ALM.size() >= 6) {
+//                Alert.set(0, "Counter limit exceeded!");
+//                return;
+//            }
+            if (counter.length() > 1 || counter.isEmpty()) {
+                jTextField4.grabFocus();
+                Alert.set(0, "Input Counter Number!");
                 return;
             }
             List<Departments.to_departments> deps = Departments.ret_data(" where id='" + dep.getId() + "' ");
@@ -765,9 +774,10 @@ public class Dlg_counter extends javax.swing.JDialog {
             String updated_at = DateType.now();
             int status = to.status;
             int is_uploaded = 0;
+            System.out.println("dep id: " + dep.getId());
             List<Departments.to_departments> deps = Departments.ret_data(" where id='" + dep.getId() + "' ");
             Departments.to_departments dep1 = (Departments.to_departments) deps.get(0);
-            Counters.to_counters degr = new Counters.to_counters(id, counter, department, department_id, ip_address, created_at, updated_at, created_by, updated_by, status,dep1.shortcut);
+            Counters.to_counters degr = new Counters.to_counters(id, counter, department, department_id, ip_address, created_at, updated_at, created_by, updated_by, status, dep1.shortcut);
             Window p = (Window) this;
             Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
             nd.setTitle("");
@@ -795,9 +805,11 @@ public class Dlg_counter extends javax.swing.JDialog {
         Counters.to_counters to = (Counters.to_counters) tbl_degrees_ALM.get(row);
         int col = tbl_degrees.getSelectedColumn();
         if (col == 4) {
+
             Field.Combo dep = (Field.Combo) jTextField3;
             dep.setText(to.department);
-            dep.setId("" + to.id);
+            dep.setId("" + to.department_id);
+
             jTextField4.setText(to.counter);
             jTextField5.setText(to.ip_address);
         }

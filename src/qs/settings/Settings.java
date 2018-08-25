@@ -55,15 +55,10 @@ public class Settings {
         public final String counter_no9_port;
         public final String counter_no10_ip;
         public final String counter_no10_port;
-        public final String espeak_version;
-        public final String espeak_gender;
-        public final String espeak_speed;
-        public final String espeak_amplitude;
-        public final String espeak_pitch;
         public final String server_ip;
         public final String server_port;
 
-        public to_settings(int id, String business_name, String address, String contact_no, String pool_host, int print_queue_no, String queue_server_ip, String queue_server_port, String location_screen_x, String location_screen_y, String font_size, String counter_no1_ip, String counter_no1_port, String counter_no2_ip, String counter_no2_port, String counter_no3_ip, String counter_no3_port, String counter_no4_ip, String counter_no4_port, String counter_no5_ip, String counter_no5_port, String counter_no6_ip, String counter_no6_port, String counter_no7_ip, String counter_no7_port, String counter_no8_ip, String counter_no8_port, String counter_no9_ip, String counter_no9_port, String counter_no10_ip, String counter_no10_port, String espeak_version, String espeak_gender, String espeak_speed, String espeak_amplitude, String espeak_pitch, String server_ip, String server_port) {
+        public to_settings(int id, String business_name, String address, String contact_no, String pool_host, int print_queue_no, String queue_server_ip, String queue_server_port, String location_screen_x, String location_screen_y, String font_size, String counter_no1_ip, String counter_no1_port, String counter_no2_ip, String counter_no2_port, String counter_no3_ip, String counter_no3_port, String counter_no4_ip, String counter_no4_port, String counter_no5_ip, String counter_no5_port, String counter_no6_ip, String counter_no6_port, String counter_no7_ip, String counter_no7_port, String counter_no8_ip, String counter_no8_port, String counter_no9_ip, String counter_no9_port, String counter_no10_ip, String counter_no10_port, String server_ip, String server_port) {
             this.id = id;
             this.business_name = business_name;
             this.address = address;
@@ -95,11 +90,6 @@ public class Settings {
             this.counter_no9_port = counter_no9_port;
             this.counter_no10_ip = counter_no10_ip;
             this.counter_no10_port = counter_no10_port;
-            this.espeak_version = espeak_version;
-            this.espeak_gender = espeak_gender;
-            this.espeak_speed = espeak_speed;
-            this.espeak_amplitude = espeak_amplitude;
-            this.espeak_pitch = espeak_pitch;
             this.server_ip = server_ip;
             this.server_port = server_port;
         }
@@ -139,11 +129,6 @@ public class Settings {
                     + ",counter_no9_port"
                     + ",counter_no10_ip"
                     + ",counter_no10_port"
-                    + ",espeak_version"
-                    + ",espeak_gender"
-                    + ",espeak_speed"
-                    + ",espeak_amplitude"
-                    + ",espeak_pitch"
                     + ",server_ip"
                     + ",server_port"
                     + ")values("
@@ -177,11 +162,6 @@ public class Settings {
                     + ",:counter_no9_port"
                     + ",:counter_no10_ip"
                     + ",:counter_no10_port"
-                    + ",:espeak_version"
-                    + ",:espeak_gender"
-                    + ",:espeak_speed"
-                    + ",:espeak_amplitude"
-                    + ",:espeak_pitch"
                     + ",:server_ip"
                     + ",:server_port"
                     + ")";
@@ -217,11 +197,6 @@ public class Settings {
                     .setString("counter_no9_port", to_settings.counter_no9_port)
                     .setString("counter_no10_ip", to_settings.counter_no10_ip)
                     .setString("counter_no10_port", to_settings.counter_no10_port)
-                    .setString("espeak_version", to_settings.espeak_version)
-                    .setString("espeak_gender", to_settings.espeak_gender)
-                    .setString("espeak_speed", to_settings.espeak_speed)
-                    .setString("espeak_amplitude", to_settings.espeak_amplitude)
-                    .setString("espeak_pitch", to_settings.espeak_pitch)
                     .setString("server_ip", to_settings.server_ip)
                     .setString("server_port", to_settings.server_port)
                     .ok();
@@ -270,11 +245,6 @@ public class Settings {
                     + ",counter_no9_port= :counter_no9_port "
                     + ",counter_no10_ip= :counter_no10_ip "
                     + ",counter_no10_port= :counter_no10_port "
-                    + ",espeak_version= :espeak_version "
-                    + ",espeak_gender= :espeak_gender "
-                    + ",espeak_speed= :espeak_speed "
-                    + ",espeak_amplitude= :espeak_amplitude "
-                    + ",espeak_pitch= :espeak_pitch "
                     + ",server_ip= :server_ip "
                     + ",server_port= :server_port "
                     + " where id='" + to_settings.id + "' "
@@ -311,11 +281,6 @@ public class Settings {
                     .setString("counter_no9_port", to_settings.counter_no9_port)
                     .setString("counter_no10_ip", to_settings.counter_no10_ip)
                     .setString("counter_no10_port", to_settings.counter_no10_port)
-                    .setString("espeak_version", to_settings.espeak_version)
-                    .setString("espeak_gender", to_settings.espeak_gender)
-                    .setString("espeak_speed", to_settings.espeak_speed)
-                    .setString("espeak_amplitude", to_settings.espeak_amplitude)
-                    .setString("espeak_pitch", to_settings.espeak_pitch)
                     .setString("server_ip", to_settings.server_ip)
                     .setString("server_port", to_settings.server_port)
                     .ok();
@@ -384,11 +349,6 @@ public class Settings {
                     + ",counter_no9_port"
                     + ",counter_no10_ip"
                     + ",counter_no10_port"
-                    + ",espeak_version"
-                    + ",espeak_gender"
-                    + ",espeak_speed"
-                    + ",espeak_amplitude"
-                    + ",espeak_pitch"
                     + ",server_ip"
                     + ",server_port"
                     + " from settings"
@@ -428,15 +388,10 @@ public class Settings {
                 String counter_no9_port = rs.getString(29);
                 String counter_no10_ip = rs.getString(30);
                 String counter_no10_port = rs.getString(31);
-                String espeak_version = rs.getString(32);
-                String espeak_gender = rs.getString(33);
-                String espeak_speed = rs.getString(34);
-                String espeak_amplitude = rs.getString(35);
-                String espeak_pitch = rs.getString(36);
-                String server_ip = rs.getString(37);
-                String server_port = rs.getString(38);
+                String server_ip = rs.getString(32);
+                String server_port = rs.getString(33);
 
-                to_settings to = new to_settings(id, business_name, address, contact_no, pool_host, print_queue_no, queue_server_ip, queue_server_port, location_screen_x, location_screen_y, font_size, counter_no1_ip, counter_no1_port, counter_no2_ip, counter_no2_port, counter_no3_ip, counter_no3_port, counter_no4_ip, counter_no4_port, counter_no5_ip, counter_no5_port, counter_no6_ip, counter_no6_port, counter_no7_ip, counter_no7_port, counter_no8_ip, counter_no8_port, counter_no9_ip, counter_no9_port, counter_no10_ip, counter_no10_port, espeak_version, espeak_gender, espeak_speed, espeak_amplitude, espeak_pitch, server_ip, server_port);
+                to_settings to = new to_settings(id, business_name, address, contact_no, pool_host, print_queue_no, queue_server_ip, queue_server_port, location_screen_x, location_screen_y, font_size, counter_no1_ip, counter_no1_port, counter_no2_ip, counter_no2_port, counter_no3_ip, counter_no3_port, counter_no4_ip, counter_no4_port, counter_no5_ip, counter_no5_port, counter_no6_ip, counter_no6_port, counter_no7_ip, counter_no7_port, counter_no8_ip, counter_no8_port, counter_no9_ip, counter_no9_port, counter_no10_ip, counter_no10_port, server_ip, server_port);
                 datas.add(to);
             }
             return datas;

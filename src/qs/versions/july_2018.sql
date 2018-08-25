@@ -41,11 +41,6 @@ id int auto_increment primary key
 ,counter_no9_port varchar(255)
 ,counter_no10_ip varchar(255)
 ,counter_no10_port varchar(255)
-,espeak_version varchar(255)
-,espeak_gender varchar(255)
-,espeak_speed varchar(255)
-,espeak_amplitude varchar(255)
-,espeak_pitch varchar(255)
 ,server_ip varchar(255)
 ,server_port varchar(255)
 );
@@ -55,13 +50,13 @@ business_name,address,contact_no,pool_host,print_queue_no,queue_server_ip,queue_
 font_size,counter_no1_ip,counter_no1_port,counter_no2_ip,counter_no2_port,counter_no3_ip,counter_no3_port,counter_no4_ip,counter_no4_port,
 counter_no5_ip,counter_no5_port,counter_no6_ip,counter_no6_port,counter_no7_ip,counter_no7_port,counter_no8_ip,counter_no8_port,
 counter_no9_ip,counter_no9_port,counter_no10_ip,counter_no10_port,
-espeak_version,espeak_gender,espeak_speed,espeak_amplitude,espeak_pitch,server_ip,server_port
+server_ip,server_port
 )
 values(
 "Bawayan Water District","Bayawan City","","localhost","0","localhost","2000","0","0",
 "medium","","3000","","3000","","3000","","3000",
 "","3000","","3000","","3000","","3000",
 "","3000","","3000",
-"en-us","+f3","160","150","40","localhost","3306"
+"localhost","3306"
 );
 

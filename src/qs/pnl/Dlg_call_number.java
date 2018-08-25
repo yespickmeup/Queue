@@ -1252,7 +1252,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
                 closeDialog.ok();
                 ret_waiting_list();
                 get_previous_number();
-                start_teller_server();
+//                start_teller_server();
 
                 String counter_no = System.getProperty("counter_no", "");
                 jLabel12.setText(counter_no);
@@ -1481,7 +1481,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
 //        System.out.println("department_id: " + department_id);
         String date = DateType.sf.format(new Date());
         String where = " where status=0 and department_id='" + department_id + "' and Date(created_at)='" + date + "' and teller IS NULL order by id asc ";
-        System.out.println(where);
+//        System.out.println(where);
         List<to_queues> q = Queues.ret_data(where);
         loadData_queues(q);
         jLabel21.setText("" + q.size());
@@ -1518,12 +1518,12 @@ public class Dlg_call_number extends javax.swing.JDialog {
 //            jLabel23.setText(to.department);
             jLabel19.setText(to.queue_no);
             jLabel25.setText(to.customer_id);
-            jLabel26.setText( to.customer);
-            jLabel29.setText( address);
+            jLabel26.setText(to.customer);
+            jLabel29.setText(address);
             enable_buttons_gnn(false);
         } else {
             enable_buttons_gnn(true);
-             jLabel19.setText("0");
+            jLabel19.setText("0");
             jLabel25.setText("");
             jLabel26.setText("");
             jLabel29.setText("");
@@ -1539,7 +1539,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
         String date = DateType.sf.format(new Date());
         String where = " where status=0 and department_id='" + department_id + "' and Date(created_at)='" + date + "' and teller IS NULL order by id asc ";
-        System.out.println(where);
+//        System.out.println(where);
         List<to_queues> q = Queues.ret_data(where);
 
         if (!q.isEmpty()) {
@@ -2095,21 +2095,16 @@ public class Dlg_call_number extends javax.swing.JDialog {
     private static final HashSet<String> names = new HashSet();
     private static final HashSet<PrintWriter> writers = new HashSet();
 
-    private void start_teller_server() {
-        String counter_no_1_ip = System.getProperty("counter_no_1_ip", "");
-        String counter_no = System.getProperty("counter_no", "01");
-        System.out.println("counter_no: " + counter_no);
+    public void start_teller_server() {
 
-        print_config();
-        int port = FitIn.toInt(System.getProperty("counter_no_1_port", "3000"));
+        int port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
 //
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-//                    String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
-//                    int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
-                    System.out.println("Starting Teller Server 1...");
+
+                    System.out.println("Starting Counter Server ...");
                     ServerSocket listener = new ServerSocket(port);
                     try {
                         while (true) {
@@ -2133,216 +2128,6 @@ public class Dlg_call_number extends javax.swing.JDialog {
             }
         });
         t.start();
-//        if (counter_no.equalsIgnoreCase("01")) {
-//            int port = FitIn.toInt(System.getProperty("counter_no_1_port", "3001"));
-//
-//            Thread t = new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    try {
-////                    String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
-////                    int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
-//                        System.out.println("Starting Server 1...");
-//                        ServerSocket listener = new ServerSocket(port);
-//                        try {
-//                            while (true) {
-//                                java.net.Socket socket = listener.accept();
-//                                try {
-//                                    BufferedReader in = new BufferedReader(new InputStreamReader(
-//                                            socket.getInputStream()));
-//                                    String input = in.readLine();
-//                                    ret_waiting_list();
-//
-//                                } finally {
-//                                    socket.close();
-//                                }
-//                            }
-//                        } finally {
-//                            listener.close();
-//                        }
-//                    } catch (IOException ex) {
-//                        System.out.println("Error: " + ex);
-//                    }
-//                }
-//            });
-//            t.start();
-//        }
-//        String counter_no_2_ip = System.getProperty("counter_no_2_ip", "");
-//        if (counter_no.equalsIgnoreCase("02")) {
-//            int port = FitIn.toInt(System.getProperty("counter_no_2_port", "3002"));
-//
-//            Thread t = new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    try {
-////                    String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
-////                    int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
-//                        System.out.println("Starting Server 2...");
-//                        ServerSocket listener = new ServerSocket(port);
-//                        try {
-//                            while (true) {
-//                                java.net.Socket socket = listener.accept();
-//                                try {
-//                                    BufferedReader in = new BufferedReader(new InputStreamReader(
-//                                            socket.getInputStream()));
-//                                    String input = in.readLine();
-//                                    ret_waiting_list();
-//
-//                                } finally {
-//                                    socket.close();
-//                                }
-//                            }
-//                        } finally {
-//                            listener.close();
-//                        }
-//                    } catch (IOException ex) {
-//                        System.out.println("Error: " + ex);
-//                    }
-//                }
-//            });
-//            t.start();
-//        }
-//        String counter_no_3_ip = System.getProperty("counter_no_3_ip", "");
-//        if (counter_no.equalsIgnoreCase("03")) {
-//            int port = FitIn.toInt(System.getProperty("counter_no_3_port", "3003"));
-//
-//            Thread t = new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    try {
-////                    String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
-////                    int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
-//                        System.out.println("Starting Server 3...");
-//                        ServerSocket listener = new ServerSocket(port);
-//                        try {
-//                            while (true) {
-//                                java.net.Socket socket = listener.accept();
-//                                try {
-//                                    BufferedReader in = new BufferedReader(new InputStreamReader(
-//                                            socket.getInputStream()));
-//                                    String input = in.readLine();
-//                                    ret_waiting_list();
-//
-//                                } finally {
-//                                    socket.close();
-//                                }
-//                            }
-//                        } finally {
-//                           
-//                            listener.close();
-//                        }
-//                    } catch (IOException ex) {
-//                        System.out.println("Error: " + ex);
-//                    }
-//                }
-//            });
-//            t.start();
-//        }
-//        String counter_no_4_ip = System.getProperty("counter_no_4_ip", "");
-//        if (counter_no.equalsIgnoreCase("04")) {
-//            int port = FitIn.toInt(System.getProperty("counter_no_4_port", "3004"));
-//
-//            Thread t = new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    try {
-////                    String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
-////                    int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
-//                        System.out.println("Starting Server 4...");
-//                        ServerSocket listener = new ServerSocket(port);
-//                        try {
-//                            while (true) {
-//                                java.net.Socket socket = listener.accept();
-//                                try {
-//                                    BufferedReader in = new BufferedReader(new InputStreamReader(
-//                                            socket.getInputStream()));
-//                                    String input = in.readLine();
-//                                    ret_waiting_list();
-//
-//                                } finally {
-//                                    socket.close();
-//                                }
-//                            }
-//                        } finally {
-//                            listener.close();
-//                        }
-//                    } catch (IOException ex) {
-//                        System.out.println("Error: " + ex);
-//                    }
-//                }
-//            });
-//            t.start();
-//        }
-//        String counter_no_5_ip = System.getProperty("counter_no_5_ip", "");
-//        if (counter_no.equalsIgnoreCase("05")) {
-//            int port = FitIn.toInt(System.getProperty("counter_no_5_port", "3005"));
-//
-//            Thread t = new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    try {
-////                    String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
-////                    int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
-//                        System.out.println("Starting Server 5...");
-//                        ServerSocket listener = new ServerSocket(port);
-//                        try {
-//                            while (true) {
-//                                java.net.Socket socket = listener.accept();
-//                                try {
-//                                    BufferedReader in = new BufferedReader(new InputStreamReader(
-//                                            socket.getInputStream()));
-//                                    String input = in.readLine();
-//                                    ret_waiting_list();
-//
-//                                } finally {
-//                                    socket.close();
-//                                }
-//                            }
-//                        } finally {
-//                            listener.close();
-//                        }
-//                    } catch (IOException ex) {
-//                        System.out.println("Error: " + ex);
-//                    }
-//                }
-//            });
-//            t.start();
-//        }
-//        String counter_no_6_ip = System.getProperty("counter_no_6_ip", "");
-//        if (counter_no.equalsIgnoreCase("06")) {
-//            int port = FitIn.toInt(System.getProperty("counter_no_6_port", "3006"));
-//
-//            Thread t = new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    try {
-////                    String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
-////                    int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
-//                        System.out.println("Starting Server 6...");
-//                        ServerSocket listener = new ServerSocket(port);
-//                        try {
-//                            while (true) {
-//                                java.net.Socket socket = listener.accept();
-//                                try {
-//                                    BufferedReader in = new BufferedReader(new InputStreamReader(
-//                                            socket.getInputStream()));
-//                                    String input = in.readLine();
-//                                    ret_waiting_list();
-//
-//                                } finally {
-//                                    socket.close();
-//                                }
-//                            }
-//                        } finally {
-//                            listener.close();
-//                        }
-//                    } catch (IOException ex) {
-//                        System.out.println("Error: " + ex);
-//                    }
-//                }
-//            });
-//            t.start();
-//        }
 
     }
 
