@@ -5,7 +5,7 @@
  */
 package qs.test;
 
-import guru.ttslib.TTS;
+//import guru.ttslib.TTS;
 
 /**
  *
@@ -13,14 +13,14 @@ import guru.ttslib.TTS;
  */
 public class FreeTTSHelloWorld {
 
-    static TTS tts;
+//    static TTS tts;
 
     public static void main(String[] args) {
-        System.setProperty("mbrola.base", "C:\\Users\\Guinness\\Documents\\apps\\lib\\mbrola");
-
-        tts = new TTS("us1");
-       
-        tts.speak("Welcome");
+//        System.setProperty("mbrola.base", "C:\\Users\\Guinness\\Documents\\apps\\lib\\mbrola");
+//
+//        tts = new TTS("us1");
+//       
+//        tts.speak("Welcome");
       
        
     }
