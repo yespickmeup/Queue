@@ -1605,14 +1605,14 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
     private void send_message(String message) {
         try {
-            System.out.println("Sending Message to Server...");
-            print_config();
+//            System.out.println("Sending Message to Server...");
+//            print_config();
             String queue_server_ip = System.getProperty("queue_server_ip", "192.168.1.152");
             int queue_server_port = FitIn.toInt(System.getProperty("queue_server_port", "2000"));
             Socket s = new Socket(queue_server_ip, queue_server_port);
             out2 = new PrintWriter(s.getOutputStream(), true);
             out2.println(message);
-            System.out.println("Message: " + message);
+//            System.out.println("Message: " + message);
 
         } catch (IOException ex) {
             System.out.println("Error: " + ex);
@@ -2113,7 +2113,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
                                 BufferedReader in = new BufferedReader(new InputStreamReader(
                                         socket.getInputStream()));
                                 String input = in.readLine();
-                                System.out.println("input: "+input);
+//                                System.out.println("input: "+input);
                                 ret_waiting_list();
 
                             } finally {

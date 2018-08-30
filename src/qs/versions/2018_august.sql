@@ -10,3 +10,7 @@
 
 alter table departments add shortcut varchar(255);
 alter table counters add shortcut varchar(255);
+
+alter table settings add screen_size_x int default 1366;
+alter table settings add screen_size_y int default 768;
+alter table settings add play_video_sound int default 0;
