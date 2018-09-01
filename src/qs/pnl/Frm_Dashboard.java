@@ -43,6 +43,7 @@ public class Frm_Dashboard extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -66,15 +67,16 @@ public class Frm_Dashboard extends javax.swing.JFrame {
             }
         });
 
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/img/linq_logo_small.png"))); // NOI18N
 
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Queuing System");
 
-        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setText("Sibulan Water District");
+        jLabel16.setText("Bayawan Water District");
 
         jLabel17.setBackground(new java.awt.Color(18, 115, 172));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -98,12 +100,12 @@ public class Frm_Dashboard extends javax.swing.JFrame {
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                 .addGap(5, 5, 5)
-                .addComponent(jLabel14)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(1, 1, 1)
                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -250,7 +252,7 @@ public class Frm_Dashboard extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void close() {
-        jLabel16.setText(System.getProperty("business_name", "Bayawan Water District"));
+        
         Window p = (Window) this;
         Dlg_confirm_action2 nd = Dlg_confirm_action2.create(p, true);
         nd.setTitle("");
@@ -269,7 +271,9 @@ public class Frm_Dashboard extends javax.swing.JFrame {
     }
 
     public void add_call() {
+        jLabel16.setText(System.getProperty("business_name", "Bayawan Water District"));
         Dlg_call_number dialog = Dlg_call_number.create(new javax.swing.JFrame(), true);
+        dialog.setAlwaysOnTop(true);
         dialog.start_teller_server();
         jPanel2.setLayout(new BorderLayout());
         jPanel2.add(dialog.getContentPane());

@@ -19,8 +19,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -38,6 +40,7 @@ import mijzcx.synapse.desk.utils.FitIn;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
+import qs.counters.Counters;
 import qs.customers.Customers;
 import qs.queues.Queues;
 import qs.queues.Queues.to_queues;
@@ -921,7 +924,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -1255,8 +1258,28 @@ public class Dlg_call_number extends javax.swing.JDialog {
 //                start_teller_server();
 
                 String counter_no = System.getProperty("counter_no", "");
+                String ip_address = "";
+                try {
+                    InetAddress localhost = InetAddress.getLocalHost();
+                    ip_address = localhost.getHostAddress().trim();
+                    System.out.println("System IP Address : "
+                            + (localhost.getHostAddress()).trim());
+                } catch (UnknownHostException ex) {
+                    ip_address = "";
+                    System.out.println(ex);
+                }
+                if (!ip_address.isEmpty()) {
+
+                    List<Counters.to_counters> counters = Counters.ret_data(" where ip_address='" + ip_address + "'");
+                    if (!counters.isEmpty()) {
+                        Counters.to_counters counter = counters.get(0);
+                        Counters.update_login_status(counter, 1);
+                    }
+                }
+
                 jLabel12.setText(counter_no);
                 jLabel23.setText(counter_no);
+
             }
         });
         nd.setLocationRelativeTo(jPanel9);

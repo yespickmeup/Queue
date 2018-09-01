@@ -737,7 +737,7 @@ public class Dlg_counter extends javax.swing.JDialog {
             }
             List<Departments.to_departments> deps = Departments.ret_data(" where id='" + dep.getId() + "' ");
             Departments.to_departments dep1 = (Departments.to_departments) deps.get(0);
-            Counters.to_counters count = new Counters.to_counters(id, counter, department, department_id, ip_address, created_at, updated_at, created_by, updated_by, status, dep1.shortcut);
+            Counters.to_counters count = new Counters.to_counters(id, counter, department, department_id, ip_address, created_at, updated_at, created_by, updated_by, status, dep1.shortcut,0);
             Window p = (Window) this;
             Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
             nd.setTitle("");
@@ -777,7 +777,7 @@ public class Dlg_counter extends javax.swing.JDialog {
             System.out.println("dep id: " + dep.getId());
             List<Departments.to_departments> deps = Departments.ret_data(" where id='" + dep.getId() + "' ");
             Departments.to_departments dep1 = (Departments.to_departments) deps.get(0);
-            Counters.to_counters degr = new Counters.to_counters(id, counter, department, department_id, ip_address, created_at, updated_at, created_by, updated_by, status, dep1.shortcut);
+            Counters.to_counters degr = new Counters.to_counters(id, counter, department, department_id, ip_address, created_at, updated_at, created_by, updated_by, status, dep1.shortcut,0);
             Window p = (Window) this;
             Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
             nd.setTitle("");

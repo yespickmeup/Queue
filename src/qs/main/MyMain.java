@@ -123,7 +123,7 @@ public class MyMain {
         f.setIconImage(image);
         Dlg_call_number dialog = Dlg_call_number.create(new javax.swing.JFrame(), true);
 
-        f.setSize(315, dialog.getHeight() + 25);
+        f.setSize(258, dialog.getHeight() + 25);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice defaultScreen = ge.getDefaultScreenDevice();
         Rectangle rect = defaultScreen.getDefaultConfiguration().getBounds();

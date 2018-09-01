@@ -597,7 +597,7 @@ public class Dlg_rpt_queues extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void myInit() {
-        System.setProperty("pool_password", "password");
+//        System.setProperty("pool_password", "password");
         init_key();
 
         ret_departments();
