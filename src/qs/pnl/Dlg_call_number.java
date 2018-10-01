@@ -23,6 +23,7 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -32,6 +33,7 @@ import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -40,6 +42,7 @@ import mijzcx.synapse.desk.utils.FitIn;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
+import qs.counter_departments.Counter_departments;
 import qs.counters.Counters;
 import qs.customers.Customers;
 import qs.queues.Queues;
@@ -287,6 +290,10 @@ public class Dlg_call_number extends javax.swing.JDialog {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
+        jButton22 = new javax.swing.JButton();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -838,7 +845,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
         });
 
         jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/phone-call.png"))); // NOI18N
-        jButton18.setText(" F2 - Call Again");
+        jButton18.setText(" F3 - Call Again");
         jButton18.setBorder(null);
         jButton18.setBorderPainted(false);
         jButton18.setEnabled(false);
@@ -852,7 +859,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
         });
 
         jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/invisible-symbol.png"))); // NOI18N
-        jButton19.setText(" F3 - Now Show");
+        jButton19.setText(" F4 - Now Show");
         jButton19.setBorder(null);
         jButton19.setBorderPainted(false);
         jButton19.setEnabled(false);
@@ -866,7 +873,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
         });
 
         jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/cross-out (1).png"))); // NOI18N
-        jButton20.setText(" F4 - Cancel");
+        jButton20.setText(" F5 - Cancel");
         jButton20.setBorder(null);
         jButton20.setBorderPainted(false);
         jButton20.setEnabled(false);
@@ -880,7 +887,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
         });
 
         jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/tick.png"))); // NOI18N
-        jButton21.setText(" F5 - Finish");
+        jButton21.setText(" F6 - Finish");
         jButton21.setBorder(null);
         jButton21.setBorderPainted(false);
         jButton21.setEnabled(false);
@@ -917,6 +924,36 @@ public class Dlg_call_number extends javax.swing.JDialog {
             }
         });
 
+        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/qs/icons/magnifying-glass.png"))); // NOI18N
+        jButton22.setText(" F2 - Priority Number");
+        jButton22.setBorder(null);
+        jButton22.setBorderPainted(false);
+        jButton22.setEnabled(false);
+        jButton22.setFocusable(false);
+        jButton22.setMargin(new java.awt.Insets(0, 14, 0, 0));
+        jButton22.setOpaque(false);
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
+
+        jLabel31.setBackground(new java.awt.Color(18, 115, 172));
+        jLabel31.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel31.setText("0");
+        jLabel31.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+
+        jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel32.setText("Regular");
+        jLabel32.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+
+        jLabel33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel33.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel33.setText("Priority");
+        jLabel33.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -927,7 +964,6 @@ public class Dlg_call_number extends javax.swing.JDialog {
                     .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -950,7 +986,17 @@ public class Dlg_call_number extends javax.swing.JDialog {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(jLabel28)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton22, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                                .addGap(0, 0, 0)
+                                .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -965,12 +1011,20 @@ public class Dlg_call_number extends javax.swing.JDialog {
                 .addGap(0, 0, 0)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel21)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel31))
                 .addGap(0, 0, 0)
-                .addComponent(jLabel20)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6)
                 .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1097,23 +1151,38 @@ public class Dlg_call_number extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        get_new_number();
+        if (jButton17.isEnabled()) {
+            get_new_number();
+        }
+
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        call_again();
+        if (jButton18.isEnabled()) {
+            call_again();
+        }
+
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        finish_queue(3);
+        if (jButton19.isEnabled()) {
+            finish_queue(3);
+        }
+
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        finish_queue(2);
+        if (jButton20.isEnabled()) {
+            finish_queue(2);
+        }
+
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
-        finish_queue(1);
+        if (jButton21.isEnabled()) {
+            finish_queue(1);
+        }
+
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jLabel30MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseEntered
@@ -1129,6 +1198,12 @@ public class Dlg_call_number extends javax.swing.JDialog {
     private void jLabel30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel30MouseClicked
         menu();
     }//GEN-LAST:event_jLabel30MouseClicked
+
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
+        if (jButton22.isEnabled()) {
+            get_new_number_priority();
+        }
+    }//GEN-LAST:event_jButton22ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1149,6 +1224,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
+    private javax.swing.JButton jButton22;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -1178,6 +1254,9 @@ public class Dlg_call_number extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -1354,8 +1433,8 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (jButton18.isEnabled()) {
-                    call_again();
+                if (jButton22.isEnabled()) {
+                    get_new_number_priority();
                 }
             }
         });
@@ -1364,8 +1443,9 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (jButton19.isEnabled()) {
-                    finish_queue(3);
+                if (jButton18.isEnabled()) {
+                    call_again();
+
                 }
 
             }
@@ -1375,8 +1455,9 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (jButton20.isEnabled()) {
-                    finish_queue(2);
+                if (jButton19.isEnabled()) {
+                    finish_queue(3);
+
                 }
 
             }
@@ -1386,18 +1467,20 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (jButton21.isEnabled()) {
-                    finish_queue(1);
+                if (jButton20.isEnabled()) {
+                    finish_queue(2);
+
                 }
 
             }
         });
         KeyMapping.mapKeyWIFW(getSurface(),
-                KeyEvent.VK_F10, new KeyAction() {
+                KeyEvent.VK_F6, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                ret_waiting_list();
+                finish_queue(1);
+
             }
         });
     }
@@ -1499,15 +1582,41 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
     private void ret_waiting_list() {
         String counter_no = System.getProperty("counter_no", "01");
+        String counter_id = System.getProperty("counter_id", "");
         String department = System.getProperty("department", "Evaluation");
         String department_id = System.getProperty("department_id", "");
 //        System.out.println("department_id: " + department_id);
-        String date = DateType.sf.format(new Date());
-        String where = " where status=0 and department_id='" + department_id + "' and Date(created_at)='" + date + "' and teller IS NULL order by id asc ";
-//        System.out.println(where);
-        List<to_queues> q = Queues.ret_data(where);
-        loadData_queues(q);
-        jLabel21.setText("" + q.size());
+
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                List<Counter_departments.to_counter_departments> counter_departments = Counter_departments.ret_data(" where counter_id='" + counter_id + "' ");
+                String in = department_id;
+                String in_priority = "1000";
+                for (Counter_departments.to_counter_departments to : counter_departments) {
+                    if (to.priority == 1) {
+                        in_priority = in_priority + "," + to.department_id;
+                    } else {
+                        in = in + "," + to.department_id;
+                    }
+
+                }
+
+                String date = DateType.sf.format(new Date());
+                String where = " where status=0 and department_id IN(" + in + ") and Date(created_at)='" + date + "' and teller IS NULL order by id asc ";
+                String where2 = " where status=0 and department_id IN(" + in_priority + ") and Date(created_at)='" + date + "' and teller IS NULL order by id asc ";
+                List<to_queues> q_all = new ArrayList();
+                List<to_queues> q = Queues.ret_data(where);
+                List<to_queues> q2 = Queues.ret_data(where2);
+                
+                q_all.addAll(q);
+                q_all.addAll(q2);
+                loadData_queues(q_all);
+                jLabel21.setText("" + q.size());
+                jLabel31.setText("" + q2.size());
+            }
+        });
+
     }
 
 //</editor-fold> 
@@ -1520,7 +1629,9 @@ public class Dlg_call_number extends javax.swing.JDialog {
         String teller = System.getProperty("teller", "Ronald Pascua");
         String teller_id = System.getProperty("teller_id", "");
         String date = DateType.sf.format(new Date());
-        String where = " where status=0 and teller_id='" + teller_id + "' and department_id='" + department_id + "' and Date(created_at)='" + date + "' and teller IS NOT NULL order by id asc ";
+//        String where = " where status=0 and teller_id='" + teller_id + "' and department_id='" + department_id + "' and Date(created_at)='" + date + "' and teller IS NOT NULL order by id asc ";
+        String where = " where status=0 and teller_id='" + teller_id + "'  and Date(created_at)='" + date + "' and teller IS NOT NULL order by id asc ";
+
 //        System.out.println(where);
         List<to_queues> q = Queues.ret_data(where);
         if (!q.isEmpty()) {
@@ -1554,19 +1665,110 @@ public class Dlg_call_number extends javax.swing.JDialog {
     }
 
     private void get_new_number() {
+
         String counter_no = System.getProperty("counter_no", "");
+        String counter_id = System.getProperty("counter_id", "");
         String department = System.getProperty("department", "");
         String department_id = System.getProperty("department_id", "");
         String teller = System.getProperty("teller", "");
         String teller_id = System.getProperty("teller_id", "");
 
-        String date = DateType.sf.format(new Date());
-        String where = " where status=0 and department_id='" + department_id + "' and Date(created_at)='" + date + "' and teller IS NULL order by id asc ";
-//        System.out.println(where);
-        List<to_queues> q = Queues.ret_data(where);
+        List<Counter_departments.to_counter_departments> counter_departments = Counter_departments.ret_data(" where counter_id='" + counter_id + "' ");
+        String in = department_id;
+        String in_priority = "1000";
+        int i = 0;
+        for (Counter_departments.to_counter_departments to : counter_departments) {
+            if (to.priority == 1) {
+                in_priority = in_priority + "," + to.department_id;
 
-        if (!q.isEmpty()) {
-            to_queues to = (to_queues) q.get(0);
+            } else {
+                in = in + "," + to.department_id;
+            }
+
+        }
+
+//        System.out.println("in_priority: " + in_priority);
+//        String where = " where status=0 and department_id IN(" + in + ") and Date(created_at)='" + date + "' and teller IS NULL order by id asc ";
+        String date = DateType.sf.format(new Date());
+        String where = " where status=0 and department_id IN(" + in + ") and Date(created_at)='" + date + "' and teller IS NULL order by id asc ";
+        String where2 = " where status=0 and department_id IN(" + in_priority + ") and Date(created_at)='" + date + "' and teller IS NULL order by id asc ";
+
+        List<to_queues> q_all = new ArrayList();
+        List<to_queues> q = Queues.ret_data(where);
+//        List<to_queues> q_priority = Queues.ret_data(where2);
+//        q_all.addAll(q_priority);
+        q_all.addAll(q);
+        if (!q_all.isEmpty()) {
+            to_queues to = (to_queues) q_all.get(0);
+            List<Customers.to_customers> custs = Customers.ret_data(" where customer_no='" + to.customer_id + "'");
+            String address = "";
+            if (!custs.isEmpty()) {
+                Customers.to_customers cus = (Customers.to_customers) custs.get(0);
+                address = cus.address;
+            }
+            queue_id = to.id;
+            jLabel2.setText(to.department);
+            jLabel4.setText(to.queue_no);
+//            jLabel6.setText("ID No.: " + to.customer_id);
+//            jLabel7.setText("Name : " + to.customer);
+//            jXLabel1.setText("Address: " + address);
+
+//            jLabel23.setText(to.department);
+            jLabel19.setText(to.queue_no);
+            jLabel25.setText(to.customer_id);
+            jLabel26.setText(to.customer);
+            jLabel29.setText(address);
+            //update queue
+            Queues.update_teller(to.id, counter_no, teller, teller_id);
+//            jButton1.setEnabled(false);
+//            jButton3.setEnabled(true);
+//            jButton2.setEnabled(true);
+//            jButton4.setEnabled(true);
+//            jButton5.setEnabled(true);
+
+            String queue_no = jLabel4.getText();
+            String message = "" + counter_no + "," + queue_no + ",1";
+            send_message(message);
+            enable_buttons_gnn(false);
+        }
+    }
+
+    private void get_new_number_priority() {
+
+        String counter_no = System.getProperty("counter_no", "");
+        String counter_id = System.getProperty("counter_id", "");
+        String department = System.getProperty("department", "");
+        String department_id = System.getProperty("department_id", "");
+        String teller = System.getProperty("teller", "");
+        String teller_id = System.getProperty("teller_id", "");
+
+        List<Counter_departments.to_counter_departments> counter_departments = Counter_departments.ret_data(" where counter_id='" + counter_id + "' ");
+        String in = department_id;
+        String in_priority = "1000";
+        int i = 0;
+        for (Counter_departments.to_counter_departments to : counter_departments) {
+            if (to.priority == 1) {
+                in_priority = in_priority + "," + to.department_id;
+
+            } else {
+                in = in + "," + to.department_id;
+            }
+
+        }
+
+//        System.out.println("in_priority: " + in_priority);
+//        String where = " where status=0 and department_id IN(" + in + ") and Date(created_at)='" + date + "' and teller IS NULL order by id asc ";
+        String date = DateType.sf.format(new Date());
+        String where = " where status=0 and department_id IN(" + in + ") and Date(created_at)='" + date + "' and teller IS NULL order by id asc ";
+        String where2 = " where status=0 and department_id IN(" + in_priority + ") and Date(created_at)='" + date + "' and teller IS NULL order by id asc ";
+
+        List<to_queues> q_all = new ArrayList();
+//        List<to_queues> q = Queues.ret_data(where);
+        List<to_queues> q_priority = Queues.ret_data(where2);
+        q_all.addAll(q_priority);
+//        q_all.addAll(q);
+        if (!q_all.isEmpty()) {
+            to_queues to = (to_queues) q_all.get(0);
             List<Customers.to_customers> custs = Customers.ret_data(" where customer_no='" + to.customer_id + "'");
             String address = "";
             if (!custs.isEmpty()) {
@@ -1604,12 +1806,15 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
         if (stmt == true) {
             jButton17.setEnabled(true);
+            jButton22.setEnabled(true);
             jButton18.setEnabled(false);
             jButton19.setEnabled(false);
             jButton20.setEnabled(false);
             jButton21.setEnabled(false);
+
         } else {
             jButton17.setEnabled(false);
+            jButton22.setEnabled(false);
             jButton18.setEnabled(true);
             jButton19.setEnabled(true);
             jButton20.setEnabled(true);

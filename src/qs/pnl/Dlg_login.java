@@ -47,7 +47,6 @@ public class Dlg_login extends javax.swing.JDialog {
 
     public static class OutputData {
 
-        
     }
 //</editor-fold>
 
@@ -436,6 +435,7 @@ public class Dlg_login extends javax.swing.JDialog {
                 List<Counters.to_counters> counters = Counters.ret_data(" where id='" + setting.counter_id + "'");
 //                System.out.println("setting.counter_id: "+setting.counter_id);
                 Counters.to_counters counter = (Counters.to_counters) counters.get(0);
+                System.setProperty("counter_id", "" + counter.id);
                 System.setProperty("counter_no", setting.counter_no);
                 System.setProperty("teller", to.screen_name);
                 System.setProperty("teller_id", "" + to.id);

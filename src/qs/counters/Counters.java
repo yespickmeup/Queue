@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import mijzcx.synapse.desk.utils.Lg;
 import mijzcx.synapse.desk.utils.SqlStringUtil;
+import qs.counter_departments.Counter_departments;
 import qs.util.MyConnection;
 
 /**
@@ -53,9 +54,10 @@ public class Counters {
         }
     }
 
-    public static void add_data(to_counters to_counters) {
+    public static void add_data(to_counters to_counters, List<Counter_departments.to_counter_departments> counter_departments) {
         try {
             Connection conn = MyConnection.connect();
+
             String s0 = "insert into counters("
                     + "counter"
                     + ",department"
@@ -98,6 +100,49 @@ public class Counters {
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
+
+            int id = 0;
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                id = rs.getInt(1);
+            }
+
+            PreparedStatement stmt2 = conn.prepareStatement("");
+            for (Counter_departments.to_counter_departments to_counter_departments : counter_departments) {
+                String s2 = "insert into counter_departments("
+                        + "counter_id"
+                        + ",counter"
+                        + ",department_id"
+                        + ",department"
+                        + ",created_at"
+                        + ",updated_at"
+                        + ",status"
+                        + ",priority"
+                        + ")values("
+                        + ":counter_id"
+                        + ",:counter"
+                        + ",:department_id"
+                        + ",:department"
+                        + ",:created_at"
+                        + ",:updated_at"
+                        + ",:status"
+                        + ",:priority"
+                        + ")";
+
+                s2 = SqlStringUtil.parse(s2)
+                        .setNumber("counter_id", id)
+                        .setString("counter", to_counters.counter)
+                        .setString("department_id", to_counter_departments.department_id)
+                        .setString("department", to_counter_departments.department)
+                        .setString("created_at", to_counter_departments.created_at)
+                        .setString("updated_at", to_counter_departments.updated_at)
+                        .setNumber("status", to_counter_departments.status)
+                        .setNumber("priority", to_counter_departments.priority)
+                        .ok();
+                stmt2.addBatch(s2);
+            }
+            stmt2.executeBatch();
+
             Lg.s(Counters.class, "Successfully Added");
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -140,6 +185,19 @@ public class Counters {
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
+
+            String s2 = "update counter_departments set "
+                    + " counter= :counter "
+                    + " where counter_id='" + to_counters.id + "' "
+                    + " ";
+
+            s2 = SqlStringUtil.parse(s2)
+                    .setString("counter", to_counters.counter)
+                    .ok();
+
+            PreparedStatement stmt2 = conn.prepareStatement(s2);
+            stmt2.execute();
+
             Lg.s(Counters.class, "Successfully Updated");
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -179,6 +237,13 @@ public class Counters {
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
+
+            String s2 = "delete from counter_departments  "
+                    + " where counter_id='" + to_counters.id + "' "
+                    + " ";
+
+            PreparedStatement stmt2 = conn.prepareStatement(s2);
+            stmt2.execute();
             Lg.s(Counters.class, "Successfully Deleted");
         } catch (SQLException e) {
             throw new RuntimeException(e);
