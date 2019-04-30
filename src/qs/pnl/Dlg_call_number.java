@@ -1152,7 +1152,13 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         if (jButton17.isEnabled()) {
-            get_new_number();
+
+            String version = System.getProperty("version", "");
+            if (version.equalsIgnoreCase("sme")) {
+                sme_get_number(0);
+            } else {
+                get_new_number();
+            }
         }
 
     }//GEN-LAST:event_jButton17ActionPerformed
@@ -1201,7 +1207,13 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         if (jButton22.isEnabled()) {
-            get_new_number_priority();
+
+            String version = System.getProperty("version", "");
+            if (version.equalsIgnoreCase("sme")) {
+                sme_get_number(1);
+            } else {
+                get_new_number_priority();
+            }
         }
     }//GEN-LAST:event_jButton22ActionPerformed
 
@@ -1409,80 +1421,80 @@ public class Dlg_call_number extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                KeyEvent.VK_ESCAPE, new KeyAction() {
+                              KeyEvent.VK_ESCAPE, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+                          @Override
+                          public void actionPerformed(ActionEvent e) {
 
-                disposed();
-            }
-        });
+                              disposed();
+                          }
+                      });
         KeyMapping.mapKeyWIFW(getSurface(),
-                KeyEvent.VK_F1, new KeyAction() {
+                              KeyEvent.VK_F1, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (jButton17.isEnabled()) {
-                    get_new_number();
-                }
+                          @Override
+                          public void actionPerformed(ActionEvent e) {
+                              if (jButton17.isEnabled()) {
+                                  get_new_number();
+                              }
 
-            }
-        });
+                          }
+                      });
         KeyMapping.mapKeyWIFW(getSurface(),
-                KeyEvent.VK_F2, new KeyAction() {
+                              KeyEvent.VK_F2, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (jButton22.isEnabled()) {
-                    get_new_number_priority();
-                }
-            }
-        });
+                          @Override
+                          public void actionPerformed(ActionEvent e) {
+                              if (jButton22.isEnabled()) {
+                                  get_new_number_priority();
+                              }
+                          }
+                      });
         KeyMapping.mapKeyWIFW(getSurface(),
-                KeyEvent.VK_F3, new KeyAction() {
+                              KeyEvent.VK_F3, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (jButton18.isEnabled()) {
-                    call_again();
+                          @Override
+                          public void actionPerformed(ActionEvent e) {
+                              if (jButton18.isEnabled()) {
+                                  call_again();
 
-                }
+                              }
 
-            }
-        });
+                          }
+                      });
         KeyMapping.mapKeyWIFW(getSurface(),
-                KeyEvent.VK_F4, new KeyAction() {
+                              KeyEvent.VK_F4, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (jButton19.isEnabled()) {
-                    finish_queue(3);
+                          @Override
+                          public void actionPerformed(ActionEvent e) {
+                              if (jButton19.isEnabled()) {
+                                  finish_queue(3);
 
-                }
+                              }
 
-            }
-        });
+                          }
+                      });
         KeyMapping.mapKeyWIFW(getSurface(),
-                KeyEvent.VK_F5, new KeyAction() {
+                              KeyEvent.VK_F5, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (jButton20.isEnabled()) {
-                    finish_queue(2);
+                          @Override
+                          public void actionPerformed(ActionEvent e) {
+                              if (jButton20.isEnabled()) {
+                                  finish_queue(2);
 
-                }
+                              }
 
-            }
-        });
+                          }
+                      });
         KeyMapping.mapKeyWIFW(getSurface(),
-                KeyEvent.VK_F6, new KeyAction() {
+                              KeyEvent.VK_F6, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                finish_queue(1);
+                          @Override
+                          public void actionPerformed(ActionEvent e) {
+                              finish_queue(1);
 
-            }
-        });
+                          }
+                      });
     }
     // </editor-fold>
 
@@ -1608,7 +1620,7 @@ public class Dlg_call_number extends javax.swing.JDialog {
                 List<to_queues> q_all = new ArrayList();
                 List<to_queues> q = Queues.ret_data(where);
                 List<to_queues> q2 = Queues.ret_data(where2);
-                
+
                 q_all.addAll(q);
                 q_all.addAll(q2);
                 loadData_queues(q_all);
@@ -1661,6 +1673,14 @@ public class Dlg_call_number extends javax.swing.JDialog {
             jLabel25.setText("");
             jLabel26.setText("");
             jLabel29.setText("");
+        }
+    }
+
+    private void sme_get_number(int type) {
+        if (type == 0) { //regular
+
+        } else { //senior citizen
+            
         }
     }
 

@@ -68,7 +68,7 @@ public class MyMain {
             System.setProperty("pool_db", prop.getProperty("pool_db", "db_queue"));
             System.setProperty("hdd_drive", prop.getProperty("hdd_drive", ""));
             System.setProperty("environment", prop.getProperty("environment", "production"));
-
+            System.setProperty("version", prop.getProperty("version", ""));
             System.setProperty("VLC_PLUGIN_PATH", prop.getProperty("VLC_PLUGIN_PATH", ""));
             System.setProperty("VLC_PLUGIN_NATIVE_PATH", prop.getProperty("VLC_PLUGIN_NATIVE_PATH", ""));
 
